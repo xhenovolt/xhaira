@@ -1,16 +1,99 @@
 /**
- * Register Page - Futuristic Glassmorphism Design
- * New account creation interface
+ * Register Page - System Access & Identity Control
+ * 
+ * PHASE 5: Disable Frontend Registration
+ * 
+ * Conditional display based on system state:
+ * - System NOT initialized: Show registration form for first user
+ * - System initialized: Show locked message redirecting to login
  */
 
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Lock, CheckCircle } from 'lucide-react';
+import RegisterForm from '@/components/auth/RegisterForm';
 import AnimatedAuthBackground from '@/components/auth/AnimatedAuthBackground';
 
-export const metadata = {
-  title: 'Access Restricted - Xhaira',
-  description: 'Xhaira is an internal system. Contact your administrator for access.',
-};
-
 export default function RegisterPage() {
+  const [systemState, setSystemState] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkSystemState = async () => {
+      try {
+        const res = await fetch('/api/system/state');
+        const data = await res.json();
+        setSystemState(data);
+
+        // If system is initialized, redirect to login after brief delay
+        if (data.initialized) {
+          setTimeout(() => {
+            router.push('/login');
+          }, 2000);
+        }
+      } catch (error) {
+        console.error('Error checking system state:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkSystemState();
+  }, [router]);
+
+  if (loading) {
+    return (
+      <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
+        <AnimatedAuthBackground />
+        <div className="relative z-10 text-muted-foreground">Loading...</div>
+      </div>
+    );
+  }
+
+  // System is initialized — show locked registration message
+  if (systemState?.initialized) {
+    return (
+      <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
+        <AnimatedAuthBackground />
+
+        <div className="w-full max-w-md relative z-10">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center mb-4">
+              <svg className="w-16 h-16 text-amber-500" viewBox="0 0 120 120" fill="currentColor">
+                <circle cx="60" cy="60" r="55" opacity="0.1" />
+                <text x="60" y="75" fontSize="48" fontWeight="bold" textAnchor="middle" fill="currentColor">X</text>
+              </svg>
+            </div>
+            <Lock className="mx-auto mb-4 text-amber-500" size={48} />
+            <h1 className="text-3xl font-bold text-foreground mb-2">Registration Closed</h1>
+            <p className="text-muted-foreground">
+              Xhaira registration is only available during initial setup. Ask your SACCO administrator for access.
+            </p>
+          </div>
+
+          <div className="backdrop-blur-xl bg-white/90 dark:bg-white/[0.07] border border-border dark:border-white/[0.12] rounded-2xl shadow-2xl shadow-gray-200/50 dark:shadow-black/20 p-8 text-center space-y-4">
+            <p className="text-sm text-muted-foreground">
+              User accounts are now created exclusively by administrators.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Contact your administrator to request access to the system.
+            </p>
+            <a
+              href="/login"
+              className="inline-block mt-4 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              Go to Login
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // System is NOT initialized — show registration form
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
       <AnimatedAuthBackground />
@@ -18,34 +101,20 @@ export default function RegisterPage() {
       <div className="w-full max-w-md relative z-10">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 shadow-lg mb-4">
-            <span className="text-2xl font-bold text-white">J</span>
-          </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">Access Restricted</h1>
-          <p className="text-muted-foreground">Xhaira is an internal operating system</p>
-        </div>
-
-        {/* Card */}
-        <div className="backdrop-blur-xl bg-white/90 dark:bg-white/[0.07] border border-border dark:border-white/[0.12] rounded-2xl shadow-2xl shadow-gray-200/50 dark:shadow-black/20 p-8 text-center space-y-4">
-          <div className="w-12 h-12 rounded-full bg-amber-500/15 border border-amber-500/30 flex items-center justify-center mx-auto">
-            <svg className="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+          <div className="inline-flex items-center justify-center mb-4">
+            <svg className="w-16 h-16 text-emerald-500" viewBox="0 0 120 120" fill="currentColor">
+              <circle cx="60" cy="60" r="55" opacity="0.1" />
+              <text x="60" y="75" fontSize="48" fontWeight="bold" textAnchor="middle" fill="currentColor">X</text>
             </svg>
           </div>
-          <h2 className="text-lg font-semibold text-foreground">Registration Disabled</h2>
-          <p className="text-sm text-muted-foreground">
-            Public self-registration is not available. User accounts are created exclusively
-            by a system administrator through the staff management panel.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Contact your administrator to request access.
-          </p>
-          <a
-            href="/login"
-            className="inline-block mt-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
-          >
-            Back to Login
-          </a>
+          <CheckCircle className="mx-auto mb-4 text-emerald-500" size={48} />
+          <h1 className="text-3xl font-bold text-foreground mb-2">System Registration Open</h1>
+          <p className="text-muted-foreground">Create your initial admin account for Xhaira</p>
+        </div>
+
+        {/* Registration Form Card */}
+        <div className="backdrop-blur-xl bg-white/90 dark:bg-white/[0.07] border border-border dark:border-white/[0.12] rounded-2xl shadow-2xl shadow-gray-200/50 dark:shadow-black/20 p-8">
+          <RegisterForm />
         </div>
       </div>
     </div>

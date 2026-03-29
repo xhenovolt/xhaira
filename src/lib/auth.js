@@ -92,21 +92,46 @@ export async function createUser({
       .slice(0, 100);
 
   try {
-    const result = await query(
-      `INSERT INTO users (email, password_hash, name, username, role, is_active, status, staff_id, must_reset_password, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-       RETURNING id, email, name, username, role, is_active, status, staff_id, must_reset_password, created_at`,
-      [email, passwordHash, name, resolvedUsername, role, isActive, status, staffId, mustResetPassword]
-    );
+    // Create user with all required columns
+    // Schema MUST have all these columns or this will fail (no fallback)
+    const insertSql = `
+      INSERT INTO users (
+        email, password_hash, name, username, role, is_active, status,
+        staff_id, must_reset_password,
+        created_at, updated_at
+      )
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      RETURNING id, email, name, username, role, is_active, status, created_at
+    `;
+
+    const result = await query(insertSql, [
+      email,
+      passwordHash,
+      name,
+      resolvedUsername,
+      role,
+      isActive,
+      status,
+      staffId,
+      mustResetPassword
+    ]);
 
     return result.rows[0] || null;
   } catch (error) {
     console.error('Error creating user:', error.message);
+    
+    // Handle unique constraint violations
     if (error.code === '23505') {
-      // Unique violation — figure out which field
       if (error.detail?.includes('username')) return { error: 'Username already taken' };
-      return { error: 'Email already exists' };
+      if (error.detail?.includes('email')) return { error: 'Email already exists' };
     }
+    
+    // If column is missing, this is a schema integrity error - DO NOT fallback
+    if (error.code === '42703') {
+      console.error('[SCHEMA ERROR] User table is missing required columns. Database schema is corrupted.', error.message);
+      throw new Error('Database schema integrity violation: users table missing required columns');
+    }
+    
     return null;
   }
 }

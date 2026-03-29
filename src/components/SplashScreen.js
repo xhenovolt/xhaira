@@ -29,7 +29,7 @@ export default function SplashScreen({ onFinished }) {
           priority
           className="drop-shadow-2xl"
         />
-        <h1 className="text-white text-3xl font-bold tracking-wide">JETON</h1>
+        <h1 className="text-white text-3xl font-bold tracking-wide">XHAIRA</h1>
       </div>
 
       {/* Bottom branding — WhatsApp style */}

@@ -89,7 +89,7 @@ export default function LayoutClient({ children }) {
       {/* Footer */}
       <footer className={footerClasses} style={{ background: 'var(--footer-bg)', color: 'var(--footer-text)', borderTop: '1px solid var(--sidebar-border)' }}>
         <p className="mb-1">
-          © {new Date().getFullYear()} Xhaira. Founder Operating System • v2.0
+          © {new Date().getFullYear()} Xhaira. SACCO & Investment Management System • v2.0
         </p>
         <p className="text-xs text-muted-foreground">
           Made with <span className="text-red-500">♥</span> by{' '}

@@ -1,0 +1,91 @@
+ table_name |      column_name      |        data_type         | is_nullable |       column_default        
+------------+-----------------------+--------------------------+-------------+-----------------------------
+ accounts   | id                    | uuid                     | NO          | uuid_generate_v4()
+ accounts   | name                  | character varying        | NO          | 
+ accounts   | type                  | character varying        | NO          | 
+ accounts   | currency              | character varying        | NO          | 'USD'::character varying
+ accounts   | description           | text                     | YES         | 
+ accounts   | institution           | character varying        | YES         | 
+ accounts   | account_number        | character varying        | YES         | 
+ accounts   | is_active             | boolean                  | NO          | true
+ accounts   | created_at            | timestamp with time zone | NO          | now()
+ accounts   | updated_at            | timestamp with time zone | NO          | now()
+ clients    | id                    | uuid                     | NO          | uuid_generate_v4()
+ clients    | company_name          | character varying        | NO          | 
+ clients    | contact_name          | character varying        | YES         | 
+ clients    | email                 | character varying        | YES         | 
+ clients    | phone                 | character varying        | YES         | 
+ clients    | website               | character varying        | YES         | 
+ clients    | industry              | character varying        | YES         | 
+ clients    | status                | character varying        | NO          | 'active'::character varying
+ clients    | created_by            | uuid                     | YES         | 
+ clients    | created_at            | timestamp with time zone | NO          | now()
+ clients    | updated_at            | timestamp with time zone | NO          | now()
+ deals      | id                    | uuid                     | NO          | uuid_generate_v4()
+ deals      | client_id             | uuid                     | NO          | 
+ deals      | title                 | character varying        | NO          | 
+ deals      | description           | text                     | YES         | 
+ deals      | total_amount          | numeric                  | NO          | 
+ deals      | currency              | character varying        | NO          | 'USD'::character varying
+ deals      | status                | character varying        | NO          | 'draft'::character varying
+ deals      | created_by            | uuid                     | YES         | 
+ deals      | created_at            | timestamp with time zone | NO          | now()
+ deals      | updated_at            | timestamp with time zone | NO          | now()
+ roles      | id                    | uuid                     | NO          | uuid_generate_v4()
+ roles      | name                  | character varying        | NO          | 
+ roles      | description           | text                     | YES         | 
+ roles      | is_system             | boolean                  | NO          | false
+ roles      | created_at            | timestamp with time zone | NO          | now()
+ roles      | updated_at            | timestamp with time zone | NO          | now()
+ roles      | hierarchy_level       | integer                  | YES         | 10
+ roles      | authority_level       | integer                  | YES         | 10
+ roles      | data_scope            | character varying        | YES         | 'OWN'::character varying
+ roles      | is_system_role        | boolean                  | YES         | false
+ sessions   | id                    | uuid                     | NO          | uuid_generate_v4()
+ sessions   | user_id               | uuid                     | NO          | 
+ sessions   | token                 | text                     | NO          | 
+ sessions   | expires_at            | timestamp with time zone | NO          | 
+ sessions   | ip_address            | character varying        | YES         | 
+ sessions   | user_agent            | text                     | YES         | 
+ sessions   | created_at            | timestamp with time zone | NO          | now()
+ sessions   | last_activity         | timestamp with time zone | YES         | CURRENT_TIMESTAMP
+ staff      | id                    | uuid                     | NO          | uuid_generate_v4()
+ staff      | user_id               | uuid                     | NO          | 
+ staff      | department            | character varying        | YES         | 
+ staff      | position              | character varying        | YES         | 
+ staff      | created_at            | timestamp with time zone | YES         | CURRENT_TIMESTAMP
+ staff      | updated_at            | timestamp with time zone | YES         | CURRENT_TIMESTAMP
+ user_roles | id                    | uuid                     | NO          | uuid_generate_v4()
+ user_roles | user_id               | uuid                     | NO          | 
+ user_roles | role_id               | uuid                     | NO          | 
+ user_roles | assigned_by           | uuid                     | YES         | 
+ user_roles | created_at            | timestamp with time zone | NO          | now()
+ users      | id                    | uuid                     | NO          | uuid_generate_v4()
+ users      | email                 | character varying        | NO          | 
+ users      | password_hash         | character varying        | NO          | 
+ users      | name                  | character varying        | NO          | 
+ users      | role                  | character varying        | NO          | 'user'::character varying
+ users      | is_active             | boolean                  | NO          | true
+ users      | last_login            | timestamp with time zone | YES         | 
+ users      | created_at            | timestamp with time zone | NO          | now()
+ users      | updated_at            | timestamp with time zone | NO          | now()
+ users      | status                | character varying        | NO          | 'active'::character varying
+ users      | username              | character varying        | YES         | 
+ users      | profile_photo_url     | text                     | YES         | 
+ users      | phone_number          | character varying        | YES         | 
+ users      | department            | character varying        | YES         | 
+ users      | is_superadmin         | boolean                  | YES         | false
+ users      | last_seen             | timestamp with time zone | YES         | 
+ users      | created_by_id         | uuid                     | YES         | 
+ users      | updated_by_id         | uuid                     | YES         | 
+ users      | role_id               | uuid                     | YES         | 
+ users      | staff_id              | uuid                     | YES         | 
+ users      | must_reset_password   | boolean                  | YES         | false
+ users      | authority_level       | integer                  | YES         | 10
+ users      | hierarchy_level       | integer                  | YES         | 4
+ users      | first_login_completed | boolean                  | YES         | false
+ users      | is_online             | boolean                  | YES         | false
+ users      | session_id            | uuid                     | YES         | 
+ users      | last_seen_at          | timestamp with time zone | YES         | 
+(87 rows)
+

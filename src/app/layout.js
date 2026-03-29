@@ -23,9 +23,9 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || process.env.API_URL || 'http://localhost:3000'),
-  title: 'Xhaira — Founder Operating System',
-  description: 'Institutional intelligence platform by Xhenvolt. Systems, deals, payments, invoices, and organizational intelligence.',
-  keywords: ['xhaira', 'founder os', 'business intelligence', 'xhenvolt'],
+  title: 'Xhaira — SACCO & Investment Management System',
+  description: 'Xhaira is a SACCO and Investment Management System. Manage SACCO members, loans, savings, and investments securely and efficiently.',
+  keywords: ['SACCO management', 'investment platform', 'loan management', 'Xhaira', 'cooperative'],
   authors: [{ name: 'Xhenvolt' }],
   creator: 'Xhenvolt',
   manifest: '/manifest.json',
@@ -44,8 +44,8 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Xhaira — Founder Operating System',
-    description: 'Institutional intelligence platform by Xhenvolt',
+    title: 'Xhaira — SACCO & Investment Management System',
+    description: 'Comprehensive SACCO management and investment tracking platform by Xhenvolt',
     images: [{ url: '/icons/icon-512x512.png', width: 512, height: 512 }],
   },
 };

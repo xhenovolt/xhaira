@@ -64,15 +64,15 @@ export default function Home() {
           className="text-center"
         >
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Enterprise Financial Intelligence Platform
+            SACCO & Investment Management System
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-            Unified asset management, liability tracking, and deal pipeline intelligence designed for founders and financial decision-makers who demand precision and clarity.
+            Xhaira empowers Savings and Credit Cooperative Organizations with intelligent tools to manage members, loans, savings, and investments. Secure, transparent, and built for growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/register" className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition flex items-center justify-center gap-2">
               <Zap size={20} />
-              Start Free Trial
+              Get Started with Xhaira
             </Link>
             <Link href="/login" className="px-8 py-3 border border-border text-foreground rounded-lg font-semibold hover:bg-surface-50 transition">
               Sign In to Account
@@ -85,24 +85,24 @@ export default function Home() {
       <section className="bg-surface-50 py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-foreground text-center mb-16">
-            Complete Financial Control
+            Comprehensive SACCO Management
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: PieChart,
-                title: "Asset Management",
-                description: "Track and value all assets with real-time depreciation calculations. Monitor acquisition costs, current valuations, and investment performance with precision."
+                icon: Users,
+                title: "Member Management",
+                description: "Track and manage SACCO members with complete profiles, membership history, and contribution records. Enable secure member self-service access."
               },
               {
                 icon: BarChart3,
-                title: "Liability Intelligence",
-                description: "Comprehensive liability tracking with interest accrual, payment schedules, and status monitoring. Understand your total debt exposure instantly."
+                title: "Loan Administration",
+                description: "Manage custom loan products with flexible terms, interest calculations, and repayment schedules. Automated ledger posting and payment tracking."
               },
               {
                 icon: TrendingUp,
-                title: "Net Worth Analytics",
-                description: "Automated net worth calculations across all assets and liabilities. Track wealth growth trajectories and identify optimization opportunities."
+                title: "Investment Tracking",
+                description: "Monitor member investments and savings accounts with real-time balance calculations. Track returns and ensure transparency across all portfolios."
               }
             ].map((item, idx) => (
               <motion.div
@@ -131,18 +131,18 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-4xl font-bold text-foreground mb-6">
-                Sales Pipeline Excellence
+                Secure Ledger & Transparency
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Transform how you manage deal flow and revenue forecasting. Visual kanban pipeline tracking with real-time valuation metrics.
+                Every transaction is recorded with complete audit trails. Members can view their accounts in real-time, and administrators have full visibility into SACCO operations.
               </p>
               <ul className="space-y-4">
                 {[
-                  "6-stage pipeline from Lead to Won/Lost",
-                  "Drag-and-drop deal management",
-                  "Probability-weighted revenue forecasting",
-                  "Expected value calculations per deal",
-                  "Deal-level audit trail and history"
+                  "Complete member account ledgers",
+                  "Real-time balance updates",
+                  "Transparent loan approval workflows",
+                  "Member access to transaction history",
+                  "Compliance-ready audit trails"
                 ].map((item, idx) => (
                   <li key={idx} className="flex gap-3">
                     <span className="text-primary font-bold">✓</span>
@@ -159,28 +159,28 @@ export default function Home() {
             >
               <div className="space-y-4">
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm text-muted-foreground">Total Pipeline Value</p>
-                  <p className="text-3xl font-bold text-foreground">UGX 15.2M</p>
+                  <p className="text-sm text-muted-foreground">Total Member Savings</p>
+                  <p className="text-3xl font-bold text-foreground">UGX 125.4M</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-muted-foreground">Expected Revenue</p>
-                    <p className="text-xl font-bold text-primary">UGX 4.5M</p>
+                    <p className="text-xs text-muted-foreground">Active Members</p>
+                    <p className="text-xl font-bold text-primary">248</p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">Conversion Rate</p>
-                    <p className="text-xl font-bold text-primary">29.6%</p>
+                    <p className="text-xs text-muted-foreground">Outstanding Loans</p>
+                    <p className="text-xl font-bold text-primary">UGX 78.5M</p>
                   </div>
                 </div>
                 <div className="space-y-2 pt-4">
-                  {['Lead', 'Negotiation', 'Won'].map((stage) => (
+                  {['Savings Accounts', 'Active Loans', 'Investments'].map((stage) => (
                     <div key={stage} className="text-xs">
                       <div className="flex justify-between mb-1">
                         <span className="text-muted-foreground">{stage}</span>
-                        <span className="font-semibold text-foreground">3 deals</span>
+                        <span className="font-semibold text-foreground">100%</span>
                       </div>
                       <div className="w-full bg-surface-200 rounded-full h-2">
-                        <div className="bg-primary h-2 rounded-full" style={{width: '60%'}}></div>
+                        <div className="bg-primary h-2 rounded-full" style={{width: '85%'}}></div>
                       </div>
                     </div>
                   ))}
@@ -203,20 +203,20 @@ export default function Home() {
                 icon: Shield,
                 title: "Security & Compliance",
                 features: [
-                  "JWT-based authentication",
+                  "Enterprise-grade encryption",
                   "Role-based access control",
                   "Complete audit logging",
-                  "Data encryption in transit"
+                  "GDPR-ready compliance"
                 ]
               },
               {
-                icon: Users,
-                title: "User Management",
+                icon: BarChart3,
+                title: "Advanced Reporting",
                 features: [
-                  "Founder-level permissions",
-                  "Activity audit trails",
-                  "Secure session management",
-                  "Multi-device support"
+                  "Member financial reports",
+                  "Loan portfolio analytics",
+                  "Investment performance tracking",
+                  "Customizable dashboards"
                 ]
               }
             ].map((item, idx) => (
@@ -247,10 +247,10 @@ export default function Home() {
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-foreground text-center mb-6">
-            Unified Dashboard Intelligence
+            SACCO Analytics at a Glance
           </h2>
           <p className="text-xl text-muted-foreground text-center max-w-3xl mx-auto mb-12">
-            Executive-level visibility across your entire financial position with real-time updates and intelligent insights.
+            Real-time visibility into your SACCO's financial health, member engagement, and portfolio performance.
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -259,10 +259,10 @@ export default function Home() {
           >
             <div className="grid md:grid-cols-4 gap-6 mb-8">
               {[
-                { label: "Total Assets", value: "UGX 45.2M", color: "text-blue-600" },
-                { label: "Total Liabilities", value: "UGX 12.8M", color: "text-red-600" },
-                { label: "Net Worth", value: "UGX 32.4M", color: "text-green-600" },
-                { label: "Pipeline Value", value: "UGX 15.2M", color: "text-primary" }
+                { label: "Total Members", value: "248", color: "text-blue-600" },
+                { label: "Total Savings", value: "UGX 125M", color: "text-green-600" },
+                { label: "Outstanding Loans", value: "UGX 78M", color: "text-orange-600" },
+                { label: "Loan Recovery Rate", value: "96.2%", color: "text-primary" }
               ].map((metric, idx) => (
                 <div key={idx} className="text-center">
                   <p className="text-sm text-muted-foreground mb-2">{metric.label}</p>
@@ -271,7 +271,7 @@ export default function Home() {
               ))}
             </div>
             <div className="text-center">
-              <p className="text-sm text-muted-foreground">All figures updated in real-time</p>
+              <p className="text-sm text-muted-foreground">All metrics updated in real-time</p>
             </div>
           </motion.div>
         </div>
@@ -284,10 +284,10 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
         >
           <h2 className="text-4xl font-bold text-primary-foreground mb-6">
-            Take Control of Your Financial Future
+            Empower Your SACCO with Xhaira
           </h2>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-            Join founders and financial decision-makers who use Xhaira to manage billions in assets and pipeline value.
+            Join SACCOs across the region using Xhaira to manage thousands of members and billions in accumulated savings and investments.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {authUser ? (

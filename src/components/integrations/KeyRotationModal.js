@@ -195,7 +195,7 @@ export default function KeyRotationModal({
             <div className="text-xs text-red-700">
               <strong>Rotation will:</strong>
               <ul className="list-disc list-inside mt-1 space-y-0.5">
-                <li>Update keys in JETON</li>
+                <li>Update keys in Xhaira</li>
                 <li>Sync with external systems</li>
                 <li>Log all changes for audit</li>
               </ul>

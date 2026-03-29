@@ -5,8 +5,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: { template: '%s — Xhaira Docs', default: 'Xhaira Documentation' },
-  description: 'Complete documentation for the Xhaira Founder Operating System.',
+  title: { template: '%s — Xhaira Docs', default: 'Xhaira SACCO & Investment Documentation' },
+  description: 'Complete documentation for Xhaira SACCO & Investment Management System. Learn how to manage members, loans, savings, and investments.',
 };
 
 export default function DocsLayout({ children }) {

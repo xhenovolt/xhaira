@@ -71,19 +71,19 @@ export async function initializeBaseRoles() {
   };
 
   try {
-    // Check if roles exist
+    // Check if roles exist - use 'name' column (not role_name)
     const existing = await query(
-      `SELECT id, role_name FROM roles 
-       WHERE role_name IN ($1, $2, $3)`,
+      `SELECT id, name FROM roles 
+       WHERE name IN ($1, $2, $3)`,
       ['superadmin', 'admin', 'staff']
     );
 
-    const existingRoles = new Set(existing.rows.map(r => r.role_name));
+    const existingRoles = new Set(existing.rows.map(r => r.name));
 
     // Create missing roles
     if (!existingRoles.has('superadmin')) {
       await query(
-        `INSERT INTO roles (id, role_name, description, is_system_role)
+        `INSERT INTO roles (id, name, description, is_system_role)
          VALUES ($1, $2, $3, true)`,
         [
           roles.SUPER_ADMIN,
@@ -95,7 +95,7 @@ export async function initializeBaseRoles() {
 
     if (!existingRoles.has('admin')) {
       await query(
-        `INSERT INTO roles (id, role_name, description, is_system_role)
+        `INSERT INTO roles (id, name, description, is_system_role)
          VALUES ($1, $2, $3, true)`,
         [
           roles.ADMIN,
@@ -107,7 +107,7 @@ export async function initializeBaseRoles() {
 
     if (!existingRoles.has('staff')) {
       await query(
-        `INSERT INTO roles (id, role_name, description, is_system_role)
+        `INSERT INTO roles (id, name, description, is_system_role)
          VALUES ($1, $2, $3, true)`,
         [
           roles.STAFF,

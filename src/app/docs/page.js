@@ -1,38 +1,41 @@
 import Link from 'next/link';
-import { BookOpen, Target, DollarSign, BarChart3, Shield, Zap, ArrowRight, Clock } from 'lucide-react';
+import { BookOpen, Users, DollarSign, BarChart3, Shield, Zap, ArrowRight, Clock } from 'lucide-react';
 
-export const metadata = { title: 'Xhaira Documentation' };
+export const metadata = { 
+  title: 'Xhaira SACCO & Investment Management - Documentation',
+  description: 'Complete documentation for Xhaira SACCO management system. Learn how to manage members, loans, savings, and investments.'
+};
 
 const sections = [
   {
     icon: Zap,
     title: 'Getting Started',
-    description: 'Set up Xhaira in minutes. Learn core concepts and start managing your business.',
+    description: 'Set up Xhaira in minutes. Learn core concepts and start managing your SACCO.',
     links: [
       { label: 'Quick Start', href: '/docs/getting-started' },
-      { label: 'Core Concepts', href: '/docs/concepts' },
+      { label: 'SACCO Concepts', href: '/docs/concepts' },
     ],
     color: 'text-blue-600',
     bg: 'bg-blue-50',
   },
   {
-    icon: Target,
-    title: 'Prospecting & Pipeline',
-    description: 'Track leads, manage follow-ups, and convert prospects into paying clients.',
+    icon: Users,
+    title: 'Member Management',
+    description: 'Onboard and manage SACCO members. Track member accounts, contributions, and participation.',
     links: [
-      { label: 'Prospecting Guide', href: '/docs/prospecting' },
-      { label: 'Deals & Payments', href: '/docs/deals' },
+      { label: 'Member Onboarding', href: '/docs/members' },
+      { label: 'Member Portal', href: '/docs/member-portal' },
     ],
     color: 'text-green-600',
     bg: 'bg-green-50',
   },
   {
     icon: DollarSign,
-    title: 'Finance & Accounting',
-    description: 'Manage accounts, track expenses, create budgets, and view ledger entries.',
+    title: 'Loan Management',
+    description: 'Create loan products, process applications, manage repayments, and track loan portfolios.',
     links: [
-      { label: 'Finance Overview', href: '/docs/finance' },
-      { label: 'Invoicing', href: '/docs/invoicing' },
+      { label: 'Loan Products', href: '/docs/loans' },
+      { label: 'Disbursement & Repayment', href: '/docs/repayment' },
     ],
     color: 'text-purple-600',
     bg: 'bg-purple-50',
@@ -40,10 +43,10 @@ const sections = [
   {
     icon: BarChart3,
     title: 'Reports & Analytics',
-    description: 'Generate reports on pipeline, revenue, expenses, and business health.',
+    description: 'Generate reports on member accounts, loan performance, savings, and investment returns.',
     links: [
       { label: 'Reports', href: '/docs/reports' },
-      { label: 'Workflow', href: '/docs/workflow' },
+      { label: 'Analytics Dashboard', href: '/docs/analytics' },
     ],
     color: 'text-orange-600',
     bg: 'bg-orange-50',
@@ -51,7 +54,7 @@ const sections = [
   {
     icon: Shield,
     title: 'Security & Users',
-    description: 'Role-based access control, user management, and complete audit logging.',
+    description: 'Role-based access control, user management, and complete audit logging for compliance.',
     links: [
       { label: 'User Management', href: '/docs/users' },
       { label: 'Security & RBAC', href: '/docs/security' },
@@ -62,7 +65,7 @@ const sections = [
   {
     icon: BookOpen,
     title: 'API Reference',
-    description: 'Integrate with Xhaira via our REST API. Authenticate, query, and automate.',
+    description: 'Integrate with Xhaira via our REST API. Build custom integrations and automate workflows.',
     links: [
       { label: 'API Reference', href: '/docs/api' },
       { label: 'Automation', href: '/docs/automation' },
@@ -83,8 +86,8 @@ export default function DocsPage() {
         </div>
         <h1 className="text-4xl font-bold text-foreground mb-4">Xhaira Documentation</h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          Xhaira is a Founder Operating System — a complete platform for managing deals, finances,
-          clients, and operations. Everything a founder needs in one place.
+          Xhaira is a comprehensive SACCO and Investment Management System. Learn how to manage members,
+          loans, savings, and investments with complete transparency and security.
         </p>
       </div>
 
@@ -107,14 +110,12 @@ export default function DocsPage() {
       <div className="p-6 bg-muted/30 border border-border rounded-xl mb-10">
         <h2 className="font-semibold text-foreground mb-3">What is Xhaira?</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Xhaira is a <strong className="text-foreground">Founder Operating System</strong> — an integrated platform that replaces spreadsheets,
-          disconnected SaaS tools, and manual processes. It covers the complete business lifecycle:
-          from finding a prospect, closing a deal, receiving payment, and managing the resulting finances.
+          Xhaira is a <strong className="text-foreground">SACCO & Investment Management System</strong> — a comprehensive platform that enables Savings and Credit Cooperative Organizations to manage members, loans, savings, and investments in a secure, transparent, and efficient manner.
         </p>
         <div className="mt-4 grid sm:grid-cols-3 gap-3">
           {[
-            { label: 'Core Workflow', value: 'Prospect → Deal → Payment → Ledger' },
-            { label: 'Built for', value: 'Founders, solo operators, small teams' },
+            { label: 'Core Platform', value: 'Members → Loans → Savings → Investments' },
+            { label: 'Built for', value: 'SACCOs, cooperatives, financial institutions' },
             { label: 'Tech Stack', value: 'Next.js · PostgreSQL · Role-based access' },
           ].map(({ label, value }) => (
             <div key={label} className="text-sm">

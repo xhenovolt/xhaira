@@ -1,7 +1,7 @@
 {
-  "name": "Xhaira — Founder Operating System",
+  "name": "Xhaira — SACCO & Investment Management System",
   "short_name": "Xhaira",
-  "description": "Institutional intelligence platform by Xhenvolt",
+  "description": "Comprehensive SACCO and Investment Management System by Xhenvolt. Manage members, loans, savings, and investments securely.",
   "start_url": "/app/dashboard",
   "display": "standalone",
   "background_color": "#0f172a",
