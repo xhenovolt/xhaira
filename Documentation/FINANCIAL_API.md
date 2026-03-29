@@ -1,8 +1,8 @@
-# 🎯 Jeton Financial System - Quick Start Guide
+# 🎯 Xhaira Financial System - Quick Start Guide
 
 ## Overview
 
-Jeton now has a complete financial management system that enables Xhenvolt to track assets, liabilities, and calculate net worth automatically.
+Xhaira now has a complete financial management system that enables Xhenvolt to track assets, liabilities, and calculate net worth automatically.
 
 ---
 

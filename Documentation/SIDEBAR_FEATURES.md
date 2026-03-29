@@ -7,7 +7,7 @@
 #### Expanded (Default - 16rem)
 ```
 ┌─────────────────────┐
-│ Jeton         | [<] │  ← Header with logo and collapse button
+│ Xhaira         | [<] │  ← Header with logo and collapse button
 ├─────────────────────┤
 │ [🏠] Dashboard      │  ← Main navigation item (active)
 ├─────────────────────┤

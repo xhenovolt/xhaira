@@ -1,4 +1,4 @@
-# Jeton Authentication System - Detailed Fix Report
+# Xhaira Authentication System - Detailed Fix Report
 
 ## Executive Summary
 
@@ -338,7 +338,7 @@ fetch('/api/shares', { signal: AbortSignal.timeout(100) })
 // Should timeout and show proper message
 
 // 3. Expired session
-// Manually delete jeton_session cookie, reload
+// Manually delete xhaira_session cookie, reload
 // Should see "Session expired" on shares page
 ```
 
@@ -386,13 +386,13 @@ fetch('/api/shares', { signal: AbortSignal.timeout(100) })
 ### If Share Page Still Shows Loading...
 1. Check browser console for error messages
 2. Check server logs: `npm run dev` output
-3. Verify session cookie exists: DevTools → Application → Cookies → jeton_session
+3. Verify session cookie exists: DevTools → Application → Cookies → xhaira_session
 4. Verify session in DB: `SELECT * FROM sessions WHERE user_id = 'YOUR_ID' LIMIT 1;`
 5. Check API response: Open DevTools → Network → Filter `/api/shares` → Check response body
 
 ### If Admin Pages Show "Access Forbidden"...
 1. Verify user role: `SELECT id, email, role, is_superadmin FROM users WHERE email = 'user@example.com';`
-2. Check role in session: Browser console → `document.cookie` → look for jeton_session details
+2. Check role in session: Browser console → `document.cookie` → look for xhaira_session details
 3. Verify AdminLayout receives correct user data: Check browser console for "Authorization Check" log
 
 ### If API Returns 401 Errors After Login...

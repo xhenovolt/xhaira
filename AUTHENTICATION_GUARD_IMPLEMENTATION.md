@@ -98,7 +98,7 @@ REQUEST → ROUTE HANDLER
   ↓
 SERVER-SIDE LAYOUT EXECUTES
   ├─ Calls getCurrentUser() (server-only)
-  ├─ Reads jeton_session cookie
+  ├─ Reads xhaira_session cookie
   ├─ Queries sessions table in database
   ├─ Validates session exists
   ├─ Validates session not expired
@@ -114,7 +114,7 @@ IF USER EXISTS → render page content     [ALLOWED]
 // src/lib/current-user.js - SERVER-ONLY function
 export async function getCurrentUser() {
   const cookieStore = await cookies();
-  const sessionId = cookieStore.get('jeton_session')?.value;
+  const sessionId = cookieStore.get('xhaira_session')?.value;
   
   if (!sessionId) return null;  // No cookie → not authenticated
   
@@ -163,7 +163,7 @@ export async function getCurrentUser() {
 ### ✅ Before Logout
 ```
 1. User logged in with valid session
-2. Session ID: abc123... (in jeton_session cookie)
+2. Session ID: abc123... (in xhaira_session cookie)
 3. Session exists in database: ✅
 ```
 

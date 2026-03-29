@@ -15,7 +15,7 @@ export async function POST(request) {
 
     // Get session from cookie
     const cookieStore = await cookies();
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
     let userId = null;
 
     if (sessionId) {
@@ -65,7 +65,7 @@ export async function POST(request) {
     );
 
     // Clear the session cookie
-    response.cookies.set('jeton_session', '', {
+    response.cookies.set('xhaira_session', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',

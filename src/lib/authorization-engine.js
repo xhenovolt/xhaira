@@ -3,7 +3,7 @@
  * =====================================================================
  * Central Domain Service — Identity & Access Core
  *
- * This is the SINGLE SOURCE OF TRUTH for all access decisions in Jeton.
+ * This is the SINGLE SOURCE OF TRUTH for all access decisions in Xhaira.
  * Every module that needs to check user permissions MUST call this
  * service instead of implementing its own authorization logic.
  *

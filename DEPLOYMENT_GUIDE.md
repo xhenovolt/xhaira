@@ -1,4 +1,4 @@
-# Jeton - Deployment Guide
+# Xhaira - Deployment Guide
 
 ## Quick Start Deployment
 
@@ -14,7 +14,7 @@ Your system is ready to deploy! Choose your preferred platform below:
 1. Go to https://vercel.com
 2. Sign in or create account
 3. Click "Import Project"
-4. Paste GitHub repo URL: `https://github.com/xhenovolt/jeton.git`
+4. Paste GitHub repo URL: `https://github.com/xhenovolt/xhaira.git`
 5. Configure environment variables:
    ```
    DATABASE_URL=your_neon_postgres_connection_string
@@ -64,7 +64,7 @@ Your system is ready to deploy! Choose your preferred platform below:
 2. Create Elastic Beanstalk app
 3. Deploy with:
    ```bash
-   eb create jeton-production
+   eb create xhaira-production
    eb deploy
    ```
 4. Set up RDS PostgreSQL database
@@ -85,7 +85,7 @@ Your system is ready to deploy! Choose your preferred platform below:
 2. Run:
    ```bash
    heroku login
-   heroku create jeton-app
+   heroku create xhaira-app
    heroku addons:create heroku-postgresql:hobby-dev
    git push heroku main
    ```
@@ -166,7 +166,7 @@ const pool = new Pool({
 ## 🚀 One-Click Deployment Links
 
 ### Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fxhenovolt%2Fjeton&project-name=jeton&repo-name=jeton)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fxhenovolt%2Fxhaira&project-name=xhaira&repo-name=xhaira)
 
 ### Railway
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app?referralCode=ZvKDZx)

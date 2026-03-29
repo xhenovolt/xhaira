@@ -37,7 +37,7 @@ export async function middleware(request) {
 ```typescript
 // NEW - Cookie-only validation
 function getSessionCookie(request: NextRequest): string | null {
-  return request.cookies.get('jeton_session')?.value || null;  // ✅ COOKIE ONLY
+  return request.cookies.get('xhaira_session')?.value || null;  // ✅ COOKIE ONLY
 }
 
 export function middleware(request: NextRequest) {
@@ -92,7 +92,7 @@ Request → Middleware → Cookie Check → Redirect/Allow → Response
 
 ## Protected Routes (Middleware-Enforced)
 
-These routes **require** `jeton_session` cookie to exist:
+These routes **require** `xhaira_session` cookie to exist:
 
 ```
 /dashboard, /app, /assets, /liabilities,
@@ -109,7 +109,7 @@ All other routes are public.
 ## How Session Validation Now Works
 
 ### 1. **Middleware (Edge Runtime)**
-- ✅ Reads `jeton_session` cookie
+- ✅ Reads `xhaira_session` cookie
 - ✅ Checks if cookie exists
 - ✅ Redirects to login if missing
 - ❌ Does NOT validate cookie contents

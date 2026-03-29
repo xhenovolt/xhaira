@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Comprehensive Migration Runner for Jeton
+ * Comprehensive Migration Runner for Xhaira
  * Executes all SQL migrations in the correct order
  * Idempotent and safe for development environments
  */
@@ -94,7 +94,7 @@ async function runAllMigrations() {
   const errors = [];
 
   try {
-    console.log('\n🚀 Jeton Database Migration Runner');
+    console.log('\n🚀 Xhaira Database Migration Runner');
     console.log('━'.repeat(70));
     console.log(`📅 ${new Date().toISOString()}`);
     console.log('━'.repeat(70) + '\n');

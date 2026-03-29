@@ -23,9 +23,9 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || process.env.API_URL || 'http://localhost:3000'),
-  title: 'Jeton — Founder Operating System',
+  title: 'Xhaira — Founder Operating System',
   description: 'Institutional intelligence platform by Xhenvolt. Systems, deals, payments, invoices, and organizational intelligence.',
-  keywords: ['jeton', 'founder os', 'business intelligence', 'xhenvolt'],
+  keywords: ['xhaira', 'founder os', 'business intelligence', 'xhenvolt'],
   authors: [{ name: 'Xhenvolt' }],
   creator: 'Xhenvolt',
   manifest: '/manifest.json',
@@ -39,12 +39,12 @@ export const metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Jeton',
+    title: 'Xhaira',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'Jeton — Founder Operating System',
+    title: 'Xhaira — Founder Operating System',
     description: 'Institutional intelligence platform by Xhenvolt',
     images: [{ url: '/icons/icon-512x512.png', width: 512, height: 512 }],
   },
@@ -69,7 +69,7 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Jeton" />
+        <meta name="apple-mobile-web-app-title" content="Xhaira" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="apple-touch-startup-image" href="/icons/icon-512x512.png" />
       </head>

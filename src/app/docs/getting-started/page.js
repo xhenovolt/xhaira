@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, LogIn, LayoutDashboard, Target, DollarSign } from 'lucide-react';
 
-export const metadata = { title: 'Getting Started — Jeton Docs' };
+export const metadata = { title: 'Getting Started — Xhaira Docs' };
 
 function Step({ number, title, description, children }) {
   return (
@@ -37,28 +37,28 @@ export default function GettingStartedPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">Getting Started</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Get Jeton running and learn the core workflow in under 10 minutes.
+          Get Xhaira running and learn the core workflow in under 10 minutes.
         </p>
       </div>
 
       {/* Prerequisites */}
       <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl mb-8 text-sm">
         <p className="font-medium text-blue-900 mb-1">Prerequisites</p>
-        <p className="text-blue-800">Node.js 18+, PostgreSQL database (Neon recommended), and a Jeton account with admin access.</p>
+        <p className="text-blue-800">Node.js 18+, PostgreSQL database (Neon recommended), and a Xhaira account with admin access.</p>
       </div>
 
       {/* Steps */}
       <div className="space-y-0 mb-10">
         <Step
           number="1"
-          title="Sign in to Jeton"
-          description="Navigate to your Jeton instance and sign in with the credentials provided by your administrator."
+          title="Sign in to Xhaira"
+          description="Navigate to your Xhaira instance and sign in with the credentials provided by your administrator."
         >
           <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
             <LogIn className="w-5 h-5 text-muted-foreground" />
             <div>
-              <p className="text-sm font-medium text-foreground">Go to your Jeton URL</p>
-              <p className="text-xs text-muted-foreground">e.g. https://jeton.yourdomain.com/auth/signin</p>
+              <p className="text-sm font-medium text-foreground">Go to your Xhaira URL</p>
+              <p className="text-xs text-muted-foreground">e.g. https://xhaira.yourdomain.com/auth/signin</p>
             </div>
           </div>
         </Step>

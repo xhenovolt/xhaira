@@ -248,7 +248,7 @@ When an asset changes on the Dashboard, Shares page will reflect it within 30 se
 
 ## Architecture Philosophy
 
-> **Jeton is one integrated executive system.**
+> **Xhaira is one integrated executive system.**
 > 
 > Not:
 > - Dashboard module with one valuation
@@ -261,7 +261,7 @@ When an asset changes on the Dashboard, Shares page will reflect it within 30 se
 > - Always synchronized
 > - Investor-grade transparency
 
-This is how real cap table software (Carta, Pulley, Forge) works. Now Jeton competes at that level.
+This is how real cap table software (Carta, Pulley, Forge) works. Now Xhaira competes at that level.
 
 ## Migration
 

@@ -2,7 +2,7 @@
 
 ## 🎯 Overview
 
-Jeton now has a complete enterprise-grade User & Access Governance system with RBAC, session tracking, audit logging, and activity analytics.
+Xhaira now has a complete enterprise-grade User & Access Governance system with RBAC, session tracking, audit logging, and activity analytics.
 
 ## 📋 What Was Implemented
 
@@ -448,7 +448,7 @@ if (user.email === 'xhenonpro@gmail.com') {
 See comprehensive API documentation in `/src/app/api/admin/` and `/src/lib/auth-enhanced.js`
 
 All APIs require:
-- Valid session cookie (`jeton_session`)
+- Valid session cookie (`xhaira_session`)
 - User must have appropriate permission
 - Request logged in audit_logs
 

@@ -1,7 +1,7 @@
 /**
  * POST /api/auth/register — DISABLED
  *
- * Public self-registration is not permitted in Jeton.
+ * Public self-registration is not permitted in Xhaira.
  * User accounts are created exclusively by a superadmin through the
  * staff creation flow at POST /api/staff (with account details).
  */
@@ -13,7 +13,7 @@ export async function POST() {
     {
       error: 'Public registration is disabled.',
       message:
-        'Jeton is an internal system. User accounts are created by a system administrator. ' +
+        'Xhaira is an internal system. User accounts are created by a system administrator. ' +
         'Contact your administrator to request access.',
     },
     { status: 410 }
@@ -120,7 +120,7 @@ async function _disabledRegisterLogic(request) {
       );
 
       const cookieOptions = getSecureCookieOptions();
-      response.cookies.set('jeton_session', sessionId, cookieOptions);
+      response.cookies.set('xhaira_session', sessionId, cookieOptions);
       return response;
     }
 

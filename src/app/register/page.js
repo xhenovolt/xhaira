@@ -6,8 +6,8 @@
 import AnimatedAuthBackground from '@/components/auth/AnimatedAuthBackground';
 
 export const metadata = {
-  title: 'Access Restricted - Jeton',
-  description: 'Jeton is an internal system. Contact your administrator for access.',
+  title: 'Access Restricted - Xhaira',
+  description: 'Xhaira is an internal system. Contact your administrator for access.',
 };
 
 export default function RegisterPage() {
@@ -22,7 +22,7 @@ export default function RegisterPage() {
             <span className="text-2xl font-bold text-white">J</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground mb-2">Access Restricted</h1>
-          <p className="text-muted-foreground">Jeton is an internal operating system</p>
+          <p className="text-muted-foreground">Xhaira is an internal operating system</p>
         </div>
 
         {/* Card */}

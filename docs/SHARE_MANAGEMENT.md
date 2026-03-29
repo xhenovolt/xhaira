@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Jeton share management system allows complete management of company equity, including share configuration, allocation to owners, and tracking of share price over time based on company valuation.
+The Xhaira share management system allows complete management of company equity, including share configuration, allocation to owners, and tracking of share price over time based on company valuation.
 
 ## Features Implemented
 

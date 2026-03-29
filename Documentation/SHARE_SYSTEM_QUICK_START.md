@@ -6,7 +6,7 @@
 
 ```bash
 # Connect to your database and run the migration
-psql postgresql://user:password@host:port/jeton < migrations/008_two_layer_share_model.sql
+psql postgresql://user:password@host:port/xhaira < migrations/008_two_layer_share_model.sql
 ```
 
 This creates:

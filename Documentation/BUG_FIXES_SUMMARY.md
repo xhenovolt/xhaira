@@ -17,10 +17,10 @@
 - Created `migrations/007_update_deals_schema.sql` - Safe migration for existing databases
 
 **Files Modified**:
-- `/home/xhenvolt/projects/jeton/src/lib/deals.js`
-- `/home/xhenvolt/projects/jeton/src/lib/validation.js`
-- `/home/xhenvolt/projects/jeton/scripts/init-db.js`
-- `/home/xhenvolt/projects/jeton/migrations/007_update_deals_schema.sql` (new)
+- `/home/xhenvolt/projects/xhaira/src/lib/deals.js`
+- `/home/xhenvolt/projects/xhaira/src/lib/validation.js`
+- `/home/xhenvolt/projects/xhaira/scripts/init-db.js`
+- `/home/xhenvolt/projects/xhaira/migrations/007_update_deals_schema.sql` (new)
 
 ---
 
@@ -32,7 +32,7 @@
 - Button calls `handleCloseModal()` to properly reset state
 
 **File Modified**:
-- `/home/xhenvolt/projects/jeton/src/app/app/intellectual-property/page.js`
+- `/home/xhenvolt/projects/xhaira/src/app/app/intellectual-property/page.js`
 
 **Changes**:
 - IP page already had full CRUD functionality (create, read, update, delete)
@@ -55,7 +55,7 @@
 - Updated footer calculations with safe null checks
 
 **File Modified**:
-- `/home/xhenvolt/projects/jeton/src/app/app/shares/page.js`
+- `/home/xhenvolt/projects/xhaira/src/app/app/shares/page.js`
 
 **Changes Made**:
 1. Line 221-269: Added null checks for all shareConfig property access in metric cards

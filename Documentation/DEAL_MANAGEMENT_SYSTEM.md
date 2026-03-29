@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Jeton Deal Management System provides a complete CRUD workflow for managing sales deals through a visual pipeline (Kanban board). Users can create deals, edit them, move them between pipeline stages, and delete them.
+The Xhaira Deal Management System provides a complete CRUD workflow for managing sales deals through a visual pipeline (Kanban board). Users can create deals, edit them, move them between pipeline stages, and delete them.
 
 ## System Architecture
 
@@ -315,7 +315,7 @@ const formValidation = {
 
 ## Currency System Integration
 
-The deal system fully integrates with Jeton's multi-currency system:
+The deal system fully integrates with Xhaira's multi-currency system:
 
 ### Canonical Currency
 - **UGX (Ugandan Shilling)** is the canonical/source currency
@@ -455,7 +455,7 @@ src/
 
 ### Environment Variables
 ```
-NEXT_PUBLIC_API_URL=https://api.jeton.io
+NEXT_PUBLIC_API_URL=https://api.xhaira.io
 DATABASE_URL=postgresql://...
 AUTH_SECRET=...
 ```

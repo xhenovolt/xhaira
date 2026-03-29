@@ -1,4 +1,4 @@
-# Jeton Session-Based Authentication - Implementation Summary
+# Xhaira Session-Based Authentication - Implementation Summary
 
 ## ✅ Completed
 

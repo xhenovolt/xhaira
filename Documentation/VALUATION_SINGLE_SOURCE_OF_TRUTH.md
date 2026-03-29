@@ -2,7 +2,7 @@
 
 ## 🎯 Overview
 
-Jeton now implements **Single Source of Truth (SSOT)** for company valuation across all modules. This is a critical architectural decision that transforms Jeton from "disconnected modules" into an **integrated executive operating system**.
+Xhaira now implements **Single Source of Truth (SSOT)** for company valuation across all modules. This is a critical architectural decision that transforms Xhaira from "disconnected modules" into an **integrated executive operating system**.
 
 **The principle:** Company valuation is computed once by the Dashboard's valuation engine, and all other modules (including Shares) consume it—never duplicate or re-calculate.
 
@@ -356,7 +356,7 @@ Neither founder nor investor needs to do anything. Values update automatically.
 
 ## 🏛️ C-Suite Perspective
 
-This architecture makes Jeton behave like a proper executive system:
+This architecture makes Xhaira behave like a proper executive system:
 
 1. **Single Brain:** One valuation engine, not multiple
 2. **Investor-Ready:** Allocations always match real ownership
@@ -485,4 +485,4 @@ ALTER TABLE shares DROP COLUMN company_valuation;
 
 ---
 
-**This is enterprise-grade equity architecture.** Companies like Carta and Pulley implement similar SSOT patterns. Jeton now competes at that level.
+**This is enterprise-grade equity architecture.** Companies like Carta and Pulley implement similar SSOT patterns. Xhaira now competes at that level.

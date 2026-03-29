@@ -256,7 +256,7 @@ psql $DATABASE_URL < migrations/008_corporate_equity_refactor.sql
 ## 🔍 File Organization
 
 ```
-jeton/
+xhaira/
 ├── migrations/
 │   └── 008_corporate_equity_refactor.sql      [Database Schema]
 │
@@ -366,5 +366,5 @@ Everything is implemented, tested, documented, and ready to use.
 
 *Index created: December 30, 2025*  
 *Status: ✅ Production Ready*  
-*For: Jeton Founders*  
+*For: Xhaira Founders*  
 *Purpose: Professional equity management for founder-grade companies*

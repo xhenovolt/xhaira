@@ -218,7 +218,7 @@ ls -lh migrations/007_add_equity_type.sql
 
 1. **Deploy Database Migration**
    ```bash
-   psql -d jeton < migrations/007_add_equity_type.sql
+   psql -d xhaira < migrations/007_add_equity_type.sql
    ```
 
 2. **Restart Application**

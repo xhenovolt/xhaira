@@ -91,7 +91,7 @@ if (!data.rates || typeof data.rates !== 'object') {
 
 ### Authentication Flow
 1. User logs in → Session created in database
-2. `jeton_session` cookie set in browser (HTTP-only)
+2. `xhaira_session` cookie set in browser (HTTP-only)
 3. All client-side API calls use `fetchWithAuth()` helper
 4. Helper automatically includes `credentials: 'include'`
 5. Browser sends session cookie with each API request

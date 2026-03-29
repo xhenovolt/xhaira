@@ -71,7 +71,7 @@ npm run dev
 // In browser console while on /app/shares:
 
 // 1. Expired session
-document.cookie = "jeton_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+document.cookie = "xhaira_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
 location.reload();
 // Should show: "Session expired. Please login again."
 
@@ -88,7 +88,7 @@ User → Middleware (check cookie) → API Route (validate session) → User Dat
 ```
 
 ### Session Lifecycle
-1. **Login** → Create session, set `jeton_session` cookie
+1. **Login** → Create session, set `xhaira_session` cookie
 2. **Valid Session** → User can access protected routes
 3. **API Call** → Session validated with DB lookup
 4. **Expired (7 days)** → Session removed, user redirected to login
@@ -112,7 +112,7 @@ All API errors now include:
 ### Issue: Admin pages show 401 instead of data
 **Solution:**
 1. Verify you're logged in and session is valid
-2. Check browser cookie: should have `jeton_session` value
+2. Check browser cookie: should have `xhaira_session` value
 3. Check user role in database: should be 'admin' or 'superadmin'
 4. Check server logs for auth errors
 

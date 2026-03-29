@@ -30,10 +30,10 @@ const handleLogout = async () => {
 **Location**: `src/app/api/auth/logout/route.js`
 
 **What it does**:
-1. Extracts `jeton_session` cookie from request
+1. Extracts `xhaira_session` cookie from request
 2. Retrieves session from database using `getSession()`
 3. **Deletes session from database** using `deleteSession()`
-4. Clears the `jeton_session` cookie with `maxAge: 0`
+4. Clears the `xhaira_session` cookie with `maxAge: 0`
 5. Returns 200 response
 
 **Key Security Feature**: 
@@ -62,7 +62,7 @@ const PROTECTED_ROUTES = [
 
 **How it works after logout**:
 1. User accesses `/app/dashboard` or any protected route
-2. Middleware calls `getSessionFromRequest(request)` to extract `jeton_session` cookie
+2. Middleware calls `getSessionFromRequest(request)` to extract `xhaira_session` cookie
 3. After logout, cookie is empty or missing
 4. `validateSession(null)` returns `null`
 5. Middleware redirects to `/login` (Line 171)
@@ -85,14 +85,14 @@ if (isProtectedRoute(pathname)) {
 ```
 1. User is authenticated, viewing /app/dashboard
    └─ Session exists in database
-   └─ jeton_session cookie is set (httpOnly)
+   └─ xhaira_session cookie is set (httpOnly)
 
 2. User clicks "Logout" button in sidebar
    └─ handleLogout() triggers
    └─ POST /api/auth/logout is called
 
 3. Logout endpoint executes:
-   └─ Reads jeton_session cookie
+   └─ Reads xhaira_session cookie
    └─ Calls deleteSession(sessionId) → DELETE FROM sessions WHERE id = ?
    └─ Sets cookie maxAge: 0 → browser deletes it
    └─ Returns 200
@@ -105,7 +105,7 @@ if (isProtectedRoute(pathname)) {
    └─ Cookie is deleted from browser
 
 6. User tries to access /app/dashboard
-   └─ Middleware checks for jeton_session cookie → NOT FOUND
+   └─ Middleware checks for xhaira_session cookie → NOT FOUND
    └─ Middleware calls validateSession(null) → returns null
    └─ Middleware condition: if (!session) → TRUE
    └─ Middleware redirects to /login
@@ -118,7 +118,7 @@ if (isProtectedRoute(pathname)) {
 ```
 After logout in Scenario 1:
 User navigates to http://localhost:3000/app/assets
-   └─ No jeton_session cookie present
+   └─ No xhaira_session cookie present
    └─ Middleware executes: isProtectedRoute('/app/assets') → true
    └─ Middleware executes: validateSession(null) → null
    └─ Middleware condition: if (!session) → TRUE
@@ -130,7 +130,7 @@ User navigates to http://localhost:3000/app/assets
 
 ```
 Attacker tries to use old cookie after logout:
-   └─ Old cookie: jeton_session=abc123def456
+   └─ Old cookie: xhaira_session=abc123def456
    └─ Middleware calls validateSession('abc123def456')
    └─ Query: SELECT * FROM sessions WHERE id = 'abc123def456' AND expires_at > NOW()
    └─ Result: NO ROWS (session was deleted) ✅
@@ -166,7 +166,7 @@ DELETE FROM sessions WHERE id = 'abc123' RETURNING user_id;
 SELECT s.id, s.user_id, s.expires_at, u.email, u.role, u.status
 FROM sessions s
 JOIN users u ON s.user_id = u.id
-WHERE s.id = 'jeton_session_value'
+WHERE s.id = 'xhaira_session_value'
   AND s.expires_at > CURRENT_TIMESTAMP
   AND u.status = 'active'
 ```
@@ -189,7 +189,7 @@ curl -X POST http://localhost:3000/api/auth/register \
   }' \
   -v 2>&1 | grep -i "set-cookie"
 
-# Look for: Set-Cookie: jeton_session=<UUID>; HttpOnly; ...
+# Look for: Set-Cookie: xhaira_session=<UUID>; HttpOnly; ...
 ```
 
 ### Test 2: Verify Session Exists in Database
@@ -213,7 +213,7 @@ SESSION_ID="<value-from-set-cookie-header>"
 
 # Access protected route
 curl http://localhost:3000/app/dashboard \
-  -H "Cookie: jeton_session=$SESSION_ID" \
+  -H "Cookie: xhaira_session=$SESSION_ID" \
   -i
 
 # Expected: 200 OK (page HTML)
@@ -223,12 +223,12 @@ curl http://localhost:3000/app/dashboard \
 ```bash
 # Call logout endpoint
 curl -X POST http://localhost:3000/api/auth/logout \
-  -H "Cookie: jeton_session=$SESSION_ID" \
+  -H "Cookie: xhaira_session=$SESSION_ID" \
   -v 2>&1 | grep -E "(200|Set-Cookie)"
 
 # Expected: 
 # HTTP/1.1 200 OK
-# Set-Cookie: jeton_session=; Max-Age=0; ...
+# Set-Cookie: xhaira_session=; Max-Age=0; ...
 ```
 
 ### Test 5: Verify Session Deleted from Database
@@ -243,7 +243,7 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM sessions WHERE id='$SESSION_ID';"
 ```bash
 # Try with old session ID (already deleted from DB)
 curl http://localhost:3000/app/dashboard \
-  -H "Cookie: jeton_session=$SESSION_ID" \
+  -H "Cookie: xhaira_session=$SESSION_ID" \
   -i
 
 # Expected: 307 Redirect to /login
@@ -276,7 +276,7 @@ curl http://localhost:3000/app/dashboard -i
 
 4. **Verify Cookie is Set**
    - Open DevTools → Application → Cookies
-   - Look for `jeton_session` cookie
+   - Look for `xhaira_session` cookie
    - Check: HttpOnly ✓, Secure (in prod), SameSite=Lax ✓
 
 5. **Navigate Around (All Should Work)**
@@ -291,7 +291,7 @@ curl http://localhost:3000/app/dashboard -i
 
 7. **Verify Cookie is Cleared**
    - Open DevTools → Application → Cookies
-   - `jeton_session` cookie should be GONE or empty
+   - `xhaira_session` cookie should be GONE or empty
    - Refresh page → still on /login ✓
 
 8. **Try to Access Protected Route**
@@ -323,7 +323,7 @@ curl http://localhost:3000/app/dashboard -i
 **Diagnosis**:
 - Check browser console for errors
 - Check server logs for POST /api/auth/logout errors
-- Verify jeton_session cookie exists
+- Verify xhaira_session cookie exists
 
 **Solution**:
 ```javascript
@@ -388,8 +388,8 @@ node scripts/init-db.js
 - Access /api/assets, /api/deals, etc.
 
 ✅ **After logout**:
-- jeton_session cookie is deleted from browser
-- jeton_session is deleted from database
+- xhaira_session cookie is deleted from browser
+- xhaira_session is deleted from database
 - Accessing protected route redirects to /login
 - /api/auth/me returns 401
 

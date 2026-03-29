@@ -18,7 +18,7 @@ export async function POST(request) {
     // ── 2. Parse request ──
     const body = await request.json();
     const {
-      system_id = 'Jeton',
+      system_id = 'Xhaira',
       title,
       description,
       severity = 'high',

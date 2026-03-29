@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export const metadata = { title: 'Core Concepts — Jeton Docs' };
+export const metadata = { title: 'Core Concepts — Xhaira Docs' };
 
 function ConceptCard({ title, children }) {
   return (
@@ -23,13 +23,13 @@ export default function ConceptsPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">Core Concepts</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Understand the mental models that make Jeton work.
+          Understand the mental models that make Xhaira work.
         </p>
       </div>
 
       <ConceptCard title="The Core Workflow">
         <p className="text-sm text-muted-foreground mb-4">
-          Jeton is built around a single, end-to-end workflow that every founder goes through:
+          Xhaira is built around a single, end-to-end workflow that every founder goes through:
         </p>
         <div className="flex flex-wrap items-center gap-2 text-sm">
           {['Prospect', 'Follow-up', 'Convert', 'Deal', 'Invoice', 'Payment', 'Ledger Entry', 'Report'].map((step, i, arr) => (
@@ -46,7 +46,7 @@ export default function ConceptsPage() {
 
       <ConceptCard title="Modules">
         <p className="text-sm text-muted-foreground mb-3">
-          Jeton is organized into <strong className="text-foreground">8 modules</strong>, each responsible for a part of the business:
+          Xhaira is organized into <strong className="text-foreground">8 modules</strong>, each responsible for a part of the business:
         </p>
         <div className="grid sm:grid-cols-2 gap-2 text-sm">
           {[
@@ -89,7 +89,7 @@ export default function ConceptsPage() {
 
       <ConceptCard title="Double-Entry Finance">
         <p className="text-sm text-muted-foreground mb-3">
-          Every financial transaction in Jeton uses <strong className="text-foreground">double-entry bookkeeping</strong>. When you record a payment:
+          Every financial transaction in Xhaira uses <strong className="text-foreground">double-entry bookkeeping</strong>. When you record a payment:
         </p>
         <div className="font-mono text-sm bg-muted border border-border rounded-lg p-4 space-y-1">
           <div className="flex gap-4"><span className="text-green-600 w-24">DEBIT</span><span className="text-foreground">Bank Account +$5,000</span></div>
@@ -102,7 +102,7 @@ export default function ConceptsPage() {
 
       <ConceptCard title="Presence & Collaboration">
         <p className="text-sm text-muted-foreground">
-          Jeton tracks online presence using a <strong className="text-foreground">heartbeat system</strong>. Your client pings the server every 30 seconds while the tab is visible. If no ping arrives within 60 seconds, you appear offline. This powers the real-time presence indicators in the user management module.
+          Xhaira tracks online presence using a <strong className="text-foreground">heartbeat system</strong>. Your client pings the server every 30 seconds while the tab is visible. If no ping arrives within 60 seconds, you appear offline. This powers the real-time presence indicators in the user management module.
         </p>
       </ConceptCard>
 

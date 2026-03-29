@@ -19,7 +19,7 @@ const DECIMAL_MODES = [
   { id: '2', label: '2 decimals', description: 'Always show 2 decimal places (e.g. USD 1,250.00)' },
 ];
 
-const STORAGE_KEY = 'jeton-finance-prefs';
+const STORAGE_KEY = 'xhaira-finance-prefs';
 
 function loadPrefs() {
   if (typeof window === 'undefined') return null;
@@ -29,7 +29,7 @@ function loadPrefs() {
 function savePrefs(prefs) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
   // Broadcast change so other components can react
-  window.dispatchEvent(new CustomEvent('jeton-finance-prefs-changed', { detail: prefs }));
+  window.dispatchEvent(new CustomEvent('xhaira-finance-prefs-changed', { detail: prefs }));
 }
 
 export default function FinancialSettingsPage() {

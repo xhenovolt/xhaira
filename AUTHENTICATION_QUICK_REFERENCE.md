@@ -104,7 +104,7 @@ useEffect(() => {
    ├─ POST /api/auth/login (email + password)
    ├─ Password verified with bcryptjs
    ├─ createSession(userId) creates session in DB
-   ├─ Session cookie set: jeton_session = <session-id>
+   ├─ Session cookie set: xhaira_session = <session-id>
    ├─ Cookie: HTTP-only, Secure, SameSite=lax
    └─ Redirect to /app/dashboard
 
@@ -161,7 +161,7 @@ useEffect(() => {
 
 ### User tries /app/dashboard without logging in
 ```
-1. Browser: GET /app/dashboard (no jeton_session cookie)
+1. Browser: GET /app/dashboard (no xhaira_session cookie)
 2. Middleware: No cookie → redirect /login ✓
 3. User sees: Login form
 ```
@@ -171,7 +171,7 @@ useEffect(() => {
 1. Browser: POST /api/auth/login (email + password)
 2. Server: Password verified ✓
 3. Server: createSession() → new session in DB
-4. Response: jeton_session cookie set (HTTP-only)
+4. Response: xhaira_session cookie set (HTTP-only)
 5. Browser: Redirect /app/dashboard
 6. AppLayout: getCurrentUser() → finds session in DB ✓
 7. User sees: Dashboard
@@ -179,7 +179,7 @@ useEffect(() => {
 
 ### User logs out
 ```
-1. Browser: POST /api/auth/logout (with jeton_session cookie)
+1. Browser: POST /api/auth/logout (with xhaira_session cookie)
 2. Server: deleteSession() → removes from DB
 3. Response: Cookie cleared (maxAge=0)
 4. Browser: localStorage.removeItem('auth_token')

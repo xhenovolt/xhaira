@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Jeton UI Contrast Checker (Part 15)
+ * Xhaira UI Contrast Checker (Part 15)
  * 
  * Flags dangerous color combinations that cause invisible text:
  *   - text-white without a colored/dark background context
@@ -104,7 +104,7 @@ function checkFile(filepath) {
   }
 }
 
-console.log('🔍 Jeton Contrast Checker\n');
+console.log('🔍 Xhaira Contrast Checker\n');
 const allFiles = walkDir(SRC_DIR);
 allFiles.forEach(checkFile);
 

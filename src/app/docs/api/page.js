@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export const metadata = { title: 'API Reference — Jeton Docs' };
+export const metadata = { title: 'API Reference — Xhaira Docs' };
 
 function Endpoint({ method, path, desc, params, example }) {
   const colors = { GET: 'bg-blue-100 text-blue-700', POST: 'bg-green-100 text-green-700', PUT: 'bg-yellow-100 text-yellow-700', DELETE: 'bg-red-100 text-red-700', PATCH: 'bg-purple-100 text-purple-700' };
@@ -49,13 +49,13 @@ export default function ApiPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">API Reference</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Jeton exposes a REST API for integrations, automation, and custom tooling.
+          Xhaira exposes a REST API for integrations, automation, and custom tooling.
         </p>
       </div>
 
       <div className="p-4 bg-muted/30 border border-border rounded-xl mb-8 text-sm">
         <p className="font-medium text-foreground mb-2">Authentication</p>
-        <p className="text-muted-foreground">All API endpoints require a valid session cookie (<code className="bg-muted px-1 rounded font-mono text-xs">jeton_session</code>). Sign in first via <code className="bg-muted px-1 rounded font-mono text-xs">POST /api/auth/signin</code>, then include the cookie in subsequent requests.</p>
+        <p className="text-muted-foreground">All API endpoints require a valid session cookie (<code className="bg-muted px-1 rounded font-mono text-xs">xhaira_session</code>). Sign in first via <code className="bg-muted px-1 rounded font-mono text-xs">POST /api/auth/signin</code>, then include the cookie in subsequent requests.</p>
       </div>
 
       <h2 className="text-lg font-semibold text-foreground mb-4">Authentication</h2>

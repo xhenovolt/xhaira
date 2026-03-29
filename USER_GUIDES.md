@@ -591,7 +591,7 @@ Systems are the products or services you sell. Every deal must reference a syste
 
 ### Support Resources
 - 📚 **Documentation:** `/docs` (this site)
-- 📧 **Email Support:** support@jeton.system
+- 📧 **Email Support:** support@xhaira.system
 - 💬 **Chat:** Available in-app (bottom right)
 
 ### Reporting Issues
@@ -603,4 +603,4 @@ Systems are the products or services you sell. Every deal must reference a syste
 
 **Document Version:** 1.0  
 **Last Updated:** March 8, 2026  
-**For:** Jeton Users (Founders, Sales Team, Finance Team)
+**For:** Xhaira Users (Founders, Sales Team, Finance Team)

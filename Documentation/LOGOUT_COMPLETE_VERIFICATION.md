@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The logout functionality in Jeton is **fully implemented, tested, and production-ready**. After logout:
+The logout functionality in Xhaira is **fully implemented, tested, and production-ready**. After logout:
 
 - ✅ Session is **deleted from PostgreSQL database**
 - ✅ Session cookie is **cleared from browser**
@@ -19,7 +19,7 @@ The logout functionality in Jeton is **fully implemented, tested, and production
    └─ Appears in bottom of sidebar (red button with exit icon)
 
 2. Browser sends POST /api/auth/logout
-   └─ Includes jeton_session cookie
+   └─ Includes xhaira_session cookie
 
 3. Server processes logout:
    └─ Deletes session from database
@@ -66,13 +66,13 @@ const handleLogout = async () => {
 ```javascript
 export async function POST(request) {
   // 1. Extract session from cookie
-  const sessionId = cookieStore.get('jeton_session')?.value;
+  const sessionId = cookieStore.get('xhaira_session')?.value;
   
   // 2. Delete from database
   await deleteSession(sessionId);
   
   // 3. Clear cookie
-  response.cookies.set('jeton_session', '', { maxAge: 0 });
+  response.cookies.set('xhaira_session', '', { maxAge: 0 });
   
   return response;  // 200 OK
 }
@@ -106,7 +106,7 @@ if (isProtectedRoute(pathname)) {
 
 ### Layer 1: Browser Level
 ```
-Session Cookie: jeton_session
+Session Cookie: xhaira_session
 ├─ httpOnly: true  (JavaScript cannot access)
 ├─ secure: true    (HTTPS only in production)
 ├─ sameSite: lax   (CSRF protection)
@@ -213,7 +213,7 @@ POST /api/auth/logout
 
 **Try to Use Old Cookie**
 ```
-Attacker keeps jeton_session=old_value
+Attacker keeps xhaira_session=old_value
 Access /app/dashboard
 ├─ Middleware: validateSession('old_value')
 ├─ Database: SELECT * FROM sessions WHERE id='old_value'
@@ -223,7 +223,7 @@ Access /app/dashboard
 
 **Try to Forge New Cookie**
 ```
-Attacker creates jeton_session=fake_uuid
+Attacker creates xhaira_session=fake_uuid
 Access /app/assets
 ├─ Middleware: validateSession('fake_uuid')
 ├─ Database: SELECT * FROM sessions WHERE id='fake_uuid'

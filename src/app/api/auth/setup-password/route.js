@@ -3,9 +3,9 @@
  *
  * Called on first login when must_reset_password = true.
  * Validates the new password, updates the hash, clears the reset flag,
- * and deletes the jeton_must_reset cookie so the user gains full access.
+ * and deletes the xhaira_must_reset cookie so the user gains full access.
  *
- * Requires a valid jeton_session cookie.
+ * Requires a valid xhaira_session cookie.
  */
 
 import { NextResponse } from 'next/server.js';
@@ -21,7 +21,7 @@ export async function POST(request) {
 
     // Verify session
     const cookieStore = await cookies();
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
     if (!sessionId) {
       return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
     }
@@ -94,7 +94,7 @@ export async function POST(request) {
 
     // Remove the must-reset cookie
     const response = NextResponse.json({ message: 'Password updated successfully.' }, { status: 200 });
-    response.cookies.set('jeton_must_reset', '', {
+    response.cookies.set('xhaira_must_reset', '', {
       httpOnly: true,
       sameSite: 'lax',
       path: '/',

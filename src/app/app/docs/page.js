@@ -30,7 +30,7 @@ export default function DocsHomePage() {
       title: 'Getting Started',
       href: '/app/docs/getting-started',
       icon: Rocket,
-      description: 'New to Jeton? Start here to understand the basics.',
+      description: 'New to Xhaira? Start here to understand the basics.',
       color: 'bg-blue-50 border-blue-200 hover:bg-blue-100',
       iconColor: 'text-blue-600',
     },
@@ -38,7 +38,7 @@ export default function DocsHomePage() {
       title: 'Founder Workflow',
       href: '/app/docs/founder',
       icon: Target,
-      description: 'Your daily playbook for running Jeton. Everything you need to know.',
+      description: 'Your daily playbook for running Xhaira. Everything you need to know.',
       color: 'bg-green-50 border-green-200 hover:bg-green-100',
       iconColor: 'text-green-600',
       featured: true,
@@ -63,7 +63,7 @@ export default function DocsHomePage() {
       title: 'Workflow & Architecture',
       href: '/app/docs/workflow',
       icon: Workflow,
-      description: 'Understand how data flows through Jeton.',
+      description: 'Understand how data flows through Xhaira.',
       color: 'bg-pink-50 border-pink-200 hover:bg-pink-100',
       iconColor: 'text-pink-600',
     },
@@ -79,7 +79,7 @@ export default function DocsHomePage() {
       title: 'Developer Documentation',
       href: '/app/docs/developer',
       icon: Code,
-      description: 'Technical documentation for extending Jeton.',
+      description: 'Technical documentation for extending Xhaira.',
       color: 'bg-muted border-border hover:bg-muted',
       iconColor: 'text-muted-foreground',
     },
@@ -94,10 +94,10 @@ export default function DocsHomePage() {
             <BookOpen className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            Jeton Documentation
+            Xhaira Documentation
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Complete guide to understanding, using, and extending Jeton - your Founder-First Business Operating System
+            Complete guide to understanding, using, and extending Xhaira - your Founder-First Business Operating System
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export default function DocsHomePage() {
               <Rocket className="w-6 h-6" />
             </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold mb-2">New to Jeton?</h2>
+              <h2 className="text-2xl font-bold mb-2">New to Xhaira?</h2>
               <p className="text-blue-100 mb-4">
                 Start with the Founder Workflow guide to learn the daily operations and key metrics.
               </p>

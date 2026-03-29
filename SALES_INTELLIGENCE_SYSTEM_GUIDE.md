@@ -1,4 +1,4 @@
-# Jeton Sales Intelligence System
+# Xhaira Sales Intelligence System
 ## Implementation Guide & User Manual
 
 **Version 1.0** | February 21, 2026  
@@ -8,13 +8,13 @@
 
 ## Executive Summary
 
-Jeton has been redesigned from a simple pipeline tracker into a **Structured Sales Intelligence System** that functions as a powerful daily sales notebook + CRM combined. This document explains the architecture, usage, and implementation details.
+Xhaira has been redesigned from a simple pipeline tracker into a **Structured Sales Intelligence System** that functions as a powerful daily sales notebook + CRM combined. This document explains the architecture, usage, and implementation details.
 
 ### What Changed?
 
 **Before:** Prospecting effort disappeared into memory. Conversations were lost. Contact details scattered. Follow-ups ignored.
 
-**After:** Every prospect interaction is permanently logged, chronologically organized, and actionable. Jeton becomes your external sales brain.
+**After:** Every prospect interaction is permanently logged, chronologically organized, and actionable. Xhaira becomes your external sales brain.
 
 ---
 
@@ -22,7 +22,7 @@ Jeton has been redesigned from a simple pipeline tracker into a **Structured Sal
 
 ### 1. Core Concept: Prospect ≠ Deal
 
-Jeton now treats **Prospects** and **Deals** as separate entities:
+Xhaira now treats **Prospects** and **Deals** as separate entities:
 
 - **Prospect:** A person/organization in relationship exploration phase
 - **Deal:** A committed opportunity with a deal structure
@@ -691,7 +691,7 @@ Sales Intelligence Section (NEW):
 
 ```bash
 # Connect to PostgreSQL
-psql -U postgres -h localhost -d jeton -f migrations/028_prospect_activity_log.sql
+psql -U postgres -h localhost -d xhaira -f migrations/028_prospect_activity_log.sql
 ```
 
 **What this does:**
@@ -877,7 +877,7 @@ Potential additions to consider:
 
 ## ✅ Conclusion
 
-The Jeton Sales Intelligence System transforms prospecting from a memory-dependent, chaotic process into a structured, permanent, auditable sales notebook.
+The Xhaira Sales Intelligence System transforms prospecting from a memory-dependent, chaotic process into a structured, permanent, auditable sales notebook.
 
 ### Core Benefits
 

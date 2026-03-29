@@ -18,7 +18,7 @@ export async function getCurrentUser() {
     const cookieStore = await cookies();
     
     // Get session ID from cookie
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
     
     if (!sessionId) {
       return null;

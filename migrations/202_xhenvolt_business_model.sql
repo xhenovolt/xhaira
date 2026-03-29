@@ -46,7 +46,7 @@ END $$;
 -- Seed Xhenvolt systems
 INSERT INTO systems (name, description, status) VALUES
   ('Drais', 'Logistics and transport management platform', 'active'),
-  ('Jeton', 'Founder operating system — business intelligence & ops', 'active')
+  ('Xhaira', 'Financial platform for SACCOs and investments', 'active')
 ON CONFLICT DO NOTHING;
 
 -- =============================================================================

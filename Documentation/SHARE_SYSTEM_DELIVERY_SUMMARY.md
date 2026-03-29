@@ -2,7 +2,7 @@
 
 ## 🎯 Project Overview
 
-Successfully implemented a comprehensive two-layer share management system for Jeton with valuation engine, vesting tracking, buyback system, and complete audit trail. The system mirrors real-world corporate registry models (URSB-style) with proper distinction between authorized and issued shares.
+Successfully implemented a comprehensive two-layer share management system for Xhaira with valuation engine, vesting tracking, buyback system, and complete audit trail. The system mirrors real-world corporate registry models (URSB-style) with proper distinction between authorized and issued shares.
 
 ---
 
@@ -119,7 +119,7 @@ getCapTableWithVesting()               // Get full company cap table
 ## 🏗️ Architecture
 
 ```
-Jeton Share System Architecture
+Xhaira Share System Architecture
 ├── Frontend (To be built)
 │   ├── Valuation Dashboard
 │   ├── Vesting Timeline

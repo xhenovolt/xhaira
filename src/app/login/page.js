@@ -7,8 +7,8 @@ import LoginForm from '@/components/auth/LoginForm';
 import AnimatedAuthBackground from '@/components/auth/AnimatedAuthBackground';
 
 export const metadata = {
-  title: 'Sign In - Jeton',
-  description: 'Sign in to your Jeton account',
+  title: 'Sign In - Xhaira',
+  description: 'Sign in to your Xhaira account',
 };
 
 export default function LoginPage() {
@@ -26,7 +26,7 @@ export default function LoginPage() {
             Welcome Back
           </h1>
           <p className="text-muted-foreground">
-            Sign in to your Jeton account
+            Sign in to your Xhaira account
           </p>
         </div>
 

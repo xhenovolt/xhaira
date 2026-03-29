@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Shield, Lock, Key } from 'lucide-react';
 
-export const metadata = { title: 'Security — Jeton Docs' };
+export const metadata = { title: 'Security — Xhaira Docs' };
 
 export default function SecurityPage() {
   return (
@@ -14,7 +14,7 @@ export default function SecurityPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">Security & Access Control</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          How Jeton protects your data — authentication, sessions, RBAC, and route protection.
+          How Xhaira protects your data — authentication, sessions, RBAC, and route protection.
         </p>
       </div>
 
@@ -24,7 +24,7 @@ export default function SecurityPage() {
           <div className="space-y-4">
             <div className="border border-border rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2"><Lock className="w-4 h-4 text-primary" /><h3 className="font-medium text-foreground text-sm">Session-based Auth</h3></div>
-              <p className="text-xs text-muted-foreground">Jeton uses HTTP-only cookie sessions (<code className="bg-muted px-1 rounded font-mono">jeton_session</code>). The cookie is inaccessible to JavaScript, protecting against XSS token theft.</p>
+              <p className="text-xs text-muted-foreground">Xhaira uses HTTP-only cookie sessions (<code className="bg-muted px-1 rounded font-mono">xhaira_session</code>). The cookie is inaccessible to JavaScript, protecting against XSS token theft.</p>
             </div>
             <div className="border border-border rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2"><Key className="w-4 h-4 text-primary" /><h3 className="font-medium text-foreground text-sm">Password Hashing</h3></div>

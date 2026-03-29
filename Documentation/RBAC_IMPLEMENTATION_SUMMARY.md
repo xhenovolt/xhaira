@@ -155,7 +155,7 @@ export async function requireApiAuth() {
 ```
 
 **Session Cookie:**
-- Name: `jeton_session`
+- Name: `xhaira_session`
 - Type: HTTP-only (secure against XSS)
 - Max-Age: 604800 seconds (7 days)
 - SameSite: Lax (CSRF protection)
@@ -357,7 +357,7 @@ if (canAccess(user, 'staff', 'create')) {
 
 ## Conclusion
 
-This implementation provides Jeton with:
+This implementation provides Xhaira with:
 - ✅ **Security:** Session-based auth with HTTP-only cookies, no JWT vulnerabilities
 - ✅ **Scalability:** Role hierarchy supports organizational growth
 - ✅ **Compliance:** Audit logging and permission enforcement

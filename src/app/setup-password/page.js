@@ -4,7 +4,7 @@
  * /setup-password
  * First-login forced password setup page.
  * Shown to users whose account was created by an admin with a temporary password.
- * After successful setup, the jeton_must_reset cookie is cleared and the user is
+ * After successful setup, the xhaira_must_reset cookie is cleared and the user is
  * redirected to the main app.
  */
 

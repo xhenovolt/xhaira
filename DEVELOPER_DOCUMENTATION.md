@@ -22,7 +22,7 @@
 ## PROJECT STRUCTURE
 
 ```
-jeton/
+xhaira/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── page.js             # Landing page
@@ -900,4 +900,4 @@ npm run start
 
 **Document Version:** 1.0  
 **Last Updated:** March 8, 2026  
-**For:** Developers extending Jeton
+**For:** Developers extending Xhaira

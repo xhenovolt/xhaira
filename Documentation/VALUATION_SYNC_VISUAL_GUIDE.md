@@ -339,4 +339,4 @@ Solution: Single source of truth everywhere
 
 ---
 
-**Core Concept:** Jeton is now one integrated executive system with perfect synchronization between all modules.
+**Core Concept:** Xhaira is now one integrated executive system with perfect synchronization between all modules.

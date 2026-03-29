@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ShieldX, LayoutDashboard, Home } from 'lucide-react';
 
-export const metadata = { title: 'Access Denied — Jeton' };
+export const metadata = { title: 'Access Denied — Xhaira' };
 
 /**
  * Unauthorized access page.
@@ -30,7 +30,7 @@ export default function UnauthorizedPage() {
         <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-800 mb-8 text-left">
           <p className="font-medium mb-1">Why am I seeing this?</p>
           <p>
-            Jeton uses role-based access control (RBAC). Your current role does not
+            Xhaira uses role-based access control (RBAC). Your current role does not
             include permission to view or modify this resource. Your administrator
             can grant access by assigning the required permission to your role.
           </p>

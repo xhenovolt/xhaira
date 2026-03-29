@@ -232,7 +232,7 @@ export default function SubscriptionsPage() {
         </select>
         <select value={systemFilter} onChange={e => { setSystem(e.target.value); setPage(1); }} className="border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground">
           <option value="">All systems</option>
-          <option value="jeton">Jeton</option>
+          <option value="xhaira">Xhaira</option>
           <option value="drais">Drais</option>
           <option value="lypha">Lypha</option>
         </select>

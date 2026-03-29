@@ -4,7 +4,7 @@
 
 ## Overview
 
-Jeton's new **Corporate Equity System** implements professional-grade share management aligned with URSB standards and real-world venture capital practices. This is not a simple equity tracker—it's a founder-grade system for managing cap tables, tracking dilution, and controlling share issuance.
+Xhaira's new **Corporate Equity System** implements professional-grade share management aligned with URSB standards and real-world venture capital practices. This is not a simple equity tracker—it's a founder-grade system for managing cap tables, tracking dilution, and controlling share issuance.
 
 ## 🎯 Key Features
 
@@ -24,7 +24,7 @@ Jeton's new **Corporate Equity System** implements professional-grade share mana
 - Maximum shares the company can ever issue
 - Set by board resolution or bylaws
 - Can only be increased, never decreased
-- Default: 10,000,000 for Jeton (high ceiling = flexibility)
+- Default: 10,000,000 for Xhaira (high ceiling = flexibility)
 
 **Issued Shares**
 - Actually created and outstanding
@@ -377,7 +377,7 @@ Move shares between shareholders (no dilution):
 - Shows dilution impact warning
 - Requires explicit approval before execution
 
-## 💡 Usage Scenarios for Jeton
+## 💡 Usage Scenarios for Xhaira
 
 ### Scenario 1: Founder Starting Out
 
@@ -602,6 +602,6 @@ This system aligns with URSB standards for:
 
 ---
 
-**Jeton Equity System** — Built for founders who take their company seriously.
+**Xhaira Equity System** — Built for founders who take their company seriously.
 
 *Last Updated: December 2025*

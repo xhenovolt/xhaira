@@ -1,4 +1,4 @@
--- Admin Access Setup Script for Jeton
+-- Admin Access Setup Script for Xhaira
 -- Run this script to grant admin access to a user
 
 -- Method 1: Make user a superadmin (highest privilege)

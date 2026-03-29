@@ -360,7 +360,7 @@ http://localhost:3000/app/equity
 - Tax optimization recommendations
 - Investor reporting automation
 
-## 🎓 For Jeton Founders
+## 🎓 For Xhaira Founders
 
 **Recommended Settings:**
 
@@ -408,11 +408,11 @@ You now have a professional-grade, URSB-compliant equity management system that:
 ✅ Provides beautiful, responsive UI  
 ✅ Ready for investor due diligence  
 
-**Jeton is now a real founder-grade corporate control system.**
+**Xhaira is now a real founder-grade corporate control system.**
 
 Start managing your equity like the professionals do.
 
 ---
 
 *Last Updated: December 30, 2025*  
-*For Jeton Founders: This is the system to scale with.*
+*For Xhaira Founders: This is the system to scale with.*

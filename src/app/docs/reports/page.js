@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, BarChart3, TrendingUp, DollarSign, Users } from 'lucide-react';
 
-export const metadata = { title: 'Reports — Jeton Docs' };
+export const metadata = { title: 'Reports — Xhaira Docs' };
 
 const reports = [
   { icon: TrendingUp, name: 'Revenue Trend', desc: 'Monthly revenue over time. Compare current vs previous periods.' },

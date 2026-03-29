@@ -18,9 +18,9 @@ export default function FounderManualPage() {
 
         {/* Header */}
         <div className="bg-gradient-to-br from-green-500 to-green-700 text-white rounded-xl p-8 shadow-lg mb-8">
-          <h1 className="text-4xl font-bold mb-4">Jeton Founder Operating Manual</h1>
+          <h1 className="text-4xl font-bold mb-4">Xhaira Founder Operating Manual</h1>
           <p className="text-xl text-green-50">
-            Your daily playbook for running Jeton. This manual shows you <strong>exactly what to do every day</strong>.
+            Your daily playbook for running Xhaira. This manual shows you <strong>exactly what to do every day</strong>.
           </p>
         </div>
 
@@ -395,7 +395,7 @@ export default function FounderManualPage() {
           <h2 className="text-2xl font-bold mb-4">Final Words</h2>
           <div className="space-y-4 text-gray-100">
             <p>
-              <strong>Jeton is your co-pilot, not your replacement.</strong>
+              <strong>Xhaira is your co-pilot, not your replacement.</strong>
             </p>
             <p>
               It won't find prospects for you. It won't close deals for you. But it <strong>will</strong>:
@@ -410,7 +410,7 @@ export default function FounderManualPage() {
               Use it every day. Trust the workflow. Let it scale with you.
             </p>
             <p className="text-2xl font-bold text-green-400 pt-4">
-              Now go build your business. Jeton has your back.
+              Now go build your business. Xhaira has your back.
             </p>
           </div>
         </div>

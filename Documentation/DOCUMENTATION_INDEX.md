@@ -1,4 +1,4 @@
-# 📚 Jeton Session-Based Authentication - Complete Documentation Index
+# 📚 Xhaira Session-Based Authentication - Complete Documentation Index
 
 ## 🎯 Start Here
 
@@ -258,7 +258,7 @@ API_URL (optional)
 
 ```
 Browser
-  ↓ (jeton_session cookie)
+  ↓ (xhaira_session cookie)
 Next.js Middleware
   ↓ (validate session)
 PostgreSQL Sessions Table
@@ -411,7 +411,7 @@ A: Yes! The `last_activity` field in sessions table is updated on each request.
 
 ## 📄 License & Notes
 
-This refactoring makes Jeton's authentication system:
+This refactoring makes Xhaira's authentication system:
 - **More Secure** - Database-backed sessions can't be forged
 - **More Scalable** - Works with serverless/edge
 - **More Maintainable** - No shared secrets

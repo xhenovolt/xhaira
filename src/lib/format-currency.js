@@ -1,6 +1,6 @@
 /**
  * Currency Formatting Utilities
- * Centralized currency formatting for all Jeton modules.
+ * Centralized currency formatting for all Xhaira modules.
  * Base currency: UGX (Ugandan Shilling)
  */
 

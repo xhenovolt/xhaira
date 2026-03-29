@@ -1,7 +1,7 @@
 # Session-Based Authentication Migration Guide
 
 ## Overview
-Jeton has been completely migrated from JWT-based to session-based authentication using secure HTTP-only cookies. This document outlines the changes and implementation details.
+Xhaira has been completely migrated from JWT-based to session-based authentication using secure HTTP-only cookies. This document outlines the changes and implementation details.
 
 ## Key Changes
 
@@ -27,7 +27,7 @@ CREATE INDEX idx_sessions_created_at ON sessions(created_at);
 ```
 
 ### 3. Cookie Configuration
-- **Name**: `jeton_session`
+- **Name**: `xhaira_session`
 - **httpOnly**: true (not accessible from JavaScript)
 - **secure**: true (production), false (development)
 - **sameSite**: "lax"
@@ -60,7 +60,7 @@ const response = NextResponse.json(
   { message: 'Logged in successfully' },
   { status: 200 }
 );
-response.cookies.set('jeton_session', sessionId, { httpOnly: true, ... });
+response.cookies.set('xhaira_session', sessionId, { httpOnly: true, ... });
 ```
 
 ### Logout Endpoint
@@ -72,7 +72,7 @@ response.cookies.set('jeton_session', sessionId, { httpOnly: true, ... });
 
 **After**:
 - Deletes session from database
-- Clears `jeton_session` cookie
+- Clears `xhaira_session` cookie
 
 ### Auth Check Endpoint
 **GET** `/api/auth/me`
@@ -86,7 +86,7 @@ const user = await findUserById(decoded.userId);
 
 **After**:
 ```javascript
-const sessionId = cookieStore.get('jeton_session')?.value;
+const sessionId = cookieStore.get('xhaira_session')?.value;
 const session = await getSession(sessionId);
 // Returns user data from session.user
 ```
@@ -231,19 +231,19 @@ curl -X POST http://localhost:3000/api/auth/login \
   -d '{"email":"user@example.com","password":"password"}' \
   -i
 
-# Check for Set-Cookie: jeton_session=...;HttpOnly
+# Check for Set-Cookie: xhaira_session=...;HttpOnly
 ```
 
 ### Manual Test: Protected Route
 ```bash
 curl http://localhost:3000/api/auth/me \
-  -H "Cookie: jeton_session=<value>"
+  -H "Cookie: xhaira_session=<value>"
 ```
 
 ### Manual Test: Logout
 ```bash
 curl -X POST http://localhost:3000/api/auth/logout \
-  -H "Cookie: jeton_session=<value>" \
+  -H "Cookie: xhaira_session=<value>" \
   -i
 
 # Check for Set-Cookie with maxAge=0 to clear cookie
@@ -306,7 +306,7 @@ console.log(`Cleaned up ${count} expired sessions`);
 - Check session hasn't expired (expires_at > CURRENT_TIMESTAMP)
 
 ### Middleware is redirecting to /login on protected routes
-- Verify jeton_session cookie is being set
+- Verify xhaira_session cookie is being set
 - Check session ID is valid in database
 - Ensure middleware.js is using correct session validation
 

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Skeleton loading components for Jeton.
+ * Skeleton loading components for Xhaira.
  * Replace traditional loaders with content-shaped placeholders
  * for perceived speed and visual stability.
  */

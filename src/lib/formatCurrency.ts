@@ -1,6 +1,6 @@
 /**
  * formatCurrency.ts
- * Typed currency formatting utilities for Jeton.
+ * Typed currency formatting utilities for Xhaira.
  * System default: UGX (Ugandan Shilling)
  *
  * Usage:
@@ -63,7 +63,7 @@ export function formatCurrency(
 }
 
 /**
- * Format as UGX — shorthand for the Jeton system default.
+ * Format as UGX — shorthand for the Xhaira system default.
  * Example: formatUGX(700000) → "UGX 700,000"
  */
 export function formatUGX(amount: number | string | null | undefined): string {

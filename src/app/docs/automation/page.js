@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Zap } from 'lucide-react';
 
-export const metadata = { title: 'Automation — Jeton Docs' };
+export const metadata = { title: 'Automation — Xhaira Docs' };
 
 export default function AutomationPage() {
   return (
@@ -14,7 +14,7 @@ export default function AutomationPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">Automation</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Automate repetitive tasks via webhooks, scheduled jobs, and the Jeton API.
+          Automate repetitive tasks via webhooks, scheduled jobs, and the Xhaira API.
         </p>
       </div>
 
@@ -47,7 +47,7 @@ export default function AutomationPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">API-based Automation</h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Use the Jeton REST API to build custom integrations. Authenticate with a session cookie, then call any endpoint to create prospects, record payments, or query reports. Combine with <strong className="text-foreground">cron jobs</strong> or tools like Zapier or Make.
+            Use the Xhaira REST API to build custom integrations. Authenticate with a session cookie, then call any endpoint to create prospects, record payments, or query reports. Combine with <strong className="text-foreground">cron jobs</strong> or tools like Zapier or Make.
           </p>
         </section>
       </div>

@@ -1,7 +1,7 @@
 # Sales Module Documentation
 
 ## Overview
-The Sales Module is a complete customer sales and payment tracking system for the Jeton executive management platform. It provides comprehensive tools for managing sales transactions, tracking payments, and generating revenue reports.
+The Sales Module is a complete customer sales and payment tracking system for the Xhaira executive management platform. It provides comprehensive tools for managing sales transactions, tracking payments, and generating revenue reports.
 
 ## Features
 
@@ -530,4 +530,4 @@ Note: Deleting a sale cascades to delete all associated payments.
 - Test with different amounts
 
 ## Support
-For issues or questions about the Sales module, please refer to the main Jeton documentation or contact the development team.
+For issues or questions about the Sales module, please refer to the main Xhaira documentation or contact the development team.

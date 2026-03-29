@@ -17,7 +17,7 @@ export async function GET(request) {
 
   // Get current session ID to mark it
   const cookieStore = await cookies();
-  const currentSessionId = cookieStore.get('jeton_session')?.value;
+  const currentSessionId = cookieStore.get('xhaira_session')?.value;
 
   const sessionsWithCurrent = sessions.map(s => ({
     ...s,
@@ -33,7 +33,7 @@ export async function DELETE(request) {
   if (!auth) return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
 
   const cookieStore = await cookies();
-  const currentSessionId = cookieStore.get('jeton_session')?.value;
+  const currentSessionId = cookieStore.get('xhaira_session')?.value;
 
   const { sessionId } = await request.json().catch(() => ({}));
 

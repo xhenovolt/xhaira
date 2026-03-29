@@ -297,12 +297,12 @@
 ### 1. Database Validation
 ```bash
 # Run this before deploying:
-psql -U postgres -h localhost -d jeton -f migrations/028_prospect_activity_log.sql
+psql -U postgres -h localhost -d xhaira -f migrations/028_prospect_activity_log.sql
 
 # Then verify:
-psql -U postgres -h localhost -d jeton -c "\d prospect_activities"
-psql -U postgres -h localhost -d jeton -c "\d prospects" | grep -E "interest_level|assigned_to|last_contact"
-psql -U postgres -h localhost -d jeton -c "\df convert_prospect_to_deal"
+psql -U postgres -h localhost -d xhaira -c "\d prospect_activities"
+psql -U postgres -h localhost -d xhaira -c "\d prospects" | grep -E "interest_level|assigned_to|last_contact"
+psql -U postgres -h localhost -d xhaira -c "\df convert_prospect_to_deal"
 ```
 
 ### 2. Build Check
@@ -322,7 +322,7 @@ npm start
 ### 4. Performance Check
 ```bash
 # Check database queries with EXPLAIN ANALYZE
-psql -U postgres -h localhost -d jeton -c "
+psql -U postgres -h localhost -d xhaira -c "
 EXPLAIN ANALYZE
 SELECT * FROM prospects 
 WHERE sales_stage = 'Interested' 
@@ -358,17 +358,17 @@ LIMIT 50;
 
 **Step 1: Backup Production Database**
 ```bash
-pg_dump -U postgres jeton > jeton_backup_$(date +%Y%m%d).sql
+pg_dump -U postgres xhaira > xhaira_backup_$(date +%Y%m%d).sql
 ```
 
 **Step 2: Run Migration**
 ```bash
-psql -U postgres -d jeton < migrations/028_prospect_activity_log.sql
+psql -U postgres -d xhaira < migrations/028_prospect_activity_log.sql
 ```
 
 **Step 3: Verify Installation**
 ```bash
-psql -U postgres -d jeton -c "SELECT COUNT(*) FROM prospect_activities;"
+psql -U postgres -d xhaira -c "SELECT COUNT(*) FROM prospect_activities;"
 ```
 
 **Step 4: Deploy Code**
@@ -414,7 +414,7 @@ If issues found post-deployment:
 
 ```bash
 # Restore previous database
-psql -U postgres -d jeton < jeton_backup_YYYYMMDD.sql
+psql -U postgres -d xhaira < xhaira_backup_YYYYMMDD.sql
 
 # Revert code
 git revert HEAD

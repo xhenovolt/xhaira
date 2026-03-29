@@ -1,4 +1,4 @@
-# Jeton Financial System - Implementation & Usage Guide
+# Xhaira Financial System - Implementation & Usage Guide
 
 ## Quick Start
 
@@ -8,7 +8,7 @@
 # migrations/030_financial_architecture_redesign.sql
 
 # Apply it to your PostgreSQL database
-psql -U postgres -d jeton < migrations/030_financial_architecture_redesign.sql
+psql -U postgres -d xhaira < migrations/030_financial_architecture_redesign.sql
 ```
 
 ### 2. System Expense Categories (Auto-Created)

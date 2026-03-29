@@ -1,5 +1,5 @@
 /**
- * logEvent — Universal event emitter for the Jeton event-driven architecture.
+ * logEvent — Universal event emitter for the Xhaira event-driven architecture.
  *
  * Call this from any API route after a significant action occurs.
  * Failures are swallowed so they never break the main operation.

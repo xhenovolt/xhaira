@@ -1,8 +1,8 @@
 /**
- * Jeton System Event Dispatcher
+ * Xhaira System Event Dispatcher
  *
  * Central event system that powers notifications, activity logs, and analytics.
- * Every meaningful action in Jeton triggers a system event which automatically
+ * Every meaningful action in Xhaira triggers a system event which automatically
  * generates notifications for relevant users.
  *
  * Usage:

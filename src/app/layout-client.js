@@ -11,7 +11,7 @@ import { initializeErrorLogger } from '@/lib/error-logger';
 
 const mockUser = {
   name: 'Admin User',
-  email: 'admin@jeton.ai',
+  email: 'admin@xhaira.ai',
   role: 'Administrator',
   avatar: '👤',
 };
@@ -30,14 +30,14 @@ export default function LayoutClient({ children }) {
 
   // Show splash screen once per session on /app routes
   useEffect(() => {
-    if (pathname.startsWith('/app') && !sessionStorage.getItem('jeton_splash_shown')) {
+    if (pathname.startsWith('/app') && !sessionStorage.getItem('xhaira_splash_shown')) {
       setShowSplash(true);
     }
   }, []);
 
   const handleSplashFinished = useCallback(() => {
     setShowSplash(false);
-    sessionStorage.setItem('jeton_splash_shown', '1');
+    sessionStorage.setItem('xhaira_splash_shown', '1');
   }, []);
   
   // Show navigation only on /app and /admin routes
@@ -89,7 +89,7 @@ export default function LayoutClient({ children }) {
       {/* Footer */}
       <footer className={footerClasses} style={{ background: 'var(--footer-bg)', color: 'var(--footer-text)', borderTop: '1px solid var(--sidebar-border)' }}>
         <p className="mb-1">
-          © {new Date().getFullYear()} Jeton. Founder Operating System • v2.0
+          © {new Date().getFullYear()} Xhaira. Founder Operating System • v2.0
         </p>
         <p className="text-xs text-muted-foreground">
           Made with <span className="text-red-500">♥</span> by{' '}

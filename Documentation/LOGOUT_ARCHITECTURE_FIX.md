@@ -95,7 +95,7 @@ Browser requests /app/dashboard
     ↓
 Middleware runs before page loads
     ↓
-Middleware checks for jeton_session cookie → NOT FOUND
+Middleware checks for xhaira_session cookie → NOT FOUND
     ↓
 Middleware calls validateSession(null) → returns null
     ↓

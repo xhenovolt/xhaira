@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { BookOpen, Target, DollarSign, BarChart3, Shield, Zap, ArrowRight, Clock } from 'lucide-react';
 
-export const metadata = { title: 'Jeton Documentation' };
+export const metadata = { title: 'Xhaira Documentation' };
 
 const sections = [
   {
     icon: Zap,
     title: 'Getting Started',
-    description: 'Set up Jeton in minutes. Learn core concepts and start managing your business.',
+    description: 'Set up Xhaira in minutes. Learn core concepts and start managing your business.',
     links: [
       { label: 'Quick Start', href: '/docs/getting-started' },
       { label: 'Core Concepts', href: '/docs/concepts' },
@@ -62,7 +62,7 @@ const sections = [
   {
     icon: BookOpen,
     title: 'API Reference',
-    description: 'Integrate with Jeton via our REST API. Authenticate, query, and automate.',
+    description: 'Integrate with Xhaira via our REST API. Authenticate, query, and automate.',
     links: [
       { label: 'API Reference', href: '/docs/api' },
       { label: 'Automation', href: '/docs/automation' },
@@ -81,9 +81,9 @@ export default function DocsPage() {
           <BookOpen size={14} />
           <span>Documentation</span>
         </div>
-        <h1 className="text-4xl font-bold text-foreground mb-4">Jeton Documentation</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-4">Xhaira Documentation</h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          Jeton is a Founder Operating System — a complete platform for managing deals, finances,
+          Xhaira is a Founder Operating System — a complete platform for managing deals, finances,
           clients, and operations. Everything a founder needs in one place.
         </p>
       </div>
@@ -103,11 +103,11 @@ export default function DocsPage() {
         </Link>
       </div>
 
-      {/* What is Jeton */}
+      {/* What is Xhaira */}
       <div className="p-6 bg-muted/30 border border-border rounded-xl mb-10">
-        <h2 className="font-semibold text-foreground mb-3">What is Jeton?</h2>
+        <h2 className="font-semibold text-foreground mb-3">What is Xhaira?</h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
-          Jeton is a <strong className="text-foreground">Founder Operating System</strong> — an integrated platform that replaces spreadsheets,
+          Xhaira is a <strong className="text-foreground">Founder Operating System</strong> — an integrated platform that replaces spreadsheets,
           disconnected SaaS tools, and manual processes. It covers the complete business lifecycle:
           from finding a prospect, closing a deal, receiving payment, and managing the resulting finances.
         </p>

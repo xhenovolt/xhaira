@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Target, DollarSign, FileText, BarChart3, Shield, Users, Clock, Package, ArrowRight } from 'lucide-react';
 
-export const metadata = { title: 'Module Overview — Jeton Docs' };
+export const metadata = { title: 'Module Overview — Xhaira Docs' };
 
 const modules = [
   {
@@ -97,7 +97,7 @@ export default function ModulesPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">Module Overview</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Jeton has 8 core modules. Each covers a specific domain of running a business. They integrate seamlessly — data flows automatically between them.
+          Xhaira has 8 core modules. Each covers a specific domain of running a business. They integrate seamlessly — data flows automatically between them.
         </p>
       </div>
 

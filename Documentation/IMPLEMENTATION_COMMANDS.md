@@ -39,7 +39,7 @@ curl -X POST http://localhost:3000/api/auth/login \
   -d '{"email":"test@example.com","password":"password"}' \
   -i
 
-# Look for Set-Cookie: jeton_session=... header
+# Look for Set-Cookie: xhaira_session=... header
 ```
 
 ---
@@ -245,8 +245,8 @@ curl -X POST http://localhost:3000/api/auth/register \
 SESSION=$(curl -s -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"test123456"}' \
-  -v 2>&1 | grep "jeton_session=" | \
-  sed 's/.*jeton_session=//;s/;.*//')
+  -v 2>&1 | grep "xhaira_session=" | \
+  sed 's/.*xhaira_session=//;s/;.*//')
 
 echo "Session ID: $SESSION"
 ```
@@ -256,14 +256,14 @@ echo "Session ID: $SESSION"
 ```bash
 # Test with valid session
 curl http://localhost:3000/api/assets \
-  -H "Cookie: jeton_session=$SESSION" -i
+  -H "Cookie: xhaira_session=$SESSION" -i
 
 # Test without session (should be 401)
 curl http://localhost:3000/api/assets -i
 
 # Test dashboard (should work)
 curl http://localhost:3000/dashboard \
-  -H "Cookie: jeton_session=$SESSION" \
+  -H "Cookie: xhaira_session=$SESSION" \
   -i | head -20
 ```
 
@@ -272,11 +272,11 @@ curl http://localhost:3000/dashboard \
 ```bash
 # Logout
 curl -X POST http://localhost:3000/api/auth/logout \
-  -H "Cookie: jeton_session=$SESSION" -i
+  -H "Cookie: xhaira_session=$SESSION" -i
 
 # Try to use old session (should redirect)
 curl http://localhost:3000/api/assets \
-  -H "Cookie: jeton_session=$SESSION" -i
+  -H "Cookie: xhaira_session=$SESSION" -i
 
 # Should be 401
 ```
@@ -349,11 +349,11 @@ curl -X POST https://your-domain.vercel.app/api/auth/login \
   -i
 
 # Check for httpOnly flag in Set-Cookie
-# Should see: Set-Cookie: jeton_session=...; HttpOnly; Secure; ...
+# Should see: Set-Cookie: xhaira_session=...; HttpOnly; Secure; ...
 
 # Test protected route
 curl https://your-domain.vercel.app/api/assets \
-  -H "Cookie: jeton_session=<sessionid>" \
+  -H "Cookie: xhaira_session=<sessionid>" \
   -i
 ```
 
@@ -523,8 +523,8 @@ psql $DATABASE_URL -c "
 
 # Verify session ID matches cookie
 curl http://localhost:3000/api/auth/me \
-  -H "Cookie: jeton_session=<id>" \
-  -v 2>&1 | grep -i "jeton_session"
+  -H "Cookie: xhaira_session=<id>" \
+  -v 2>&1 | grep -i "xhaira_session"
 
 # Check error logs for session validation failures
 # Look for: "Session validation error" in logs
@@ -571,7 +571,7 @@ curl http://localhost:3000/api/auth/me \
 
 ### Middleware redirecting everyone?
 1. Check sessions table was created
-2. Verify middleware.js is reading jeton_session cookie
+2. Verify middleware.js is reading xhaira_session cookie
 3. Check route matcher in middleware.js
 
 ### API routes returning 401?

@@ -148,10 +148,10 @@ If you need to manually run the migration:
 
 ```bash
 # Run migration
-psql -d jeton < migrations/007_add_equity_type.sql
+psql -d xhaira < migrations/007_add_equity_type.sql
 
 # Verify columns added
-psql -d jeton
+psql -d xhaira
 \d shareholdings
 \d share_issuances
 \d share_transfers

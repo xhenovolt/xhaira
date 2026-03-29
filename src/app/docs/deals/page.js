@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export const metadata = { title: 'Deals & Pipeline — Jeton Docs' };
+export const metadata = { title: 'Deals & Pipeline — Xhaira Docs' };
 
 const stages = [
   { name: 'Lead', color: 'bg-gray-100 text-gray-700', desc: 'Initial interest, not yet qualified' },
@@ -55,7 +55,7 @@ export default function DealsPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">Recording Payments</h2>
           <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-            A deal can have multiple partial payments. Each payment records the <strong className="text-foreground">amount received, date, and payment method</strong>. Jeton automatically creates the corresponding ledger entry in the Finance module.
+            A deal can have multiple partial payments. Each payment records the <strong className="text-foreground">amount received, date, and payment method</strong>. Xhaira automatically creates the corresponding ledger entry in the Finance module.
           </p>
           <div className="border border-border rounded-lg p-4 font-mono text-xs text-muted-foreground space-y-1">
             <p><span className="text-green-600">DEBIT</span>  Bank Account         $3,000</p>

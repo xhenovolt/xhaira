@@ -305,7 +305,7 @@ headers: {
 ## File Structure Overview
 
 ```
-/home/xhenvolt/projects/jeton/
+/home/xhenvolt/projects/xhaira/
 ├── src/
 │   ├── app/
 │   │   ├── app/

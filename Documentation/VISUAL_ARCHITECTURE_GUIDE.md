@@ -13,7 +13,7 @@
 │         │                 │                  │               │
 │         └─────────────────┼──────────────────┘               │
 │                           │                                   │
-│                    jeton_session                             │
+│                    xhaira_session                             │
 │                   (httpOnly cookie)                          │
 │                                                               │
 └──────────────────────────┬──────────────────────────────────┘
@@ -28,7 +28,7 @@
 │  ┌────────────────────────────────────────────────────┐    │
 │  │              MIDDLEWARE                             │    │
 │  │                                                      │    │
-│  │  1. Read jeton_session cookie                       │    │
+│  │  1. Read xhaira_session cookie                       │    │
 │  │  2. Query sessions table                            │    │
 │  │  3. Validate expiry                                 │    │
 │  │  4. Check user.status = 'active'                    │    │
@@ -114,13 +114,13 @@ User                   Client              Server              Database
   │                       │                    │                    │
   │                       │◄─ 200 OK ────────┤                    │
   │                       │ Set-Cookie:       │                    │
-  │                       │ jeton_session=ID  │                    │
+  │                       │ xhaira_session=ID  │                    │
   │                       │                    │                    │
   │◄─ redirect /dash ─────│                    │                    │
   │                       │                    │                    │
   ├─ GET /dashboard ─────►│                    │                    │
   │                       ├─ with cookie ────►│                    │
-  │                       │ jeton_session=ID  ├─ Middleware:      │
+  │                       │ xhaira_session=ID  ├─ Middleware:      │
   │                       │                    ├─ validate session►│
   │                       │                    │◄─ session valid    │
   │                       │                    │                    │
@@ -138,13 +138,13 @@ User                   Client              Server              Database
   │                       │                    │                    │
   │                       ├─ POST /auth/logout │                    │
   │                       │ with cookie ──────►│                    │
-  │                       │ jeton_session=ID  │                    │
+  │                       │ xhaira_session=ID  │                    │
   │                       │                    ├─ deleteSession(ID)►│
   │                       │                    │◄─ deleted          │
   │                       │                    │                    │
   │                       │◄─ 200 OK ────────┤                    │
   │                       │ Set-Cookie:       │                    │
-  │                       │ jeton_session=   │                    │
+  │                       │ xhaira_session=   │                    │
   │                       │ (maxAge=0)        │                    │
   │                       │                    │                    │
   │◄─ redirect /login ───│                    │                    │
@@ -168,7 +168,7 @@ User                   Client              Server              Database
   │                       │                    │                    │
   │                       ├─ GET /dashboard ──►│                    │
   │                       │ with cookie        │                    │
-  │                       │ jeton_session=ID  │                    │
+  │                       │ xhaira_session=ID  │                    │
   │                       │                    │                    │
   │                       │                    ├─ Middleware:      │
   │                       │                    │ ┌──────────────┐  │
@@ -202,7 +202,7 @@ Old Session (> 7 days)  Client              Server              Database
   │                      │                    │                    │
   │                      ├─ GET /dashboard ──►│                    │
   │                      │ with old cookie    │                    │
-  │                      │ jeton_session=OLD │                    │
+  │                      │ xhaira_session=OLD │                    │
   │                      │                    ├─ Query:           │
   │                      │                    │ expires_at >      │
   │                      │                    │ CURRENT_TIMESTAMP │
@@ -243,7 +243,7 @@ sessions {
 
 ### Cookie Header
 ```
-Set-Cookie: jeton_session=550e8400-e29b-41d4-a716-446655440000; 
+Set-Cookie: xhaira_session=550e8400-e29b-41d4-a716-446655440000; 
             HttpOnly; 
             Secure; 
             SameSite=Lax; 
@@ -282,7 +282,7 @@ POST /api/auth/login
 ├─ Create response
 │  ├─ Status 200
 │  ├─ Body: { message: 'Logged in successfully' }
-│  └─ Set-Cookie: jeton_session=<sessionId>
+│  └─ Set-Cookie: xhaira_session=<sessionId>
 │
 └─ Return response
 ```
@@ -291,7 +291,7 @@ POST /api/auth/login
 ```
 Incoming Request
 │
-├─ Get jeton_session from cookie
+├─ Get xhaira_session from cookie
 │
 ├─ If no session:
 │  └─ Check if route is public (login, register, etc)
@@ -331,7 +331,7 @@ export async function GET(request) {
 │  │
 │  ├─ const user = await requireApiAuth()
 │  │  │
-│  │  ├─ Read jeton_session cookie
+│  │  ├─ Read xhaira_session cookie
 │  │  ├─ Query database
 │  │  ├─ Validate expiry
 │  │  ├─ If valid: return { userId, email, role }
@@ -363,7 +363,7 @@ export default async function Dashboard() {
 ├─ const user = await getCurrentUser()
 │  │
 │  ├─ Get cookies (server-side)
-│  ├─ Read jeton_session cookie
+│  ├─ Read xhaira_session cookie
 │  ├─ Query sessions + users table
 │  ├─ If valid: return { id, email, role, status, ... }
 │  └─ If invalid: return null

@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export const metadata = { title: 'Business Workflow — Jeton Docs' };
+export const metadata = { title: 'Business Workflow — Xhaira Docs' };
 
 const flow = [
   { step: 1, title: 'Prospect', desc: 'Capture the lead. Record name, email, company, and source. Set a follow-up date.', module: 'Prospecting', color: 'border-blue-300 bg-blue-50' },
   { step: 2, title: 'Follow-up', desc: 'Log every touchpoint. Update notes after each call or email. Reschedule as needed.', module: 'Prospecting', color: 'border-blue-300 bg-blue-50' },
-  { step: 3, title: 'Convert', desc: "When the prospect says yes, convert to a Deal. Jeton links the histories automatically.", module: 'Prospecting → Deals', color: 'border-purple-300 bg-purple-50' },
+  { step: 3, title: 'Convert', desc: "When the prospect says yes, convert to a Deal. Xhaira links the histories automatically.", module: 'Prospecting → Deals', color: 'border-purple-300 bg-purple-50' },
   { step: 4, title: 'Deal & Negotiation', desc: 'Set deal value, expected close, and stage. Record discussion notes and milestones.', module: 'Deals', color: 'border-purple-300 bg-purple-50' },
   { step: 5, title: 'Invoice', desc: 'Create a professional invoice from the deal. Add line items, tax, and payment terms.', module: 'Invoicing', color: 'border-orange-300 bg-orange-50' },
-  { step: 6, title: 'Payment', desc: 'Record when payment arrives. Partial payments supported. Jeton updates the invoice status.', module: 'Deals / Invoicing', color: 'border-orange-300 bg-orange-50' },
+  { step: 6, title: 'Payment', desc: 'Record when payment arrives. Partial payments supported. Xhaira updates the invoice status.', module: 'Deals / Invoicing', color: 'border-orange-300 bg-orange-50' },
   { step: 7, title: 'Ledger', desc: 'A double-entry ledger record is auto-created. Debit to bank, credit to revenue account.', module: 'Finance', color: 'border-green-300 bg-green-50' },
   { step: 8, title: 'Report', desc: 'Revenue, pipeline, and expense data roll up automatically into reports and dashboard widgets.', module: 'Reports', color: 'border-teal-300 bg-teal-50' },
 ];

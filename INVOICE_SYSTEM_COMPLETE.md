@@ -347,12 +347,12 @@ Run migrations in Neon to create tables:
 # Using psql (install if needed)
 psql -h ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech \
      -U neondb_owner \
-     -d jeton \
+     -d xhaira \
      -f migrations/006_create_invoices_table.sql
 
 psql -h ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech \
      -U neondb_owner \
-     -d jeton \
+     -d xhaira \
      -f migrations/007_create_invoice_items_table.sql
 ```
 
@@ -371,7 +371,7 @@ npm install pg zod
 Already configured in `.env.local` (verify):
 
 ```env
-DATABASE_URL='postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/jeton?sslmode=require&channel_binding=require'
+DATABASE_URL='postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/xhaira?sslmode=require&channel_binding=require'
 ```
 
 ### 4. QR Code Library

@@ -160,7 +160,7 @@ Start with: [EQUITY_TYPE_IMPLEMENTATION_COMPLETE.md](EQUITY_TYPE_IMPLEMENTATION_
 
 ### Step 1: Run Migration
 ```bash
-psql -d jeton < migrations/007_add_equity_type.sql
+psql -d xhaira < migrations/007_add_equity_type.sql
 ```
 
 ### Step 2: Restart App

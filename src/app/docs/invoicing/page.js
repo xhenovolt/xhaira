@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
-export const metadata = { title: 'Invoicing — Jeton Docs' };
+export const metadata = { title: 'Invoicing — Xhaira Docs' };
 
 const statuses = [
   { name: 'Draft', color: 'bg-gray-100 text-gray-700', desc: 'Created but not sent' },
@@ -62,7 +62,7 @@ export default function InvoicingPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">Marking Invoices Paid</h2>
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-            When a client pays, mark the invoice as paid. Jeton will:
+            When a client pays, mark the invoice as paid. Xhaira will:
           </p>
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2 text-muted-foreground"><CheckCircle2 className="w-4 h-4 text-green-500" /> Update the invoice status to Paid</li>

@@ -176,7 +176,7 @@ export default function AdminBackupsPage() {
               <input
                 value={form.name}
                 onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                placeholder={`jeton_backup_${new Date().toISOString().slice(0, 10)}`}
+                placeholder={`xhaira_backup_${new Date().toISOString().slice(0, 10)}`}
                 className="w-full px-3 py-2 border border-border rounded-lg bg-background text-foreground text-sm"
               />
             </div>

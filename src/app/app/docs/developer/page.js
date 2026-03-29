@@ -20,7 +20,7 @@ export default function DeveloperPage() {
         <div className="bg-gradient-to-br from-gray-900 to-gray-700 text-white rounded-xl p-8 shadow-lg mb-8">
           <h1 className="text-4xl font-bold mb-4">Developer Documentation</h1>
           <p className="text-xl text-gray-100">
-            Technical architecture, API patterns, and extension guide for Jeton.
+            Technical architecture, API patterns, and extension guide for Xhaira.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ export default function DeveloperPage() {
             <h2 className="text-2xl font-bold text-foreground">Project Structure</h2>
           </div>
           <div className="bg-gray-900 p-6 rounded-lg font-mono text-sm text-green-400 overflow-x-auto">
-            <pre>{`jeton/
+            <pre>{`xhaira/
 ├── src/
 │   ├── app/
 │   │   ├── api/              # API routes

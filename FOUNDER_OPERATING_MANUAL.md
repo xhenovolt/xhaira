@@ -5,9 +5,9 @@
 
 ## WHO THIS IS FOR
 
-This manual is for **you**, the founder. It's your daily guide to using Jeton to run your business operations without getting lost in complexity.
+This manual is for **you**, the founder. It's your daily guide to using Xhaira to run your business operations without getting lost in complexity.
 
-Jeton is designed to handle the full revenue cycle: from finding prospects to collecting money and tracking profit.
+Xhaira is designed to handle the full revenue cycle: from finding prospects to collecting money and tracking profit.
 
 This manual shows you **exactly what to do every day**.
 
@@ -354,7 +354,7 @@ You see the profit
 **Sales Person:**
 - When you have >50 prospects to manage
 - When follow-ups take >3 hours/day
-- **How they'll use Jeton:**
+- **How they'll use Xhaira:**
   - Add prospects
   - Log activities
   - Move deals through pipeline
@@ -364,7 +364,7 @@ You see the profit
 **Finance Person:**
 - When you have >10 payments/month to allocate
 - When expense tracking becomes overwhelming
-- **How they'll use Jeton:**
+- **How they'll use Xhaira:**
   - Record payments
   - Allocate funds according to rules
   - Track expenses
@@ -373,7 +373,7 @@ You see the profit
 
 **Admin:**
 - When team >5 people
-- **How they'll use Jeton:**
+- **How they'll use Xhaira:**
   - User management (`/app/admin`)
   - Role assignment
   - Audit log monitoring
@@ -454,7 +454,7 @@ Won: 1 deal this week ($10,000)
 
 ### The Founder Mindset
 
-**Jeton is your co-pilot, not your replacement.**
+**Xhaira is your co-pilot, not your replacement.**
 
 It won't find prospects for you. It won't close deals for you. It won't allocate your money without your input.
 
@@ -466,9 +466,9 @@ But it **will**:
 
 **Use it every day. Trust the workflow. Let it scale with you.**
 
-When you're managing 10 deals, Jeton handles it.  
-When you're managing 100 deals, Jeton still handles it.  
-When you hire a sales team, Jeton keeps everyone aligned.
+When you're managing 10 deals, Xhaira handles it.  
+When you're managing 100 deals, Xhaira still handles it.  
+When you hire a sales team, Xhaira keeps everyone aligned.
 
 **Your job as founder:**
 1. Find prospects
@@ -476,7 +476,7 @@ When you hire a sales team, Jeton keeps everyone aligned.
 3. Allocate wisely
 4. Review the dashboard
 
-**Jeton's job:**
+**Xhaira's job:**
 1. Track everything
 2. Enforce rules
 3. Show you the truth
@@ -485,10 +485,10 @@ When you hire a sales team, Jeton keeps everyone aligned.
 ---
 
 **Now go build your business.**  
-**Jeton has your back.**
+**Xhaira has your back.**
 
 ---
 
 **Document Version:** 1.0  
 **Last Updated:** March 8, 2026  
-**For:** Founders using Jeton daily
+**For:** Founders using Xhaira daily

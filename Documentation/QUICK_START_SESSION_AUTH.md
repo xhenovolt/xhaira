@@ -41,7 +41,7 @@ curl -X POST http://localhost:3000/api/auth/login \
   -d '{"email":"founder@example.com","password":"password"}' \
   -v
 
-# Look for: Set-Cookie: jeton_session=...; HttpOnly; Path=/;
+# Look for: Set-Cookie: xhaira_session=...; HttpOnly; Path=/;
 ```
 
 ### 3. Testing Protected Routes
@@ -49,7 +49,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 ```bash
 # Test API with session cookie
 curl http://localhost:3000/api/auth/me \
-  -H "Cookie: jeton_session=<your-session-id>" \
+  -H "Cookie: xhaira_session=<your-session-id>" \
   -v
 ```
 
@@ -193,7 +193,7 @@ These routes still need to be migrated from JWT to sessions:
 ### User Immediately Logs Out
 
 **Check:**
-1. Is `jeton_session` cookie being set? (DevTools → Application → Cookies)
+1. Is `xhaira_session` cookie being set? (DevTools → Application → Cookies)
 2. Is session in database? (Query: `SELECT * FROM sessions`)
 3. Has session expired? (Check `expires_at` > NOW)
 4. Is user.status = 'active'? (Check users table)
@@ -201,7 +201,7 @@ These routes still need to be migrated from JWT to sessions:
 ### Middleware Always Redirects to /login
 
 **Check:**
-1. Cookie name is `jeton_session` (not `auth-token`)
+1. Cookie name is `xhaira_session` (not `auth-token`)
 2. Session ID exists in database
 3. Database connection is working
 4. Middleware error logs for details
@@ -241,7 +241,7 @@ Verify credentials (bcrypt password hash)
     ↓
 Create session in database
     ↓
-Set jeton_session cookie (httpOnly, secure)
+Set xhaira_session cookie (httpOnly, secure)
     ↓
 Redirect to /dashboard (middleware validates)
 
@@ -249,7 +249,7 @@ Redirect to /dashboard (middleware validates)
 
 Protected Route Access
     ↓
-Middleware checks jeton_session cookie
+Middleware checks xhaira_session cookie
     ↓
 Query sessions table + validate expiry + check user.status
     ↓
@@ -265,7 +265,7 @@ Logout
     ↓
 Delete session from database
     ↓
-Clear jeton_session cookie
+Clear xhaira_session cookie
     ↓
 Redirect to /login
 ```

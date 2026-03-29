@@ -26,7 +26,7 @@ You requested to ensure the logout functionality works correctly. After comprehe
 ### 2. Logout Endpoint ✅
 - **Location**: `src/app/api/auth/logout/route.js`
 - **Actions**:
-  1. Extracts `jeton_session` cookie from request
+  1. Extracts `xhaira_session` cookie from request
   2. **Deletes session from PostgreSQL database**
   3. Logs audit event
   4. Clears cookie with `maxAge: 0`
@@ -42,7 +42,7 @@ You requested to ensure the logout functionality works correctly. After comprehe
 - **Consequence**: Middleware validation will fail for this session
 
 ### 4. Cookie Clearing ✅
-- **Cookie Name**: `jeton_session`
+- **Cookie Name**: `xhaira_session`
 - **HTTP-Only**: Yes (JavaScript cannot access)
 - **Secure Flag**: Yes (production), No (dev)
 - **SameSite**: Lax (CSRF protection)
@@ -91,7 +91,7 @@ You requested to ensure the logout functionality works correctly. After comprehe
 
 ### Test 3: Cookie Cleared from Browser
 ```
-✅ PASS - response.cookies.set('jeton_session', '', { maxAge: 0 })
+✅ PASS - response.cookies.set('xhaira_session', '', { maxAge: 0 })
 ✅ PASS - maxAge: 0 tells browser to delete cookie
 ✅ PASS - httpOnly flag prevents JavaScript access
 ✅ PASS - Cookie gone after logout response
@@ -120,7 +120,7 @@ You requested to ensure the logout functionality works correctly. After comprehe
 
 ### HttpOnly Cookie ✅
 ```javascript
-response.cookies.set('jeton_session', '', {
+response.cookies.set('xhaira_session', '', {
   httpOnly: true,  // ← JavaScript cannot access
   ...
 });
@@ -187,7 +187,7 @@ Browser
 Next Request to /app/*
         ↓
 middleware.js
-  ├─ No jeton_session cookie found
+  ├─ No xhaira_session cookie found
   ├─ validateSession(null) returns null
   ├─ if (!session) → true
   └─ Redirect to /login
@@ -272,7 +272,7 @@ STEP 1: USER CLICKS LOGOUT
 └─ Sends: POST /api/auth/logout
 
 STEP 2: SERVER PROCESSES LOGOUT
-┌─ Extracts jeton_session cookie
+┌─ Extracts xhaira_session cookie
 ├─ Gets session data from database
 ├─ Deletes session: DELETE FROM sessions WHERE id = ?
 ├─ Logs audit event: LOGOUT
@@ -280,8 +280,8 @@ STEP 2: SERVER PROCESSES LOGOUT
 └─ Returns: 200 OK
 
 STEP 3: BROWSER RECEIVES RESPONSE
-┌─ Set-Cookie: jeton_session=; Max-Age=0
-├─ Browser DELETES jeton_session cookie
+┌─ Set-Cookie: xhaira_session=; Max-Age=0
+├─ Browser DELETES xhaira_session cookie
 └─ handleLogout() redirects: window.location.href = '/login'
 
 STEP 4: USER AT LOGIN PAGE
@@ -290,7 +290,7 @@ STEP 4: USER AT LOGIN PAGE
 └─ Must login again to proceed
 
 STEP 5: USER TRIES TO ACCESS /APP/DASHBOARD
-┌─ Middleware checks for jeton_session cookie
+┌─ Middleware checks for xhaira_session cookie
 ├─ Cookie not found OR session not in database
 ├─ validateSession() returns null
 ├─ if (!session) → true
@@ -335,7 +335,7 @@ curl http://localhost:3000/api/assets
 
 # Try to access with old session cookie
 curl http://localhost:3000/api/assets \
-  -H "Cookie: jeton_session=old_value"
+  -H "Cookie: xhaira_session=old_value"
 # Should return: 401 Unauthorized
 ✅ API is protected!
 ```
@@ -455,7 +455,7 @@ curl http://localhost:3000/api/assets \
 | JWT_REMOVAL_COMPLETE.md | JWT removal details | ✅ Ready |
 | AUTHENTICATION_COMPLETE.md | Master index | ✅ Ready |
 
-All files in: `/home/xhenvolt/projects/jeton/`
+All files in: `/home/xhenvolt/projects/xhaira/`
 
 ---
 

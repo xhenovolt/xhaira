@@ -383,7 +383,7 @@ export default function UserGuidesPage() {
         <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-xl p-8 shadow-lg mb-8">
           <h1 className="text-4xl font-bold mb-4">User Guides</h1>
           <p className="text-xl text-blue-50">
-            Step-by-step instructions for common tasks in Jeton. Click any guide to expand it.
+            Step-by-step instructions for common tasks in Xhaira. Click any guide to expand it.
           </p>
         </div>
 

@@ -245,19 +245,19 @@ Start with: **[IMPLEMENTATION_COMMANDS.md](./IMPLEMENTATION_COMMANDS.md)**
 SESSION_ID=$(curl -s -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"password"}' \
-  -v 2>&1 | grep "jeton_session=" | sed 's/.*jeton_session=//;s/;.*//')
+  -v 2>&1 | grep "xhaira_session=" | sed 's/.*xhaira_session=//;s/;.*//')
 
 # Test protected route (should work)
 curl http://localhost:3000/api/assets \
-  -H "Cookie: jeton_session=$SESSION_ID" -i
+  -H "Cookie: xhaira_session=$SESSION_ID" -i
 
 # Call logout
 curl -X POST http://localhost:3000/api/auth/logout \
-  -H "Cookie: jeton_session=$SESSION_ID" -i
+  -H "Cookie: xhaira_session=$SESSION_ID" -i
 
 # Test protected route (should fail with 401)
 curl http://localhost:3000/api/assets \
-  -H "Cookie: jeton_session=$SESSION_ID" -i
+  -H "Cookie: xhaira_session=$SESSION_ID" -i
 ```
 
 ### Database Testing
@@ -279,7 +279,7 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM sessions WHERE id='session_id';"
 ### Logout button doesn't work
 1. Check browser console for errors
 2. Verify `/api/auth/logout` endpoint exists
-3. Check jeton_session cookie is present
+3. Check xhaira_session cookie is present
 4. Check server logs for errors
 
 ### Can still access routes after logout

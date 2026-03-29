@@ -330,7 +330,7 @@ This is the pattern used by:
 - Carta (singular cap table calculation)
 - Linear (singular issue state)
 
-Now Jeton implements it too.
+Now Xhaira implements it too.
 
 ---
 

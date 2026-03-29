@@ -26,8 +26,8 @@ export function PageTitle() {
     '/app/settings': 'Settings',
   };
 
-  const pageTitle = routeTitles[pathname] || 'Jeton';
-  const fullTitle = pageTitle === 'Jeton' ? 'Jeton - Executive Operating System' : `${pageTitle} | Jeton`;
+  const pageTitle = routeTitles[pathname] || 'Xhaira';
+  const fullTitle = pageTitle === 'Xhaira' ? 'Xhaira - Executive Operating System' : `${pageTitle} | Xhaira`;
 
   // Update HTML title
   useEffect(() => {

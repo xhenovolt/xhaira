@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 
-export const metadata = { title: 'Audit Log — Jeton Docs' };
+export const metadata = { title: 'Audit Log — Xhaira Docs' };
 
 const sampleEvents = [
   { action: 'prospect.created', user: 'alice@co.com', resource: 'Prospect #14', time: '2 min ago' },
@@ -22,7 +22,7 @@ export default function AuditPage() {
         </div>
         <h1 className="text-3xl font-bold text-foreground mb-3">Audit Log</h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          An immutable, chronological record of every action performed in Jeton.
+          An immutable, chronological record of every action performed in Xhaira.
         </p>
       </div>
 

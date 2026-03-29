@@ -39,7 +39,7 @@ export async function POST(request) {
     const body = await request.json();
     const { name, description, backup_type, tags } = body;
 
-    const backupName = name?.trim() || `jeton_backup_${new Date().toISOString().slice(0, 10)}`;
+    const backupName = name?.trim() || `xhaira_backup_${new Date().toISOString().slice(0, 10)}`;
 
     // Create backup record (in_progress)
     const backup = await query(
@@ -58,7 +58,7 @@ export async function POST(request) {
       let totalRows = 0;
       const sqlParts = [];
 
-      sqlParts.push(`-- Jeton System Backup: ${backupName}`);
+      sqlParts.push(`-- Xhaira System Backup: ${backupName}`);
       sqlParts.push(`-- Created: ${new Date().toISOString()}`);
       sqlParts.push(`-- Type: ${backup_type || 'full'}`);
       sqlParts.push(`-- Tables: ${tables.length}`);
@@ -118,7 +118,7 @@ export async function POST(request) {
           });
           const uploadResult = await cloudinary.uploader.upload(
             `data:text/plain;base64,${Buffer.from(sqlContent).toString('base64')}`,
-            { resource_type: 'raw', folder: 'jeton/backups', public_id: backupName.replace(/[^a-zA-Z0-9_-]/g, '_') }
+            { resource_type: 'raw', folder: 'xhaira/backups', public_id: backupName.replace(/[^a-zA-Z0-9_-]/g, '_') }
           );
           fileUrl = uploadResult.secure_url;
           publicId = uploadResult.public_id;

@@ -1,7 +1,7 @@
 # Authentication System Fixes - Implementation Summary
 
 ## Overview
-This document details the comprehensive fixes applied to the Jeton authentication system to address critical issues with infinite loading, 401 errors on valid sessions, and inconsistent auth mechanisms.
+This document details the comprehensive fixes applied to the Xhaira authentication system to address critical issues with infinite loading, 401 errors on valid sessions, and inconsistent auth mechanisms.
 
 ---
 
@@ -172,7 +172,7 @@ This document details the comprehensive fixes applied to the Jeton authenticatio
 ### Request Path
 1. **Middleware** - Checks session cookie exists
 2. **API Route** - Validates session with `requireApiAuth()`:
-   - Reads `jeton_session` cookie
+   - Reads `xhaira_session` cookie
    - Calls `getSession(sessionId)` to verify validity and get user data
    - Returns user info: `{ userId, email, role, is_superadmin, status }`
 3. **Component/UI** - Uses authenticated user context

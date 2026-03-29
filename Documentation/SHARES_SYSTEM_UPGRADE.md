@@ -1,4 +1,4 @@
-# Jeton Share System Redesign - Investor Grade Equity
+# Xhaira Share System Redesign - Investor Grade Equity
 
 ## 🎯 Overview
 

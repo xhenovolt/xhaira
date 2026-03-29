@@ -6,7 +6,7 @@
  * - This client runs on the backend (server-side)
  * - Never expose API keys in frontend code
  * - Use proxy routes in /api/drais/* for frontend access
- * - All sensitive operations validated through Jeton auth layer
+ * - All sensitive operations validated through Xhaira auth layer
  */
 
 const BASE_URL = process.env.DRAIS_API_BASE_URL || 'https://drais-api.example.com';

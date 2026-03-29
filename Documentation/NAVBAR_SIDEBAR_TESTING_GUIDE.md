@@ -2,7 +2,7 @@
 
 ## What Was Fixed
 
-Your Jeton application now correctly displays:
+Your Xhaira application now correctly displays:
 
 1. **Real User Identity in Navbar** ✅
    - Shows your actual logged-in user (xhenonpro@gmail.com) instead of mock "Admin User"
@@ -60,7 +60,7 @@ Navbar Shows Real User | Sidebar Shows Admin Menu (if admin)
 ### 1. Check Navbar
 ```
 Expected:
-- Your email: xhenonpro@gmail.com (not admin@jeton.ai)
+- Your email: xhenonpro@gmail.com (not admin@xhaira.ai)
 - Your actual name (not "Admin User")
 - Your real role from database
 - Your profile photo if uploaded
@@ -199,7 +199,7 @@ Returns current authenticated user with roles.
 **Request:**
 ```
 GET /api/auth/me
-Cookie: jeton_session=<session_id>
+Cookie: xhaira_session=<session_id>
 ```
 
 **Response (200):**

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document details the implementation of a global currency conversion system for the Jeton application. The system allows users to view all monetary amounts in their preferred currency (UGX, USD, EUR, GBP, JPY, CAD, AUD, CHF, INR, ZAR, KES) while keeping UGX as the canonical internal currency for all database operations and calculations.
+This document details the implementation of a global currency conversion system for the Xhaira application. The system allows users to view all monetary amounts in their preferred currency (UGX, USD, EUR, GBP, JPY, CAD, AUD, CHF, INR, ZAR, KES) while keeping UGX as the canonical internal currency for all database operations and calculations.
 
 ## Architecture
 
@@ -131,7 +131,7 @@ Added "Currency & Localization" section with:
 
 ### 3. **User Preference Management**
 - Currency preference stored in localStorage
-- Key: `jeton_preferred_currency`
+- Key: `xhaira_preferred_currency`
 - Persists across sessions
 - Defaults to UGX if no preference stored
 

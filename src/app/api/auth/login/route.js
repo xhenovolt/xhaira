@@ -172,12 +172,12 @@ export async function POST(request) {
 
     // Set HTTP-only session cookie
     const cookieOptions = getSecureCookieOptions();
-    response.cookies.set('jeton_session', sessionId, cookieOptions);
+    response.cookies.set('xhaira_session', sessionId, cookieOptions);
 
     // Set a short-lived indicator cookie when password reset is required.
     // Middleware uses this to guard all app routes until reset is complete.
     if (mustReset) {
-      response.cookies.set('jeton_must_reset', '1', {
+      response.cookies.set('xhaira_must_reset', '1', {
         httpOnly: true,
         sameSite: 'lax',
         path: '/',

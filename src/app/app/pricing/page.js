@@ -10,7 +10,7 @@ const fmtCurrency = (amount, currency = 'UGX') =>
 const SYSTEM_COLORS = {
   drais:  'bg-blue-100 text-blue-700',
   lypha:  'bg-purple-100 text-purple-700',
-  jeton:  'bg-emerald-100 text-emerald-700',
+  xhaira:  'bg-emerald-100 text-emerald-700',
 };
 
 function PlanCard({ plan, onEdit, onToggle, onDelete, onAddCycle, onEditCycle, onDeleteCycle }) {
@@ -95,7 +95,7 @@ function PlanModal({ plan, onClose, onSaved }) {
   const isEdit = !!plan?.id;
   const [form, setForm] = useState({
     name: plan?.name || '',
-    system: plan?.system || 'jeton',
+    system: plan?.system || 'xhaira',
     description: plan?.description || '',
     features: plan?.features?.join('\n') || '',
     display_order: plan?.display_order ?? 0,
@@ -136,7 +136,7 @@ function PlanModal({ plan, onClose, onSaved }) {
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">System *</label>
-            <input required value={form.system} onChange={e => setForm(f => ({...f, system: e.target.value.toLowerCase()}))} className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground" placeholder="e.g. jeton, drais, lypha" />
+            <input required value={form.system} onChange={e => setForm(f => ({...f, system: e.target.value.toLowerCase()}))} className="w-full border border-border rounded-lg px-3 py-2 text-sm bg-background text-foreground" placeholder="e.g. xhaira, drais, lypha" />
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-1">Description</label>
@@ -321,7 +321,7 @@ export default function PricingPage() {
             <DollarSign className="w-6 h-6 text-blue-600" /> Pricing Plans
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Jeton is the single source of truth for all pricing across the ecosystem.
+            Xhaira is the single source of truth for all pricing across the ecosystem.
           </p>
         </div>
         <button

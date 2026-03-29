@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document details the complete implementation of a two-layer share model for Jeton, mirroring real-world corporate registry systems like URSB. The system includes:
+This document details the complete implementation of a two-layer share model for Xhaira, mirroring real-world corporate registry systems like URSB. The system includes:
 
 1. **Two-Layer Share Model** - Authorized vs Issued distinction
 2. **Company Valuation Engine** - Pre/post-money calculations with investor tracking
@@ -686,7 +686,7 @@ The migration file `migrations/008_two_layer_share_model.sql` includes all neces
 npm run migrate
 
 # Or directly with psql
-psql -d jeton_db -f migrations/008_two_layer_share_model.sql
+psql -d xhaira_db -f migrations/008_two_layer_share_model.sql
 ```
 
 ---

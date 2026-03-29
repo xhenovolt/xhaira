@@ -296,7 +296,7 @@ console.log(health);
 ### Step 1: Run Migration
 ```bash
 # Apply migration 032
-psql -d jeton -f migrations/032_structural_stabilization.sql
+psql -d xhaira -f migrations/032_structural_stabilization.sql
 
 # Verify no errors
 ```

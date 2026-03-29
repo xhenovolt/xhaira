@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export const metadata = { title: 'User Management — Jeton Docs' };
+export const metadata = { title: 'User Management — Xhaira Docs' };
 
 const roles = [
   { name: 'viewer', color: 'bg-gray-100 text-gray-700', perms: ['View dashboard', 'View reports', 'Read-only all modules'] },
@@ -61,7 +61,7 @@ export default function UsersPage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">Online Presence</h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Jeton uses a <strong className="text-foreground">heartbeat system</strong> to show real-time presence. Each signed-in user pings the server every 30 seconds while their browser tab is active. If no ping is received within 60 seconds, the user is shown as offline. Admins can see presence for all users in the Users list.
+            Xhaira uses a <strong className="text-foreground">heartbeat system</strong> to show real-time presence. Each signed-in user pings the server every 30 seconds while their browser tab is active. If no ping is received within 60 seconds, the user is shown as offline. Admins can see presence for all users in the Users list.
           </p>
           <div className="flex items-center gap-4 mt-4 text-sm">
             <div className="flex items-center gap-2">

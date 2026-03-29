@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Pagination component for Jeton.
+ * Pagination component for Xhaira.
  * Provides page controls, record count, and per-page selector.
  */
 

@@ -28,7 +28,7 @@ async function inspect() {
       console.log(row.table_name);
     }
     
-    // Check if key Jeton tables exist
+    // Check if key Xhaira tables exist
     console.log('\n=== JETON CORE TABLES CHECK ===');
     const coreTables = [
       'users', 'prospects', 'prospect_activities', 'prospect_stages', 'prospect_sources',

@@ -619,10 +619,10 @@ CREATE TRIGGER trg_budgets_updated_at BEFORE UPDATE ON budgets FOR EACH ROW EXEC
 -- 17. SEED DEFAULT ADMIN USER
 -- ============================================================================
 
--- Default admin: admin@jeton.app / admin123 (bcrypt hash)
+-- Default admin: admin@xhaira.app / admin123 (bcrypt hash)
 -- Password should be changed on first login
 INSERT INTO users (email, password_hash, name, role)
-VALUES ('admin@jeton.app', '$2b$10$8KzaN3pMQOq.jHBdrmBKdeLXBMjhNZMBqnlBfCH3HI0sge62ymjFi', 'Admin', 'superadmin');
+VALUES ('admin@xhaira.app', '$2b$10$8KzaN3pMQOq.jHBdrmBKdeLXBMjhNZMBqnlBfCH3HI0sge62ymjFi', 'Admin', 'superadmin');
 
 -- ============================================================================
 -- SCHEMA COMPLETE

@@ -7,7 +7,7 @@ import { BookOpen, ChevronLeft, Clock, Tag, Globe, Lock } from 'lucide-react';
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const result = await query(`SELECT title FROM docs WHERE id = $1 OR slug = $1`, [id]).catch(() => null);
-  return { title: result?.rows[0]?.title ? `${result.rows[0].title} — Jeton Docs` : 'Doc — Jeton Docs' };
+  return { title: result?.rows[0]?.title ? `${result.rows[0].title} — Xhaira Docs` : 'Doc — Xhaira Docs' };
 }
 
 export default async function DocDetailPage({ params }) {

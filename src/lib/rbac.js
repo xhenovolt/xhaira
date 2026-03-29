@@ -1,5 +1,5 @@
 /**
- * Central RBAC Utility — Jeton
+ * Central RBAC Utility — Xhaira
  * ─────────────────────────────────────────────────────────────────────────────
  * Synchronous permission checking for use after the async verifyAuth /
  * requirePermission call has already established the user's identity.

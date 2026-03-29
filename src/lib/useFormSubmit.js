@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * useFormSubmit — Universal form transaction controller for Jeton.
+ * useFormSubmit — Universal form transaction controller for Xhaira.
  *
  * Prevents duplicate submissions, provides loading state, and integrates
  * with the global toast system for success/error feedback.

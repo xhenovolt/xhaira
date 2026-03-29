@@ -6,7 +6,7 @@ Fixed the Navbar and Sidebar components to display real user data from the datab
 ## Issues Resolved
 
 ### 1. Navbar Displaying Mock User Data
-**Problem:** The Navbar was hardcoded to show "Admin User" with email "admin@jeton.ai" instead of the actual logged-in user.
+**Problem:** The Navbar was hardcoded to show "Admin User" with email "admin@xhaira.ai" instead of the actual logged-in user.
 
 **Solution:**
 - Removed hardcoded mock user object
@@ -63,7 +63,7 @@ Fixed the Navbar and Sidebar components to display real user data from the datab
 // Before: Hardcoded mock user
 const [user] = useState({
   name: 'Admin User',
-  email: 'admin@jeton.ai',
+  email: 'admin@xhaira.ai',
   role: 'Administrator',
   avatar: '👤',
 });
@@ -146,7 +146,7 @@ These links point to the new enterprise governance system pages created in the p
 ## Data Flow
 
 1. **User Logs In**
-   - Session is created with `jeton_session` cookie
+   - Session is created with `xhaira_session` cookie
 
 2. **Navbar Loads**
    - Calls `GET /api/auth/me` with session cookie
@@ -162,7 +162,7 @@ These links point to the new enterprise governance system pages created in the p
 
 ## Security Features
 
-1. **Session-Based Auth**: All fetches require valid `jeton_session` cookie
+1. **Session-Based Auth**: All fetches require valid `xhaira_session` cookie
 2. **Access Control**: Admin menu only shown to users with actual admin/superadmin roles
 3. **Status Check**: Only returns active users (status = 'active')
 4. **Audit Logging**: `/api/auth/me` calls logged for security audit trail
@@ -170,7 +170,7 @@ These links point to the new enterprise governance system pages created in the p
 ## Testing Checklist
 
 - [x] Navbar displays logged-in user's actual name (not "Admin User")
-- [x] Navbar shows correct email (xhenonpro@gmail.com, not admin@jeton.ai)
+- [x] Navbar shows correct email (xhenonpro@gmail.com, not admin@xhaira.ai)
 - [x] Navbar displays real user's role from database
 - [x] Navbar shows profile photo if available
 - [x] Sidebar admin menu only shows for admin users

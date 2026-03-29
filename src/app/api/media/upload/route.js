@@ -82,7 +82,7 @@ export async function POST(request) {
 
         const uploadOptions = {
           resource_type: resourceType === 'auto' ? 'auto' : resourceType,
-          folder: `jeton/${entity_type || 'general'}`,
+          folder: `xhaira/${entity_type || 'general'}`,
           tags: tags ? tags.split(',').map(t => t.trim()) : [],
         };
 

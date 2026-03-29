@@ -19,18 +19,18 @@ export default function GettingStartedPage() {
         {/* Header */}
         <div className="bg-card rounded-xl p-8 shadow-sm mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            Getting Started with Jeton
+            Getting Started with Xhaira
           </h1>
           <p className="text-xl text-muted-foreground">
-            Welcome to Jeton, your Founder-First Business Operating System. This guide will help you understand the basics and get you operational in minutes.
+            Welcome to Xhaira, your Founder-First Business Operating System. This guide will help you understand the basics and get you operational in minutes.
           </p>
         </div>
 
-        {/* What is Jeton */}
+        {/* What is Xhaira */}
         <div className="bg-card rounded-xl p-8 shadow-sm mb-8">
-          <h2 className="text-2xl font-bold text-foreground mb-4">What is Jeton?</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">What is Xhaira?</h2>
           <p className="text-foreground mb-4">
-            Jeton is a complete business operating system designed specifically for founders. It manages your entire revenue cycle:
+            Xhaira is a complete business operating system designed specifically for founders. It manages your entire revenue cycle:
           </p>
           <div className="grid md:grid-cols-2 gap-4 mt-6">
             {[
@@ -214,7 +214,7 @@ export default function GettingStartedPage() {
               className="block p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition"
             >
               <div className="font-semibold text-green-900">Read the Founder Operating Manual</div>
-              <div className="text-green-700 text-sm">Your daily playbook for running Jeton</div>
+              <div className="text-green-700 text-sm">Your daily playbook for running Xhaira</div>
             </Link>
             <Link
               href="/app/docs/guides"

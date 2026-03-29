@@ -1,8 +1,8 @@
-# 🎉 Jeton Authentication Refactoring - Complete Summary
+# 🎉 Xhaira Authentication Refactoring - Complete Summary
 
 ## What Was Done
 
-Jeton's authentication system has been **completely refactored** from JWT-based to session-based authentication using secure HTTP-only cookies stored in PostgreSQL. This is a major architectural improvement that makes the system more secure, scalable, and Vercel-compatible.
+Xhaira's authentication system has been **completely refactored** from JWT-based to session-based authentication using secure HTTP-only cookies stored in PostgreSQL. This is a major architectural improvement that makes the system more secure, scalable, and Vercel-compatible.
 
 ---
 
@@ -114,11 +114,11 @@ CREATE TABLE sessions (
    └─ POST /api/auth/login
       ├─ Verify credentials (bcrypt)
       ├─ Create session in DB
-      ├─ Set jeton_session cookie (httpOnly)
+      ├─ Set xhaira_session cookie (httpOnly)
       └─ Return 200 (no user data)
 
 2. Protected Route Access
-   └─ Middleware checks jeton_session
+   └─ Middleware checks xhaira_session
       ├─ Query sessions table
       ├─ Validate expiry
       ├─ Check user.status = 'active'
@@ -276,13 +276,13 @@ git push
 
 ```bash
 # Test login
-curl -X POST https://jeton.vercel.app/api/auth/login \
+curl -X POST https://xhaira.vercel.app/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"...","password":"..."}' \
   -v
 
 # Check for Set-Cookie header
-# Verify jeton_session cookie is httpOnly
+# Verify xhaira_session cookie is httpOnly
 ```
 
 ---

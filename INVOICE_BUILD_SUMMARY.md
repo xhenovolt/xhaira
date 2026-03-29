@@ -63,8 +63,8 @@ Run these SQL commands in your Neon console:
 
 Or use psql:
 ```bash
-psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/jeton?sslmode=require" < migrations/006_create_invoices_table.sql
-psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/jeton?sslmode=require" < migrations/007_create_invoice_items_table.sql
+psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/xhaira?sslmode=require" < migrations/006_create_invoices_table.sql
+psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/xhaira?sslmode=require" < migrations/007_create_invoice_items_table.sql
 ```
 
 ### 2. Start Your App

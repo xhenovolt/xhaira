@@ -122,7 +122,7 @@ async function logError(errorData) {
   }
 
   const issuPayload = {
-    system_id: 'Jeton',
+    system_id: 'Xhaira',
     title: errorData.message || 'Unknown Error',
     description: `Stack Trace:\n${errorData.stack}`,
     severity: errorData.severity || 'high',

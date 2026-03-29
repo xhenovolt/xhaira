@@ -1,7 +1,7 @@
-# Jeton Financial Architecture Redesign
+# Xhaira Financial Architecture Redesign
 
 ## Vision
-Transform Jeton into a founder-level financial control center with strict data integrity, complete money tracking, and precise profit calculation.
+Transform Xhaira into a founder-level financial control center with strict data integrity, complete money tracking, and precise profit calculation.
 
 ## Current Gaps
 - ❌ No contract system (free-text sales)

@@ -35,14 +35,14 @@ const SETUP_PASSWORD_ROUTE = '/setup-password';
  * Extract session ID from cookie — edge-safe, no verification
  */
 function getSessionCookie(request: NextRequest): string | null {
-  return request.cookies.get('jeton_session')?.value ?? null;
+  return request.cookies.get('xhaira_session')?.value ?? null;
 }
 
 /**
  * Check if user has a pending password reset cookie
  */
 function hasMustResetCookie(request: NextRequest): boolean {
-  return request.cookies.get('jeton_must_reset')?.value === '1';
+  return request.cookies.get('xhaira_must_reset')?.value === '1';
 }
 
 export function middleware(request: NextRequest) {
@@ -53,7 +53,7 @@ export function middleware(request: NextRequest) {
   const debugInfo = `path=${pathname} hasCookie=${hasSessionCookie}`;
 
   // ── SETUP-PASSWORD GUARD ─────────────────────────────────────────────────
-  // If the user has `jeton_must_reset=1`, force them to /setup-password first.
+  // If the user has `xhaira_must_reset=1`, force them to /setup-password first.
   // Allow /api routes regardless.
   if (hasSessionCookie && hasMustResetCookie(request)) {
     if (!pathname.startsWith(SETUP_PASSWORD_ROUTE) && !pathname.startsWith('/api')) {

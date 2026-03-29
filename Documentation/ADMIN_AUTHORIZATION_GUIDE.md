@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Jeton admin panel now includes a robust authorization system with clear error messages and proper HTTP status codes.
+The Xhaira admin panel now includes a robust authorization system with clear error messages and proper HTTP status codes.
 
 ## Error Codes & Responses
 
@@ -116,7 +116,7 @@ UPDATE users SET is_superadmin = true WHERE email = 'xhenonpro@gmail.com';
 ```bash
 curl -X POST http://localhost:3000/api/admin/users \
   -H "Content-Type: application/json" \
-  -H "Cookie: jeton_session=..." \
+  -H "Cookie: xhaira_session=..." \
   -d '{
     "email": "newadmin@example.com",
     "username": "newadmin",
@@ -173,7 +173,7 @@ curl -X POST http://localhost:3000/api/admin/users \
 2. Verify `/api/auth/me` endpoint is working:
    ```bash
    curl http://localhost:3000/api/auth/me \
-     -H "Cookie: jeton_session=..."
+     -H "Cookie: xhaira_session=..."
    ```
 
 3. Check database connection is working
@@ -185,7 +185,7 @@ Returns current user info with roles
 
 **Headers:**
 ```
-Cookie: jeton_session=<session_id>
+Cookie: xhaira_session=<session_id>
 ```
 
 **Response (200):**

@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Jeton Theme Engine
+ * Xhaira Theme Engine
  * Handles: color mode (system/light/dark), accent palette,
  *          background gradients, glassmorphism, typography
  */
@@ -88,13 +88,13 @@ const DEFAULTS = {
 function loadPrefs() {
   if (typeof window === 'undefined') return DEFAULTS;
   try {
-    const raw = localStorage.getItem('jeton-theme-v2');
+    const raw = localStorage.getItem('xhaira-theme-v2');
     return raw ? { ...DEFAULTS, ...JSON.parse(raw) } : DEFAULTS;
   } catch { return DEFAULTS; }
 }
 
 function savePrefs(prefs) {
-  try { localStorage.setItem('jeton-theme-v2', JSON.stringify(prefs)); } catch {}
+  try { localStorage.setItem('xhaira-theme-v2', JSON.stringify(prefs)); } catch {}
 }
 
 function getSystemDark() {

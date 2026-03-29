@@ -18,7 +18,7 @@ import { getUserScopeInfo } from './permissions.js';
 export async function verifyAuth(request) {
   try {
     const cookieStore = await cookies();
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
 
     if (!sessionId) {
       console.warn('[Auth] No session cookie found');

@@ -133,7 +133,7 @@ export default function TypographyPage() {
             }}
           >
             The quick brown fox jumps over the lazy dog.
-            Jeton helps founders move fast without breaking things.
+            Xhaira helps founders move fast without breaking things.
             Every word counts, every number matters.
           </p>
           <p className="mt-3 text-xs text-muted-foreground">

@@ -1,11 +1,11 @@
-# Jeton - Executive Company Management & Decision Intelligence System
+# Xhaira - Executive Company Management & Decision Intelligence System
 
-Jeton is a production-grade, full-stack Next.js application designed as an **executive operating system** for managing company operations, finances, and strategic assets. It provides a founder-friendly, enterprise-class platform for accurate record-keeping, valuation analysis, and decision intelligence.
+Xhaira is a production-grade, full-stack Next.js application designed as an **executive operating system** for managing company operations, finances, and strategic assets. It provides a founder-friendly, enterprise-class platform for accurate record-keeping, valuation analysis, and decision intelligence.
 
 ## 🎯 Core Features
 
 ### 1. **Multi-Domain Architecture**
-Jeton separates business concerns into distinct operational domains:
+Xhaira separates business concerns into distinct operational domains:
 
 - **💰 Accounting Assets**: Tangible, depreciable items (laptops, phones, equipment, furniture)
 - **🚀 Intellectual Property**: Revenue-generating IP (software, internal systems, licensed IP, brands) 
@@ -281,7 +281,7 @@ curl -X POST http://localhost:3000/api/assets-accounting \
 curl -X POST http://localhost:3000/api/intellectual-property \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Jeton Platform",
+    "name": "Xhaira Platform",
     "ip_type": "software",
     "development_cost": 50000,
     "valuation_estimate": 150000,
@@ -346,4 +346,4 @@ This project is proprietary and confidential. All rights reserved.
 ---
 
 **Built with ❤️ for founders, by Xhenvolt**  
-**Jeton v1.0 - Executive Operating System**
+**Xhaira v1.0 - Executive Operating System**

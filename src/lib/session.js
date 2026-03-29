@@ -311,7 +311,7 @@ export async function revokeAllUserSessionsExcept(userId, exceptSessionId = null
  */
 export function getSessionFromCookies(cookies) {
   if (!cookies) return null;
-  return cookies.get('jeton_session')?.value || null;
+  return cookies.get('xhaira_session')?.value || null;
 }
 
 export default {

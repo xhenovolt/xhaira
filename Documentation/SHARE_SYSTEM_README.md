@@ -2,7 +2,7 @@
 
 ## 🎉 Project Summary
 
-A complete, production-ready two-layer share management system has been implemented for Jeton. The system includes a robust database schema, comprehensive backend library with 10 core functions, 6 API endpoints, and extensive documentation with real-world examples.
+A complete, production-ready two-layer share management system has been implemented for Xhaira. The system includes a robust database schema, comprehensive backend library with 10 core functions, 6 API endpoints, and extensive documentation with real-world examples.
 
 ---
 
@@ -263,7 +263,7 @@ scripts/
 ### Step 1: Execute Database Migration
 ```bash
 # Run the migration to create all tables and views
-psql -U postgres -d jeton < migrations/008_two_layer_share_model.sql
+psql -U postgres -d xhaira < migrations/008_two_layer_share_model.sql
 ```
 
 ### Step 2: Verify Installation

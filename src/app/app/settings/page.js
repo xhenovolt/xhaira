@@ -120,7 +120,7 @@ export default function SettingsPage() {
           <h2 className="font-semibold text-foreground">About</h2>
         </div>
         <div className="text-sm text-muted-foreground space-y-1">
-          <div>Jeton Founder OS</div>
+          <div>Xhaira Founder OS</div>
           <div>Architecture: Ledger-based finance, event-driven</div>
           <div>Database: PostgreSQL on Neon</div>
         </div>

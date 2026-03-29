@@ -1,4 +1,4 @@
-# 🎯 Jeton Financial System - Quick Reference Card
+# 🎯 Xhaira Financial System - Quick Reference Card
 
 ## One-Page Overview
 
@@ -213,7 +213,7 @@ curl http://localhost:3000/api/financial-audit
 
 ### 1. Apply Database Migration
 ```bash
-psql -U postgres -d jeton < migrations/030_financial_architecture_redesign.sql
+psql -U postgres -d xhaira < migrations/030_financial_architecture_redesign.sql
 ```
 
 ### 2. Test Contract Creation
@@ -373,7 +373,7 @@ After:   "I made 23,456,789 UGX" (with proof)
 
 ---
 
-## Integration with Existing Jeton
+## Integration with Existing Xhaira
 
 ✅ Works with: intellectual_property table (your systems)
 ✅ Works with: users table (for audit logging)

@@ -61,12 +61,12 @@ The admin authorization system now provides clear, actionable error messages ins
 │        403                      │
 │ Access Forbidden                │
 │                                 │
-│ Your account (user@jeton.ai)    │
+│ Your account (user@xhaira.ai)    │
 │ does not have administrator     │
 │ privileges.                     │
 │                                 │
 │ Current Account:                │
-│ John Doe (john@jeton.ai)        │
+│ John Doe (john@xhaira.ai)        │
 │                                 │
 │ Contact your system admin.      │
 │                                 │

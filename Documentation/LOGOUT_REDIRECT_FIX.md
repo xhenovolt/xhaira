@@ -167,7 +167,7 @@ if (isProtectedRoute(pathname)) {
 ```
 
 When client navigates to `/app/dashboard`:
-1. Middleware checks for `jeton_session` cookie
+1. Middleware checks for `xhaira_session` cookie
 2. Cookie not found (deleted by logout endpoint)
 3. Middleware redirects to `/login`
 4. User sees login page
@@ -181,7 +181,7 @@ Client requests /app/dashboard
     ↓
 Middleware intercepts
     ↓
-Read jeton_session cookie → null (or empty)
+Read xhaira_session cookie → null (or empty)
     ↓
 Call validateSession(null) → returns null
     ↓

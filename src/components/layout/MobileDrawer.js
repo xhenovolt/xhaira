@@ -127,7 +127,7 @@ export function MobileDrawer({ isOpen, onClose, user }) {
         {/* Header with Close Button */}
         <div className="flex items-center justify-between p-6 border-b border-border sticky top-0 bg-background z-10">
           <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Jeton
+            Xhaira
           </h1>
           <button
             ref={closeButtonRef}

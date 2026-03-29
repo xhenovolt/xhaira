@@ -1,4 +1,4 @@
-# 📚 Jeton Financial System - Documentation Index
+# 📚 Xhaira Financial System - Documentation Index
 
 ## Quick Navigation
 
@@ -38,7 +38,7 @@ migrations/030_financial_architecture_redesign.sql
 ├── Creates: clients, contracts, payments, allocations, expense_categories, expenses tables
 ├── Adds: Constraints, triggers, indexes, views
 ├── Data: Pre-populates 8 system expense categories
-└── Run once: psql -U postgres -d jeton < this_file.sql
+└── Run once: psql -U postgres -d xhaira < this_file.sql
 ```
 
 ### Backend APIs (14 Endpoints)
@@ -401,7 +401,7 @@ See: [FINANCIAL_SYSTEM_USAGE_GUIDE.md - Core Workflow](FINANCIAL_SYSTEM_USAGE_GU
 ## Files at a Glance
 
 ```
-📁 Jeton Financial System
+📁 Xhaira Financial System
 ├── 📄 FINANCIAL_QUICK_REFERENCE.md          ← Start here (5 min)
 ├── 📄 FINANCIAL_SYSTEM_SUMMARY.md           ← Complete reference (20 min)
 ├── 📄 FINANCIAL_SYSTEM_USAGE_GUIDE.md       ← How to use (30 min)

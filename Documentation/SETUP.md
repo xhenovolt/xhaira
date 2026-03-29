@@ -1,4 +1,4 @@
-# Jeton - Production-Grade Next.js + PostgreSQL Setup
+# Xhaira - Production-Grade Next.js + PostgreSQL Setup
 
 ## ✅ Setup Complete
 
@@ -79,7 +79,7 @@ Three semantic color palettes are integrated into Tailwind:
 ## 📂 Project Structure
 
 ```
-jeton/
+xhaira/
 ├── src/
 │   ├── app/
 │   │   ├── api/

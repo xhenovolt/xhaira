@@ -57,7 +57,7 @@ The Sidebar component has been completely redesigned with modern UX features, sm
 ```
 Sidebar (Main Component)
 ├── Header Section
-│   ├── Jeton Logo (animated fade)
+│   ├── Xhaira Logo (animated fade)
 │   └── Collapse Toggle Button
 ├── Navigation Area (scrollable)
 │   ├── Direct Links (Dashboard)

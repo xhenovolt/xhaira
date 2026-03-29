@@ -408,7 +408,7 @@ A: Activity table is new. Are you using new API? Old activities in different tab
 
 ---
 
-**Jeton is now a founder operating system, not a CRM.**
+**Xhaira is now a founder operating system, not a CRM.**
 
 System built for clarity, speed, and founder workflow amplification.
 

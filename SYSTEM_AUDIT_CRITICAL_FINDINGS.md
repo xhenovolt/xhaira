@@ -8,16 +8,16 @@
 
 ## EXECUTIVE SUMMARY
 
-Jeton application **CANNOT WORK** in its current state. The database connection is pointing to the wrong database, and core tables (prospects, clients, contracts, payments, allocations) **DO NOT EXIST** in any connected database.
+Xhaira application **CANNOT WORK** in its current state. The database connection is pointing to the wrong database, and core tables (prospects, clients, contracts, payments, allocations) **DO NOT EXIST** in any connected database.
 
 ---
 
 ## 🔴 CRITICAL ISSUE #1: DATABASE MISMATCH
 
 ### Problem
-- **.env.local** specifies database: `jeton`
+- **.env.local** specifies database: `xhaira`
 - **Terminal $DATABASE_URL** points to database: `xhenvolt` (a school management system)
-- Core Jeton routes are attempting to query tables that don't exist
+- Core Xhaira routes are attempting to query tables that don't exist
 - **Migration 101** (core tables creation) has never been successfully run
 
 ### Evidence
@@ -65,7 +65,7 @@ The connected database (`xhenvolt`) contains a **completely different applicatio
 - `students`
 - `teachers`
 - `attendance`
-- `fee_payments` (unrelated to Jeton payments)
+- `fee_payments` (unrelated to Xhaira payments)
 - `enrollments`
 
 ---
@@ -102,9 +102,9 @@ ERROR: relation "allocations" does not exist
 
 ### PHASE 1: Database Setup (IMMEDIATE - 30 min)
 
-**Option A: Create Fresh Jeton Database (RECOMMENDED)**
+**Option A: Create Fresh Xhaira Database (RECOMMENDED)**
 ```bash
-# 1. Create new Jeton database on Neon
+# 1. Create new Xhaira database on Neon
 # 2. Update .env.local with correct DATABASE_URL
 # 3. Run all migrations in order:
 psql $DATABASE_URL -f migrations/001_initial_schema.sql
@@ -115,7 +115,7 @@ psql $DATABASE_URL -f migrations/101_add_missing_core_tables.sql
 **Option B: Clean Existing Database**
 ```bash
 # Drop all school-system tables from 'xhenvolt' database
-# Run Jeton migrations fresh
+# Run Xhaira migrations fresh
 # Update .env.local to point to 'xhenvolt'
 ```
 
@@ -287,7 +287,7 @@ System is production-ready when:
 ## 📞 NEXT STEPS
 
 1. **Founder decision required:**
-   - Create new "jeton" database on Neon? OR
+   - Create new "xhaira" database on Neon? OR
    - Use "xhenvolt" database (wipe school data)?
 
 2. **Once decided:**

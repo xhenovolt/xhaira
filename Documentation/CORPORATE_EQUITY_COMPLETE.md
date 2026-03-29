@@ -2,7 +2,7 @@
 
 ## 📢 Executive Summary
 
-You've just received a **professional-grade, URSB-compliant equity management system** that transforms Jeton from a dashboard into a **founder-grade corporate control platform**.
+You've just received a **professional-grade, URSB-compliant equity management system** that transforms Xhaira from a dashboard into a **founder-grade corporate control platform**.
 
 **Status**: ✅ READY FOR PRODUCTION  
 **Date**: December 30, 2025  
@@ -260,7 +260,7 @@ Another round of issuance:
   • By Series B, founder owns <30% (this is reality)
 ```
 
-**This is how real companies work. Jeton now has this built in.**
+**This is how real companies work. Xhaira now has this built in.**
 
 ---
 
@@ -518,7 +518,7 @@ You now have a **professional-grade equity management system** that took months 
 - Impress investors with professionalism
 - Sleep well knowing everything's audited
 
-**This is Jeton evolving into a real founder-grade corporate control platform.**
+**This is Xhaira evolving into a real founder-grade corporate control platform.**
 
 **Start managing your equity. Start building your company. Start scaling.**
 

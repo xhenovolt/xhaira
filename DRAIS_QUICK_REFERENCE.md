@@ -250,7 +250,7 @@ const POLL_INTERVAL = 60000; // 60 seconds
 
 ✅ **NO local school data storage** - Everything from DRAIS
 ✅ **LIVE data always** - Real-time polling
-✅ **JETON controls pricing** - DRAIS fetches from Jeton
+✅ **JETON controls pricing** - DRAIS fetches from Xhaira
 ✅ **Security first** - Never expose API keys in frontend
 ✅ **Error resilient** - Fallback UI when DRAIS down
 ✅ **User-friendly** - Toast notifications for all actions

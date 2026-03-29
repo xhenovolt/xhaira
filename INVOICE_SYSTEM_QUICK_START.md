@@ -6,7 +6,7 @@
 
 ```bash
 # Option A: Using psql directly
-psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/jeton?sslmode=require" << 'EOF'
+psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/xhaira?sslmode=require" << 'EOF'
 
 -- Create invoices table
 CREATE TABLE IF NOT EXISTS invoices (
@@ -70,7 +70,7 @@ EOF
 
 ```bash
 # Check that tables exist
-psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/jeton?sslmode=require" << 'EOF'
+psql "postgresql://neondb_owner:npg_HExwNUY6aVP9@ep-small-sound-adgn2dmu-pooler.c-2.us-east-1.aws.neon.tech/xhaira?sslmode=require" << 'EOF'
 \dt invoices
 \dt invoice_items
 EOF

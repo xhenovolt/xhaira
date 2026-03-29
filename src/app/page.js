@@ -26,7 +26,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold text-primary">Jeton</div>
+          <div className="text-2xl font-bold text-primary">Xhaira</div>
           <div className="flex items-center gap-3">
             <Link href="/docs" className="px-4 py-2 text-foreground hover:text-primary transition text-sm">Docs</Link>
             {authLoading ? (
@@ -287,7 +287,7 @@ export default function Home() {
             Take Control of Your Financial Future
           </h2>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-            Join founders and financial decision-makers who use Jeton to manage billions in assets and pipeline value.
+            Join founders and financial decision-makers who use Xhaira to manage billions in assets and pipeline value.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {authUser ? (
@@ -313,10 +313,10 @@ export default function Home() {
       <footer className="bg-surface-50 border-t border-border py-12 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-muted-foreground mb-4">
-            Jeton - Enterprise Financial Intelligence
+            Xhaira - Enterprise Financial Intelligence
           </p>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Jeton. All rights reserved.
+            © {new Date().getFullYear()} Xhaira. All rights reserved.
           </p>
         </div>
       </footer>

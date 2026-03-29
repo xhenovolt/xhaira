@@ -2,7 +2,7 @@
 
 ## ✅ DELIVERY COMPLETE
 
-A fully functional, production-ready two-layer share management system has been delivered for Jeton.
+A fully functional, production-ready two-layer share management system has been delivered for Xhaira.
 
 ---
 
@@ -197,7 +197,7 @@ scripts/validate-share-migration.sh               (85 lines)
 ### Quick Start (5 minutes)
 ```bash
 # 1. Execute migration
-psql -U postgres -d jeton < migrations/008_two_layer_share_model.sql
+psql -U postgres -d xhaira < migrations/008_two_layer_share_model.sql
 
 # 2. Verify installation
 ./scripts/validate-share-migration.sh

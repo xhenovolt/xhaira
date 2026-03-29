@@ -2,7 +2,7 @@
 
 ## 🎯 Mission Accomplished
 
-The Equity Type feature has been **successfully implemented** across the entire Jeton equity management system. This enhancement adds the ability to track whether shares are **PURCHASED** (💳 cash investment) or **GRANTED** (🎁 equity incentive).
+The Equity Type feature has been **successfully implemented** across the entire Xhaira equity management system. This enhancement adds the ability to track whether shares are **PURCHASED** (💳 cash investment) or **GRANTED** (🎁 equity incentive).
 
 ---
 

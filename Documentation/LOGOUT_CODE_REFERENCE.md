@@ -11,7 +11,7 @@ POST /api/auth/logout endpoint
     ↓
 deleteSession(sessionId) from database
     ↓
-Clear jeton_session cookie
+Clear xhaira_session cookie
     ↓
 Browser receives 200 response
     ↓
@@ -21,7 +21,7 @@ User redirected to login page
     ↓
 Any attempt to access /app/* routes
     ↓
-Middleware checks for jeton_session cookie
+Middleware checks for xhaira_session cookie
     ↓
 Cookie not found OR session not in database
     ↓
@@ -113,7 +113,7 @@ export async function POST(request) {
 
     // STEP 1: Get session from cookie
     const cookieStore = await cookies();
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
     let userId = null;
 
     // STEP 2: Retrieve session from database and delete it
@@ -143,7 +143,7 @@ export async function POST(request) {
     );
 
     // STEP 5: Clear the session cookie from browser
-    response.cookies.set('jeton_session', '', {
+    response.cookies.set('xhaira_session', '', {
       httpOnly: true,                              // Can't be accessed by JS
       secure: process.env.NODE_ENV === 'production', // HTTPS only in prod
       sameSite: 'lax',                             // CSRF protection
@@ -155,7 +155,7 @@ export async function POST(request) {
     // Browser receives:
     // - 200 OK status
     // - { message: 'Logged out successfully' }
-    // - Set-Cookie: jeton_session=; HttpOnly; Max-Age=0; ...
+    // - Set-Cookie: xhaira_session=; HttpOnly; Max-Age=0; ...
   } catch (error) {
     console.error('Logout error:', error);
     return NextResponse.json(
@@ -167,7 +167,7 @@ export async function POST(request) {
 ```
 
 **What happens here**:
-1. Extracts `jeton_session` cookie from request
+1. Extracts `xhaira_session` cookie from request
 2. Gets session data from database
 3. **Deletes session from database** (permanent!)
 4. Logs audit event
@@ -223,14 +223,14 @@ export async function deleteSession(sessionId) {
 The browser receives:
 ```http
 HTTP/1.1 200 OK
-Set-Cookie: jeton_session=; HttpOnly; Secure; SameSite=Lax; Max-Age=0; Path=/
+Set-Cookie: xhaira_session=; HttpOnly; Secure; SameSite=Lax; Max-Age=0; Path=/
 Content-Type: application/json
 
 {"message":"Logged out successfully"}
 ```
 
 **What happens**:
-1. Browser sees `maxAge: 0` → **deletes jeton_session cookie**
+1. Browser sees `maxAge: 0` → **deletes xhaira_session cookie**
 2. Response is 200 OK (successful)
 3. `response.ok` is true
 4. `handleLogout()` executes: `window.location.href = '/login'`
@@ -252,7 +252,7 @@ export async function middleware(request) {
   // STEP 1: Extract session ID from cookie
   const sessionId = getSessionFromRequest(request);
   // After logout, getSessionFromRequest returns null
-  // because jeton_session cookie was deleted
+  // because xhaira_session cookie was deleted
   
   // STEP 2: Validate session
   const session = sessionId ? await validateSession(sessionId) : null;
@@ -281,7 +281,7 @@ export async function middleware(request) {
 **What happens**:
 1. User navigates to `/app/dashboard`
 2. Middleware runs before page loads
-3. Extracts `jeton_session` cookie → **null** (deleted)
+3. Extracts `xhaira_session` cookie → **null** (deleted)
 4. Calls `validateSession(null)` → **null**
 5. Checks: `isProtectedRoute('/app/dashboard')` → **true**
 6. Checks: `if (!session)` → **true** (session is null)
@@ -352,7 +352,7 @@ async function validateSession(sessionId) {
 ### Before Logout
 ```
 Browser State:
-- jeton_session cookie: present ✓
+- xhaira_session cookie: present ✓
 - Value: "550e8400-e29b-41d4-a716-446655440000"
 
 Database State:
@@ -364,21 +364,21 @@ Database State:
 ```
 Browser sends:
 POST /api/auth/logout
-Cookie: jeton_session=550e8400-e29b-41d4-a716-446655440000
+Cookie: xhaira_session=550e8400-e29b-41d4-a716-446655440000
 
 Server processes:
 1. Extract sessionId from cookie
 2. Execute: DELETE FROM sessions WHERE id = '550e8400...'
-3. Clear cookie: Set-Cookie: jeton_session=; Max-Age=0
+3. Clear cookie: Set-Cookie: xhaira_session=; Max-Age=0
 4. Return: 200 OK
 
 Browser receives:
 HTTP/1.1 200 OK
-Set-Cookie: jeton_session=; Max-Age=0
+Set-Cookie: xhaira_session=; Max-Age=0
 Body: {"message":"Logged out successfully"}
 
 Browser action:
-1. Delete jeton_session cookie
+1. Delete xhaira_session cookie
 2. window.location.href = '/login'
 3. Navigate to /login page
 ```
@@ -386,7 +386,7 @@ Browser action:
 ### After Logout
 ```
 Browser State:
-- jeton_session cookie: GONE (deleted)
+- xhaira_session cookie: GONE (deleted)
 - localStorage: empty (no tokens stored)
 
 Database State:
@@ -412,7 +412,7 @@ await deleteSession(sessionId);  // Permanent deletion
 
 ✅ **Cookie Clearing**
 ```javascript
-response.cookies.set('jeton_session', '', {
+response.cookies.set('xhaira_session', '', {
   maxAge: 0,  // ← Browser deletes cookie
   ...
 });
@@ -420,7 +420,7 @@ response.cookies.set('jeton_session', '', {
 
 ✅ **HttpOnly Flag**
 ```javascript
-response.cookies.set('jeton_session', '', {
+response.cookies.set('xhaira_session', '', {
   httpOnly: true,  // ← JavaScript cannot access
   ...
 });
@@ -464,7 +464,7 @@ if (isProtectedRoute(pathname)) {
 curl -X POST http://localhost:3000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"password"}' \
-  -v 2>&1 | grep -i "jeton_session"
+  -v 2>&1 | grep -i "xhaira_session"
 
 # Copy the session ID from Set-Cookie header
 SESSION_ID="copied-value"
@@ -475,7 +475,7 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM sessions WHERE id='$SESSION_ID';"
 
 # 3. Call logout endpoint
 curl -X POST http://localhost:3000/api/auth/logout \
-  -H "Cookie: jeton_session=$SESSION_ID" \
+  -H "Cookie: xhaira_session=$SESSION_ID" \
   -i
 
 # 4. Verify session is deleted from database
@@ -484,7 +484,7 @@ psql $DATABASE_URL -c "SELECT COUNT(*) FROM sessions WHERE id='$SESSION_ID';"
 
 # 5. Try to use old session
 curl http://localhost:3000/api/auth/me \
-  -H "Cookie: jeton_session=$SESSION_ID" \
+  -H "Cookie: xhaira_session=$SESSION_ID" \
   -i
 # Should return: 401 Unauthorized
 
@@ -550,7 +550,7 @@ When deploying to production:
 ```bash
 # In production environment variables:
 NODE_ENV=production
-DATABASE_URL=postgresql://user:pass@prod-db.com/jeton
+DATABASE_URL=postgresql://user:pass@prod-db.com/xhaira
 
 # Deployment:
 npm run build
@@ -558,7 +558,7 @@ npm start
 
 # Verify:
 curl -X POST https://yourdomain.com/api/auth/logout \
-  -H "Cookie: jeton_session=test" \
+  -H "Cookie: xhaira_session=test" \
   -v 2>&1 | grep -i "secure"
 # Should see: Secure flag set on Set-Cookie
 ```

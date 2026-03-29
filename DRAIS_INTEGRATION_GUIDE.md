@@ -279,7 +279,7 @@ const response = await fetch('/api/drais/pricing', {
 
 ```javascript
 // Available at: GET http://localhost:3000/api/pricing
-const response = await fetch('http://jeton-api.com/api/pricing');
+const response = await fetch('http://xhaira-api.com/api/pricing');
 const plans = await response.json();
 // DRAIS uses this to show prices to schools
 ```
@@ -440,7 +440,7 @@ curl http://localhost:3000/api/drais/health
 
 ### Pricing Changes Not Live on DRAIS
 
-**Symptom:** Update price in Jeton but DRAIS still shows old price
+**Symptom:** Update price in Xhaira but DRAIS still shows old price
 
 **Solution:**
 1. Verify DRAIS is fetching from `/api/pricing` endpoint
@@ -465,7 +465,7 @@ curl http://localhost:3000/api/drais/health
 
 ✅ JETON controls global pricing
 ✅ Pricing changes are central  governance
-✅ DRAIS fetches on-demand from Jeton
+✅ DRAIS fetches on-demand from Xhaira
 ✅ Allows offline pricing if needed
 ✅ Audit trail of price changes
 

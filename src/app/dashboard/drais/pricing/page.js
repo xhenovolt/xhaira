@@ -6,7 +6,7 @@
  * JETON CONTROLS PRICING
  * DRAIS CONSUMES PRICING
  * 
- * This is the power move: Jeton becomes the pricing controller
+ * This is the power move: Xhaira becomes the pricing controller
  * that DRAIS fetches from via API
  */
 

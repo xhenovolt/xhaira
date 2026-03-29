@@ -32,7 +32,7 @@ The logout functionality is **fully implemented and working correctly**. After a
 │            Logout API Endpoint (route.js)                       │
 │      src/app/api/auth/logout/route.js (Line 1-60)               │
 │                                                                  │
-│  1. Extract jeton_session cookie from request                   │
+│  1. Extract xhaira_session cookie from request                   │
 │  2. Call getSession(sessionId) → get session data               │
 │  3. Call deleteSession(sessionId)                               │
 │     └─ Executes: DELETE FROM sessions WHERE id = ?              │
@@ -46,8 +46,8 @@ The logout functionality is **fully implemented and working correctly**. After a
 ┌─────────────────────────────────────────────────────────────────┐
 │        Browser Receives 200 OK Response                         │
 │                                                                  │
-│  1. Set-Cookie: jeton_session=; HttpOnly; Max-Age=0             │
-│     └─ Browser DELETES the jeton_session cookie               │
+│  1. Set-Cookie: xhaira_session=; HttpOnly; Max-Age=0             │
+│     └─ Browser DELETES the xhaira_session cookie               │
 │  2. handleLogout() condition: if (response.ok) → TRUE          │
 │  3. window.location.href = '/login'                            │
 │     └─ Browser REDIRECTS to /login page                        │
@@ -58,7 +58,7 @@ The logout functionality is **fully implemented and working correctly**. After a
 │              User is Now at /login Page                         │
 │                                                                  │
 │  Status After Logout:                                           │
-│  ✅ jeton_session cookie: DELETED from browser                 │
+│  ✅ xhaira_session cookie: DELETED from browser                 │
 │  ✅ Session record: DELETED from database                      │
 │  ✅ User cannot access any protected route                     │
 │  ✅ Must login again to proceed                                │
@@ -70,7 +70,7 @@ The logout functionality is **fully implemented and working correctly**. After a
 │                                                                  │
 │  Middleware Execution (middleware.js):                          │
 │  1. getSessionFromRequest(request)                              │
-│     └─ Tries to read jeton_session cookie → NOT FOUND          │
+│     └─ Tries to read xhaira_session cookie → NOT FOUND          │
 │     └─ Returns null                                             │
 │  2. validateSession(null)                                       │
 │     └─ Query: SELECT * FROM sessions WHERE id = null           │
@@ -125,7 +125,7 @@ export async function POST(request) {
   try {
     // 1. Get session from cookie
     const cookieStore = await cookies();
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
     let userId = null;
 
     if (sessionId) {
@@ -151,7 +151,7 @@ export async function POST(request) {
       { message: 'Logged out successfully' },
       { status: 200 }
     );
-    response.cookies.set('jeton_session', '', {
+    response.cookies.set('xhaira_session', '', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
@@ -171,7 +171,7 @@ export async function POST(request) {
 ```
 
 **What it does**:
-1. Extracts session ID from jeton_session cookie
+1. Extracts session ID from xhaira_session cookie
 2. Retrieves session from database
 3. **DELETES session from database** ← Key security feature
 4. Logs audit event for compliance
@@ -277,7 +277,7 @@ After logout:
 
 ### Scenario 1: Try to Use Old Cookie
 ```
-User keeps the old jeton_session cookie value
+User keeps the old xhaira_session cookie value
 User navigates to /app/dashboard
 ├─ Middleware extracts old session ID from cookie
 ├─ Middleware calls validateSession(oldSessionId)
@@ -291,7 +291,7 @@ User navigates to /app/dashboard
 
 ### Scenario 2: Try to Manually Create Fake Cookie
 ```
-User creates new cookie: jeton_session=fake123
+User creates new cookie: xhaira_session=fake123
 User navigates to /app/assets
 ├─ Middleware extracts session ID: "fake123"
 ├─ Middleware calls validateSession("fake123")
@@ -330,7 +330,7 @@ Attacker creates session record in DB manually
   - Expected: All redirected to /login
   
 - [ ] Check DevTools → Application → Cookies
-  - Expected: jeton_session cookie is GONE (not visible)
+  - Expected: xhaira_session cookie is GONE (not visible)
   
 - [ ] Refresh /login page
   - Expected: Still on /login (not auto-logged in)
@@ -355,17 +355,17 @@ SESSION_ID="<copy-from-set-cookie>"
 
 # Test /api/auth/me with valid session
 curl http://localhost:3000/api/auth/me \
-  -H "Cookie: jeton_session=$SESSION_ID"
+  -H "Cookie: xhaira_session=$SESSION_ID"
 # Expected: 200 OK with user data
 
 # Call logout endpoint
 curl -X POST http://localhost:3000/api/auth/logout \
-  -H "Cookie: jeton_session=$SESSION_ID"
+  -H "Cookie: xhaira_session=$SESSION_ID"
 # Expected: 200 OK, Set-Cookie with Max-Age=0
 
 # Test /api/auth/me with deleted session
 curl http://localhost:3000/api/auth/me \
-  -H "Cookie: jeton_session=$SESSION_ID"
+  -H "Cookie: xhaira_session=$SESSION_ID"
 # Expected: 401 Unauthorized
 ```
 

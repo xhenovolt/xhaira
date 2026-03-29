@@ -1,8 +1,8 @@
-# Jeton Authentication System Guide
+# Xhaira Authentication System Guide
 
 ## Overview
 
-Jeton uses a **session-based authentication system** with HTTP-only cookies for secure user authentication. This guide explains the complete architecture, how sessions work, and how to use authentication in your application.
+Xhaira uses a **session-based authentication system** with HTTP-only cookies for secure user authentication. This guide explains the complete architecture, how sessions work, and how to use authentication in your application.
 
 ## Table of Contents
 
@@ -37,7 +37,7 @@ The authentication system uses a **stateful session model** with cookies instead
      ↓
   Create Session in Database
      ↓
-  Set jeton_session HTTP-Only Cookie
+  Set xhaira_session HTTP-Only Cookie
      ↓
   Redirect to Dashboard
      ↓
@@ -85,12 +85,12 @@ CREATE INDEX idx_sessions_created_at ON sessions(created_at);
 - Tracks last activity for online status
 - Indexed for fast lookups
 
-### 2. jeton_session Cookie
+### 2. xhaira_session Cookie
 
 A secure HTTP-only cookie set on login containing the session ID:
 
 ```
-Name: jeton_session
+Name: xhaira_session
 Value: <UUID>
 HttpOnly: true
 Secure: true (in production)
@@ -147,7 +147,7 @@ INSERT INTO sessions (id, user_id, expires_at, created_at, last_activity)
 VALUES ($1, $2, NOW() + interval '7 days', NOW(), NOW())
 
 // 6. Set HTTP-only cookie
-response.cookies.set('jeton_session', sessionId, {
+response.cookies.set('xhaira_session', sessionId, {
   httpOnly: true,
   secure: true,
   sameSite: 'lax',
@@ -166,7 +166,7 @@ User Request to /dashboard
          ↓
    Middleware Checks
          ↓
-   Has jeton_session cookie?
+   Has xhaira_session cookie?
     ↙                      ↘
   YES                       NO
    ↓                        ↓
@@ -193,13 +193,13 @@ Invalid? → Return 401 Unauthorized
 POST /api/auth/logout
 
 // 2. Get session from cookie
-const sessionId = cookies.get('jeton_session')?.value
+const sessionId = cookies.get('xhaira_session')?.value
 
 // 3. Delete from database
 DELETE FROM sessions WHERE id = $1
 
 // 4. Clear cookie
-response.cookies.set('jeton_session', '', { maxAge: 0 })
+response.cookies.set('xhaira_session', '', { maxAge: 0 })
 
 // 5. Redirect to login
 return redirect('/login')
@@ -264,7 +264,7 @@ Authenticate user and create session.
 
 **Headers Set:**
 ```
-Set-Cookie: jeton_session=<uuid>; HttpOnly; Secure; SameSite=Lax; Max-Age=604800; Path=/
+Set-Cookie: xhaira_session=<uuid>; HttpOnly; Secure; SameSite=Lax; Max-Age=604800; Path=/
 ```
 
 **Errors:**
@@ -290,7 +290,7 @@ POST /api/auth/logout
 
 **Headers Set:**
 ```
-Set-Cookie: jeton_session=; HttpOnly; Secure; SameSite=Lax; MaxAge=0; Path=/
+Set-Cookie: xhaira_session=; HttpOnly; Secure; SameSite=Lax; MaxAge=0; Path=/
 ```
 
 ### POST /api/auth/register
@@ -612,7 +612,7 @@ The middleware handles initial route protection and only performs cookie checkin
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Check if jeton_session cookie exists
+  // Check if xhaira_session cookie exists
   const hasSessionCookie = !!getSessionCookie(request);
   
   // Protected routes: require session cookie
@@ -634,7 +634,7 @@ export function middleware(request: NextRequest) {
 
 ### Protected Routes
 
-Middleware protects these routes (requires jeton_session cookie):
+Middleware protects these routes (requires xhaira_session cookie):
 
 ```
 /dashboard
@@ -1096,7 +1096,7 @@ export function LogoutButton() {
 // Frontend - fetch with credentials (sends cookies automatically)
 const response = await fetch('/api/assets', {
   method: 'POST',
-  credentials: 'include', // ✅ Important: send jeton_session cookie
+  credentials: 'include', // ✅ Important: send xhaira_session cookie
   headers: {
     'Content-Type': 'application/json',
   },
@@ -1116,7 +1116,7 @@ const result = await response.json();
 ### User Immediately Logs Out
 
 **Check:**
-1. Is `jeton_session` cookie being set? (DevTools → Application → Cookies)
+1. Is `xhaira_session` cookie being set? (DevTools → Application → Cookies)
 2. Is session in database? (Query: `SELECT * FROM sessions WHERE user_id = ?`)
 3. Has session expired? (Check `expires_at > NOW()`)
 4. Is user.status = 'active'? (Check users table)
@@ -1124,7 +1124,7 @@ const result = await response.json();
 ### Middleware Always Redirects to /login
 
 **Check:**
-1. Cookie name is exactly `jeton_session`
+1. Cookie name is exactly `xhaira_session`
 2. Session ID exists in database (not expired)
 3. Database connection is working
 4. Check middleware logs for errors
@@ -1218,7 +1218,7 @@ const SESSION_DURATION = 24 * 60 * 60 * 1000;
 
 ## Summary
 
-Jeton's authentication system provides:
+Xhaira's authentication system provides:
 
 ✅ **Secure** - HTTP-only cookies, bcrypt passwords, SQL injection prevention  
 ✅ **Simple** - No complex JWT logic, transparent to client code  

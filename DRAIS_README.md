@@ -21,7 +21,7 @@ API Security Layer (Authentication + Permissions)
      ↓
 DRAIS API (Execute orders)
      ↓
-Schools (Follow Jeton's rules)
+Schools (Follow Xhaira's rules)
 ```
 
 ---

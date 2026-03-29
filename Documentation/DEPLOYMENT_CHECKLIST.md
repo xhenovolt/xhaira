@@ -57,8 +57,8 @@
 
 ### Step 1: Run Database Migration
 ```bash
-cd /home/xhenvolt/projects/jeton
-psql -d jeton < migrations/007_add_equity_type.sql
+cd /home/xhenvolt/projects/xhaira
+psql -d xhaira < migrations/007_add_equity_type.sql
 ```
 
 **Expected Output:**
@@ -72,14 +72,14 @@ COMMIT
 
 **Verify:**
 ```bash
-psql -d jeton
-jeton=# \d shareholdings
+psql -d xhaira
+xhaira=# \d shareholdings
 # Should show equity_type column with default 'PURCHASED'
 
-jeton=# \d share_issuances
+xhaira=# \d share_issuances
 # Should show equity_type column with default 'GRANTED'
 
-jeton=# \d share_transfers
+xhaira=# \d share_transfers
 # Should show equity_type column with default 'PURCHASED'
 ```
 
@@ -168,13 +168,13 @@ curl http://localhost:3000/api/equity/cap-table
 **Solution:**
 ```bash
 # Check if tables exist
-psql -d jeton -c "\d shareholdings"
+psql -d xhaira -c "\d shareholdings"
 
 # If migration partially ran, check status
-psql -d jeton -c "SELECT column_name FROM information_schema.columns WHERE table_name = 'shareholdings'"
+psql -d xhaira -c "SELECT column_name FROM information_schema.columns WHERE table_name = 'shareholdings'"
 
 # Re-run migration (idempotent - uses IF NOT EXISTS)
-psql -d jeton < migrations/007_add_equity_type.sql
+psql -d xhaira < migrations/007_add_equity_type.sql
 ```
 
 ### Issue: Equity Type dropdown doesn't appear

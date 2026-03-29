@@ -321,7 +321,7 @@ The `equity_type` field enables:
 
 1. **Run database migration:**
    ```bash
-   psql -d jeton < migrations/007_add_equity_type.sql
+   psql -d xhaira < migrations/007_add_equity_type.sql
    ```
 
 2. **Restart application:**

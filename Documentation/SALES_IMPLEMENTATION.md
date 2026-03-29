@@ -166,7 +166,7 @@ Functions:
 ## File Inventory
 
 ```
-/home/xhenvolt/projects/jeton/
+/home/xhenvolt/projects/xhaira/
 ├── migrations/
 │   └── create_sales_tables.sql          [1200 lines, DB schema + triggers]
 ├── src/
@@ -279,6 +279,6 @@ All functionality tested and working:
 
 The Sales Module is **fully implemented, tested, and production-ready**. All 7 API endpoints are functional, the frontend provides a complete user interface with modals for all CRUD operations, database automation ensures data consistency, and comprehensive documentation is available for maintenance and future enhancements.
 
-The module follows Jeton's established patterns and integrates seamlessly with existing systems (Dashboard, Sidebar, Shares module, etc.).
+The module follows Xhaira's established patterns and integrates seamlessly with existing systems (Dashboard, Sidebar, Shares module, etc.).
 
 **Status**: 🟢 **COMPLETE AND READY FOR DEPLOYMENT**

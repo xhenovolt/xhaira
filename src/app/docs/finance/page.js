@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export const metadata = { title: 'Finance — Jeton Docs' };
+export const metadata = { title: 'Finance — Xhaira Docs' };
 
 const accountTypes = [
   { type: 'Asset', examples: 'Bank accounts, receivables, equipment', normal: 'Debit' },
@@ -30,7 +30,7 @@ export default function FinancePage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">Chart of Accounts</h2>
           <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-            Your chart of accounts is the backbone of your financial records. Every transaction is assigned to at least two accounts (debit and credit). Jeton creates default accounts when you set up your workspace — you can add custom ones at any time.
+            Your chart of accounts is the backbone of your financial records. Every transaction is assigned to at least two accounts (debit and credit). Xhaira creates default accounts when you set up your workspace — you can add custom ones at any time.
           </p>
           <div className="border border-border rounded-xl overflow-hidden">
             <table className="w-full text-sm">
@@ -77,7 +77,7 @@ export default function FinancePage() {
         <section>
           <h2 className="text-xl font-semibold text-foreground mb-4">Budgets</h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Create monthly or annual budgets per expense category. Jeton tracks your actuals against budgeted amounts in real-time, surfacing overspending via alerts in the Reports module.
+            Create monthly or annual budgets per expense category. Xhaira tracks your actuals against budgeted amounts in real-time, surfacing overspending via alerts in the Reports module.
           </p>
         </section>
 

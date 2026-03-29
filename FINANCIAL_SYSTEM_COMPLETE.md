@@ -1,4 +1,4 @@
-# 🏦 Jeton Financial Architecture - Complete Implementation
+# 🏦 Xhaira Financial Architecture - Complete Implementation
 
 ## What Has Been Built
 
@@ -159,7 +159,7 @@ FINANCIAL_SYSTEM_USAGE_GUIDE.md
 
 ### Phase 1: Database Setup (5 minutes)
 - [ ] Review migration file: `migrations/030_financial_architecture_redesign.sql`
-- [ ] Apply migration: `psql -U postgres -d jeton < migrations/030_financial_architecture_redesign.sql`
+- [ ] Apply migration: `psql -U postgres -d xhaira < migrations/030_financial_architecture_redesign.sql`
 - [ ] Verify tables created in database
 
 ### Phase 2: API Testing (15 minutes)

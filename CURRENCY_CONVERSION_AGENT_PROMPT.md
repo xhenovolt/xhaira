@@ -1,8 +1,8 @@
-# Jeton Currency Conversion Agent Prompt
+# Xhaira Currency Conversion Agent Prompt
 ## One-Time USD → UGX Conversion for System "Consty"
 
 ### MISSION CRITICAL
-Your task is to **identify all USD amounts across Jeton for the "consty" system and convert them to Uganda Shillings (UGX)** as a one-time operation. This is NOT a recurring change - this is a data correction to fix historical USD tracking.
+Your task is to **identify all USD amounts across Xhaira for the "consty" system and convert them to Uganda Shillings (UGX)** as a one-time operation. This is NOT a recurring change - this is a data correction to fix historical USD tracking.
 
 **Exchange Rate: 1 USD = 3,700 UGX** (as of March 2026)
 

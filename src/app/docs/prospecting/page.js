@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
 
-export const metadata = { title: 'Prospecting — Jeton Docs' };
+export const metadata = { title: 'Prospecting — Xhaira Docs' };
 
 export default function ProspectingPage() {
   return (

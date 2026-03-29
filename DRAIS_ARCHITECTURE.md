@@ -127,7 +127,7 @@ User Clicks "Suspend" Button
 **Permission Required:** `drais.control` (destructive)
 **Confirmation:** Required before execution
 **Audit Trail:** Logged in DRAIS + JETON system events
-**Revertible:** User can activate school from Jeton
+**Revertible:** User can activate school from Xhaira
 
 ### Pricing Configuration Flow
 

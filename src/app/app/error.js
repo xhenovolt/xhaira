@@ -10,7 +10,7 @@ import { AlertTriangle, LayoutDashboard, Home, RefreshCcw } from 'lucide-react';
  */
 export default function AppError({ error, reset }) {
   useEffect(() => {
-    console.error('[Jeton] App error:', error);
+    console.error('[Xhaira] App error:', error);
   }, [error]);
 
   return (

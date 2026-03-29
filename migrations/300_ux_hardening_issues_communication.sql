@@ -16,7 +16,7 @@
 
 CREATE TABLE IF NOT EXISTS issues (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  system_id VARCHAR(100) NOT NULL DEFAULT 'Jeton',  -- Which system reported this
+  system_id VARCHAR(100) NOT NULL DEFAULT 'Xhaira',  -- Which system reported this
   title VARCHAR(500) NOT NULL,                       -- Error message or issue title
   description TEXT,                                  -- Full error stack trace or details
   severity VARCHAR(50) NOT NULL DEFAULT 'medium'    -- critical, high, medium, low

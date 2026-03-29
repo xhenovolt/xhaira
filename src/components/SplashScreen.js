@@ -22,8 +22,8 @@ export default function SplashScreen({ onFinished }) {
       {/* Center logo + name */}
       <div className="flex flex-col items-center gap-4 animate-[fadeInUp_0.6s_ease-out]">
         <Image
-          src="/Jeton.png"
-          alt="Jeton"
+          src="/Xhaira.png"
+          alt="Xhaira"
           width={120}
           height={120}
           priority

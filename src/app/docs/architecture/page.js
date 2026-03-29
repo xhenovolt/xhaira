@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Shield, Lock } from 'lucide-react';
 import { getCurrentUser } from '@/lib/current-user';
 
-export const metadata = { title: 'Architecture — Jeton Docs' };
+export const metadata = { title: 'Architecture — Xhaira Docs' };
 
 export default async function ArchitecturePage() {
   const user = await getCurrentUser();

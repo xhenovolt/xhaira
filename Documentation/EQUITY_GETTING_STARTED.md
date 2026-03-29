@@ -6,7 +6,7 @@
 
 **If using psql CLI:**
 ```bash
-cd /home/xhenvolt/projects/jeton
+cd /home/xhenvolt/projects/xhaira
 
 # Run the migration
 psql $DATABASE_URL < migrations/008_corporate_equity_refactor.sql

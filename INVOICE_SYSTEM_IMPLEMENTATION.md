@@ -164,7 +164,7 @@ All 7 phases of the invoice system have been fully implemented and production-re
 ## Complete File Structure
 
 ```
-jeton/
+xhaira/
 ├── migrations/
 │   ├── 006_create_invoices_table.sql ✅
 │   └── 007_create_invoice_items_table.sql ✅

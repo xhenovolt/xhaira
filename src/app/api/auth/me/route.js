@@ -17,7 +17,7 @@ export async function GET(request) {
 
     // Get session from cookies
     const cookieStore = await cookies();
-    const sessionId = cookieStore.get('jeton_session')?.value;
+    const sessionId = cookieStore.get('xhaira_session')?.value;
 
     if (!sessionId) {
       await logRouteAccess({

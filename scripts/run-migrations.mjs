@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Migration Runner for Jeton Core Systems Upgrade
+ * Migration Runner for Xhaira Core Systems Upgrade
  * Applies migrations 946 and 947
  * 
  * Usage: node scripts/run-migrations.mjs
@@ -38,7 +38,7 @@ const migrationsToRun = [
 ];
 
 async function runMigrations() {
-  console.log('🚀 Starting Jeton Core Systems Migration...\n');
+  console.log('🚀 Starting Xhaira Core Systems Migration...\n');
 
   for (const migrationFile of migrationsToRun) {
     const migrationPath = path.join(projectRoot, 'migrations', migrationFile);

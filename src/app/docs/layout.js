@@ -5,8 +5,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: { template: '%s — Jeton Docs', default: 'Jeton Documentation' },
-  description: 'Complete documentation for the Jeton Founder Operating System.',
+  title: { template: '%s — Xhaira Docs', default: 'Xhaira Documentation' },
+  description: 'Complete documentation for the Xhaira Founder Operating System.',
 };
 
 export default function DocsLayout({ children }) {
@@ -16,7 +16,7 @@ export default function DocsLayout({ children }) {
       <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <Link href="/" className="text-xl font-bold text-primary">Jeton</Link>
+            <Link href="/" className="text-xl font-bold text-primary">Xhaira</Link>
             <span className="text-muted-foreground text-sm">/</span>
             <Link href="/docs" className="text-sm font-medium text-foreground hover:text-primary transition">Docs</Link>
           </div>

@@ -12,7 +12,7 @@ import { AlertTriangle, LayoutDashboard, Home, RefreshCcw } from 'lucide-react';
 export default function GlobalError({ error, reset }) {
   useEffect(() => {
     // Log error to console for debugging
-    console.error('[Jeton] Unhandled runtime error:', error);
+    console.error('[Xhaira] Unhandled runtime error:', error);
   }, [error]);
 
   return (

@@ -356,4 +356,4 @@ node scripts/init-db.js
 
 ---
 
-> "Jeton now behaves like a proper executive operating system, not disconnected modules. The cap table is perfectly synchronized with actual company value."
+> "Xhaira now behaves like a proper executive operating system, not disconnected modules. The cap table is perfectly synchronized with actual company value."
