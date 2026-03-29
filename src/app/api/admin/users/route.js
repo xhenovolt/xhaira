@@ -53,3 +53,69 @@ export async function GET(request) {
     return NextResponse.json({ success: false, error: 'Failed to fetch users' }, { status: 500 });
   }
 }
+
+/**
+ * POST /api/admin/users
+ * Create a new user
+ * Required permission: users.create
+ */
+export async function POST(request) {
+  const perm = await requirePermission(request, 'users.create');
+  if (perm instanceof NextResponse) return perm;
+
+  try {
+    const { auth } = perm;
+    const body = await request.json();
+
+    // Validate required fields
+    if (!body.email || !body.name) {
+      return NextResponse.json(
+        { error: 'Email and name are required' },
+        { status: 400 }
+      );
+    }
+
+    // Check if email already exists
+    const existing = await query('SELECT id FROM users WHERE email = $1', [body.email]);
+    if (existing.rows.length > 0) {
+      return NextResponse.json(
+        { error: 'Email already registered' },
+        { status: 409 }
+      );
+    }
+
+    // Prepare user data
+    const { email, name, role = 'staff', status = 'pending' } = body;
+    const passwordHash = require('bcryptjs').hashSync('TempPass123!', 10); // Temp password
+
+    // Insert user
+    const result = await query(
+      `INSERT INTO users (email, password_hash, name, role, status, is_active, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, true, NOW(), NOW())
+       RETURNING id, email, name, role, status, created_at`,
+      [email, passwordHash, name, role, status]
+    );
+
+    if (result.rows.length === 0) {
+      return NextResponse.json(
+        { error: 'Failed to create user' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      {
+        success: true,
+        message: 'User created successfully',
+        data: result.rows[0]
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error('[admin/users] POST error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create user' },
+      { status: 500 }
+    );
+  }
+}

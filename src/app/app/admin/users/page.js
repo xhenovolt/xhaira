@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Users, Shield, ShieldCheck, Edit, X, Check, UserX, UserCheck, Search, ChevronDown, MoreVertical, Trash2 } from 'lucide-react';
+import { Users, Shield, ShieldCheck, Edit, X, Check, UserX, UserCheck, Search, ChevronDown, MoreVertical, Trash2, Plus } from 'lucide-react';
 import { fetchWithAuth } from '@/lib/fetch-client';
 import { useToast } from '@/components/ui/Toast';
+import { CreateUserModal } from '@/components/admin/CreateUserModal';
 
 const STATUS_STYLES = {
   active: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/20',
@@ -24,6 +25,7 @@ export default function AdminUsersPage() {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const [editUser, setEditUser] = useState(null);
   const [editForm, setEditForm] = useState({ role: '', status: '' });
   const [saving, setSaving] = useState(false);
@@ -105,6 +107,13 @@ export default function AdminUsersPage() {
           <h1 className="text-2xl font-bold text-foreground">User Management</h1>
           <p className="text-sm text-muted-foreground mt-1">{users.length} registered users</p>
         </div>
+        <button
+          onClick={() => setModalOpen(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition font-medium"
+        >
+          <Plus size={18} />
+          Create User
+        </button>
       </div>
 
       {/* Stats Row */}
@@ -317,6 +326,13 @@ export default function AdminUsersPage() {
           ))}
         </div>
       )}
+
+      {/* Create User Modal */}
+      <CreateUserModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onUserCreated={() => fetchUsers()}
+      />
     </div>
   );
 }

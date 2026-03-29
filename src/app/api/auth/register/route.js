@@ -1,35 +1,61 @@
 /**
- * POST /api/auth/register — DISABLED
+ * POST /api/auth/register
  *
- * Public self-registration is not permitted in Xhaira.
- * User accounts are created exclusively by a superadmin through the
- * staff creation flow at POST /api/staff (with account details).
+ * Public registration with system-state aware logic:
+ *
+ * FIRST USER (system not initialized):
+ *   - Automatically becomes SUPER_ADMIN
+ *   - Initializes base role system
+ *   - Status: active (immediate access)
+ *
+ * SUBSEQUENT USERS (system initialized):
+ *   - Public registration blocked
+ *   - Returns 410 Gone / "System registration closed"
+ *   - Users must be created by admin via /api/admin/users
  */
 
 import { NextResponse } from 'next/server.js';
+import { validateRegister } from '@/lib/validation.js';
+import {
+  createUser,
+  findUserByEmail,
+  hashPassword,
+  getUserCount,
+} from '@/lib/auth.js';
+import {
+  isSystemInitialized,
+  shouldBeFirstUseSuperAdmin,
+  initializeBaseRoles,
+} from '@/lib/system-init.js';
+import { logAuthEvent, extractRequestMetadata } from '@/lib/audit.js';
+import { createSession, getSecureCookieOptions } from '@/lib/session.js';
 
-export async function POST() {
-  return NextResponse.json(
-    {
-      error: 'Public registration is disabled.',
-      message:
-        'Xhaira is an internal system. User accounts are created by a system administrator. ' +
-        'Contact your administrator to request access.',
-    },
-    { status: 410 }
-  );
-}
-
-// ─── DISABLED ORIGINAL LOGIC (preserved for reference) ────────────────────
-async function _disabledRegisterLogic(request) {
-  // eslint-disable-next-line no-unreachable
-  const { validateRegister } = await import('@/lib/validation.js');
-  const { createUser, findUserByEmail, hashPassword, getUserCount } = await import('@/lib/auth.js');
-  const { logAuthEvent, extractRequestMetadata } = await import('@/lib/audit.js');
-  const { createSession, getSecureCookieOptions } = await import('@/lib/session.js');
-
-  const body_disabled = request;
+export async function POST(request) {
   try {
+    // Check if system is initialized
+    const systemInitialized = await isSystemInitialized();
+
+    // If system is already initialized, block public registration
+    if (systemInitialized) {
+      await logAuthEvent({
+        action: 'REGISTER_BLOCKED_SYSTEM_INITIALIZED',
+        reason: 'System registration closed after initialization',
+        requestMetadata: extractRequestMetadata(request),
+      });
+
+      return NextResponse.json(
+        {
+          error: 'System registration is closed.',
+          message:
+            'Xhaira registration is only available during initial setup. ' +
+            'User accounts are now created exclusively by administrators. ' +
+            'Contact your administrator to request access.',
+        },
+        { status: 410 }
+      );
+    }
+
+    // System not initialized — allow registration (this becomes first user)
     const body = await request.json();
 
     // Validate input
@@ -66,77 +92,76 @@ async function _disabledRegisterLogic(request) {
     // Hash password
     const passwordHash = await hashPassword(password);
 
-    // SUPERADMIN BOOTSTRAP: First user = superadmin (active), rest = pending
-    const userCount = await getUserCount();
-    const isFirstUser = userCount === 0;
+    // This is the first user — initialize roles and make them super admin
+    try {
+      await initializeBaseRoles();
+    } catch (roleError) {
+      console.error('Error initializing roles:', roleError);
+      // Continue anyway — roles may exist or will be created later
+    }
 
-    const role = isFirstUser ? 'superadmin' : 'user';
-    const status = isFirstUser ? 'active' : 'pending';
-
-    // Create user
+    // Create first user as SUPER_ADMIN
     const user = await createUser({
       email,
       passwordHash,
       name,
-      role,
-      isActive: true,
-      status,
+      role: 'superadmin', // First user is always super admin
+      status: 'active', // Immediate access (not pending approval)
     });
 
-    if (!user || user.error) {
-      await logAuthEvent({
-        action: 'REGISTER_FAILED',
-        email,
-        reason: user?.error || 'Unknown error',
-        requestMetadata,
-      });
-
+    if (!user || !user.id) {
       return NextResponse.json(
-        { error: user?.error || 'Failed to create user' },
+        {
+          error: 'Failed to create user',
+          message: 'An error occurred during account creation.',
+        },
         { status: 500 }
       );
     }
 
-    // Log success
     await logAuthEvent({
-      action: isFirstUser ? 'SUPERADMIN_BOOTSTRAP' : 'REGISTER_SUCCESS',
-      userId: user.id,
-      email: user.email,
+      action: 'REGISTER_SUCCESS_FIRST_USER',
+      email,
+      user_id: user.id,
+      role: 'superadmin',
       requestMetadata,
     });
 
-    // If first user (superadmin), create session and log them in immediately
-    if (isFirstUser) {
-      const sessionId = await createSession(user.id);
+    // Create session for newly registered user
+    const sessionId = await createSession({
+      user_id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+    });
 
-      const response = NextResponse.json(
-        {
-          message: 'Welcome! You are now the system superadmin.',
-          userId: user.id,
-          role: 'superadmin',
-          status: 'active',
-        },
-        { status: 201 }
-      );
-
-      const cookieOptions = getSecureCookieOptions();
-      response.cookies.set('xhaira_session', sessionId, cookieOptions);
-      return response;
-    }
-
-    // For non-first users, respond with pending message (no session)
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
-        message: 'Account created successfully. Your account is pending admin activation.',
-        userId: user.id,
-        status: 'pending',
+        success: true,
+        message: 'Registration successful. Welcome to Xhaira!',
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role,
+          isFirstUser: true,
+        },
       },
       { status: 201 }
     );
+
+    // Set session cookie
+    const cookieOptions = getSecureCookieOptions();
+    response.cookies.set('xhaira_session', sessionId, cookieOptions);
+
+    return response;
   } catch (error) {
-    console.error('Register error:', error);
+    console.error('Registration error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      {
+        error: 'Registration failed',
+        message: 'An unexpected error occurred. Please try again.',
+      },
       { status: 500 }
     );
   }
