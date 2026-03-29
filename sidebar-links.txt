@@ -1,0 +1,126 @@
+JETON FOUNDER OS — SIDEBAR NAVIGATION LINKS
+Source file: src/lib/navigation-config.js
+Generated: March 19, 2026
+============================================================
+
+PRIMARY
+-------
+Dashboard             /app/dashboard               [permission: dashboard.view]
+Command Center        /app/command-center          [permission: command_center.view | minHierarchy: 3]
+Activity              /app/activity                [permission: activity_logs.view]
+Notifications         /app/notifications           [no permission required]
+
+
+SYSTEMS (core IP)
+-----------------
+  All Systems         /app/systems                 [permission: systems.view]
+  Licenses            /app/licenses                [permission: licenses.view]
+  Operations Log      /app/operations              [permission: operations.view]
+  Dev Costs           /app/system-costs            [permission: systems.view]
+
+
+SERVICES
+--------
+Services              /app/services                [permission: services.view]
+
+
+PIPELINE
+--------
+  Pipeline Board      /app/pipeline                [permission: pipeline.view]
+  Prospects           /app/prospects               [permission: prospects.view]
+  Follow-ups          /app/followups               [permission: prospects.view]
+  Clients             /app/clients                 [permission: clients.view]
+
+
+DEALS & PAYMENTS
+----------------
+  All Deals           /app/deals                   [permission: deals.view]
+  New Deal            /app/deals/new               [permission: deals.create]
+  Obligations         /app/obligations             [permission: obligations.view]
+  Payments            /app/payments                [permission: payments.view]
+  Invoices            /app/invoices                [permission: invoices.view]
+  Allocations         /app/allocations             [permission: allocations.view]
+
+
+PRODUCTS
+--------
+Products              /app/products                [permission: products.view]
+
+
+COMPANY
+-------
+  Staff               /app/staff                   [permission: staff.view]
+  Org Hierarchy       /app/org-hierarchy           [permission: staff.view]
+  Control Tower       /app/control-tower           [permission: staff.view]
+  Items               /app/items                   [permission: assets.view]
+  Knowledge Base      /app/knowledge               [permission: knowledge.view]
+  Liabilities         /app/liabilities             [permission: finance.view]
+  Offerings           /app/offerings               [permission: offerings.view]
+  Media               /app/media                   [permission: media.view]
+
+
+FINANCE
+-------
+  Overview            /app/finance                 [permission: finance.view]
+  Accounts            /app/finance/accounts        [permission: accounts.view]
+  Ledger              /app/finance/ledger          [permission: finance.view]
+  Expenses            /app/finance/expenses        [permission: expenses.view]
+  Transfers           /app/finance/transfers       [permission: finance.view]
+  Budgets             /app/finance/budgets         [permission: budgets.view]
+
+
+DOCS
+----
+Docs                  /app/docs                    [permission: knowledge.view]
+
+
+INTELLIGENCE
+------------
+  Dashboard           /app/intelligence            [permission: intelligence.view]
+  Engineering         /app/tech-intelligence       [permission: bug_tracking.view]
+  Issue Intelligence  /app/issue-intelligence      [permission: issue_intelligence.view]
+  Financial           /app/financial-intelligence  [permission: finance.view]
+  HRM                 /app/hrm                     [permission: hrm.view]
+  Documents           /app/documents               [permission: documents.view]
+  Decision Log        /app/decision-log            [permission: decision_logs.view]
+
+
+REPORTS
+-------
+Reports               /app/reports                 [permission: reports.view]
+
+
+ADMIN  (minHierarchy: 3)
+------------------------
+  Users               /app/admin/users             [permission: users.view]
+  Roles               /app/admin/roles             [permission: roles.manage]
+  Permission Manager  /app/admin/role-permissions  [permission: roles.manage]
+  Access Simulator    /app/admin/access-simulator  [permission: roles.manage]
+  Access Inspector    /app/admin/permission-inspector   [permission: roles.manage]
+  Authority Inspector /app/admin/authority-inspector    [permission: roles.manage]
+  Departments         /app/admin/departments       [permission: departments.view]
+  Approvals           /app/admin/approvals         [permission: approvals.manage]
+  Approval Pipeline   /app/approval-pipeline       [permission: approvals.manage]
+  Backups             /app/admin/backups           [permission: backups.view]
+  Audit Logs          /app/admin/audit-logs        [permission: audit.view]
+  Identity Debug      /app/admin/debug             [permission: users.view | minHierarchy: 1]
+
+
+SETTINGS  (visible to all authenticated users)
+----------------------------------------------
+  General             /app/settings
+  Appearance          /app/settings/appearance
+  Typography          /app/settings/typography
+
+
+============================================================
+QUICK ACCESS LINKS (mobile bottom nav)
+---------------------------------------
+Dashboard             /app/dashboard
+Systems               /app/systems
+Deals                 /app/deals
+Finance               /app/finance
+
+============================================================
+TOTAL ROUTES: 57
+============================================================

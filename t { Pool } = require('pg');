@@ -1,0 +1,76 @@
+                                         Table "public.users"
+        Column         |           Type           | Collation | Nullable |           Default           
+-----------------------+--------------------------+-----------+----------+-----------------------------
+ id                    | uuid                     |           | not null | uuid_generate_v4()
+ email                 | character varying(255)   |           | not null | 
+ password_hash         | character varying(255)   |           | not null | 
+ name                  | character varying(255)   |           | not null | 
+ role                  | character varying(50)    |           | not null | 'user'::character varying
+ is_active             | boolean                  |           | not null | true
+ last_login            | timestamp with time zone |           |          | 
+ created_at            | timestamp with time zone |           | not null | now()
+ updated_at            | timestamp with time zone |           | not null | now()
+ status                | character varying(20)    |           | not null | 'active'::character varying
+ full_name             | character varying(255)   |           |          | 
+ staff_id              | uuid                     |           |          | 
+ must_reset_password   | boolean                  |           | not null | false
+ username              | character varying(100)   |           |          | 
+ authority_level       | integer                  |           | not null | 10
+ first_login_completed | boolean                  |           | not null | true
+ last_seen_at          | timestamp with time zone |           |          | 
+ session_id            | text                     |           |          | 
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+    "idx_users_authority_level" btree (authority_level)
+    "idx_users_email_active" btree (email) WHERE status::text = 'active'::text
+    "idx_users_first_login" btree (first_login_completed)
+    "idx_users_last_seen_at" btree (last_seen_at DESC)
+    "idx_users_role" btree (role)
+    "idx_users_staff_id" btree (staff_id)
+    "users_email_key" UNIQUE CONSTRAINT, btree (email)
+    "users_username_key" UNIQUE, btree (username) WHERE username IS NOT NULL
+Check constraints:
+    "users_role_check" CHECK (role::text = ANY (ARRAY['superadmin'::character varying::text, 'admin'::character varying::text, 'user'::character varying::text, 'viewer'::character varying::text]))
+    "users_status_check" CHECK (status::text = ANY (ARRAY['active'::character varying, 'pending'::character varying, 'suspended'::character varying, 'disabled'::character varying]::text[]))
+Foreign-key constraints:
+    "fk_users_staff" FOREIGN KEY (staff_id) REFERENCES staff(id) ON DELETE SET NULL
+Referenced by:
+    TABLE "activity_logs" CONSTRAINT "activity_logs_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "approval_requests" CONSTRAINT "approval_requests_approver_user_id_fkey" FOREIGN KEY (approver_user_id) REFERENCES users(id)
+    TABLE "approval_requests" CONSTRAINT "approval_requests_requester_user_id_fkey" FOREIGN KEY (requester_user_id) REFERENCES users(id)
+    TABLE "_deprecated_assets" CONSTRAINT "assets_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "authority_levels" CONSTRAINT "authority_levels_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id)
+    TABLE "client_obligations" CONSTRAINT "client_obligations_completed_by_fkey" FOREIGN KEY (completed_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "client_obligations" CONSTRAINT "client_obligations_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "departments" CONSTRAINT "departments_deactivated_by_fkey" FOREIGN KEY (deactivated_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "departments" CONSTRAINT "departments_head_user_id_fkey" FOREIGN KEY (head_user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "doc_versions" CONSTRAINT "doc_versions_changed_by_fkey" FOREIGN KEY (changed_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "docs" CONSTRAINT "docs_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "idempotency_keys" CONSTRAINT "idempotency_keys_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    TABLE "issue_resolutions" CONSTRAINT "issue_resolutions_resolved_by_fkey" FOREIGN KEY (resolved_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "issue_resolutions" CONSTRAINT "issue_resolutions_verified_by_fkey" FOREIGN KEY (verified_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "issue_root_causes" CONSTRAINT "issue_root_causes_identified_by_fkey" FOREIGN KEY (identified_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "item_activity_log" CONSTRAINT "item_activity_log_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "items" CONSTRAINT "items_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "knowledge_assets" CONSTRAINT "knowledge_assets_author_id_fkey" FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "knowledge_versions" CONSTRAINT "knowledge_versions_edited_by_fkey" FOREIGN KEY (edited_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "licenses" CONSTRAINT "licenses_issued_by_fkey" FOREIGN KEY (issued_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "media" CONSTRAINT "media_uploaded_by_fkey" FOREIGN KEY (uploaded_by) REFERENCES users(id)
+    TABLE "notifications" CONSTRAINT "notifications_actor_user_id_fkey" FOREIGN KEY (actor_user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "notifications" CONSTRAINT "notifications_recipient_user_id_fkey" FOREIGN KEY (recipient_user_id) REFERENCES users(id) ON DELETE CASCADE
+    TABLE "operations" CONSTRAINT "operations_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "org_change_logs" CONSTRAINT "org_change_logs_changed_by_fkey" FOREIGN KEY (changed_by) REFERENCES users(id)
+    TABLE "rbac_audit_logs" CONSTRAINT "rbac_audit_logs_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id)
+    TABLE "_deprecated_resources" CONSTRAINT "resources_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id)
+    TABLE "services" CONSTRAINT "services_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "staff" CONSTRAINT "staff_linked_user_id_fkey" FOREIGN KEY (linked_user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "system_changes" CONSTRAINT "system_changes_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "system_costs" CONSTRAINT "system_costs_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id)
+    TABLE "system_events" CONSTRAINT "system_events_actor_user_id_fkey" FOREIGN KEY (actor_user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "system_issues" CONSTRAINT "system_issues_assigned_to_fkey" FOREIGN KEY (assigned_to) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "system_issues" CONSTRAINT "system_issues_reported_by_fkey" FOREIGN KEY (reported_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "system_logs" CONSTRAINT "system_logs_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "system_settings" CONSTRAINT "system_settings_updated_by_fkey" FOREIGN KEY (updated_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "systems" CONSTRAINT "systems_created_by_fkey" FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE SET NULL
+    TABLE "user_presence" CONSTRAINT "user_presence_user_id_fkey" FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+
