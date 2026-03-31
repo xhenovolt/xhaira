@@ -84,7 +84,7 @@ export default function LicensesPage() {
     setLoading(true);
     Promise.all([
       fetchWithAuth('/api/licenses').then(r => r.json()),
-      fetchWithAuth('/api/systems').then(r => r.json()),
+      fetchWithAuth('/api/products').then(r => r.json()),
     ]).then(([ld, sd]) => {
       setLicenses(ld.licenses || ld || []);
       setSystems(sd.systems || sd || []);
@@ -213,14 +213,14 @@ export default function LicensesPage() {
           )}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-muted-foreground mb-1">System *</label>
+              <label className="block text-xs font-medium text-muted-foreground mb-1">Product *</label>
               <select
                 required
                 value={form.system_id}
                 onChange={e => setForm(f => ({ ...f, system_id: e.target.value }))}
                 className="w-full px-3 py-2 bg-background border border-border rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&>option]:bg-background"
               >
-                <option value="">— Select system —</option>
+                <option value="">— Select product —</option>
                 {systems.map(s => (
                   <option key={s.id} value={s.id}>{s.name}</option>
                 ))}
@@ -329,7 +329,7 @@ export default function LicensesPage() {
           <input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search by client, system, type..."
+            placeholder="Search by client, product, type..."
             className="w-full pl-9 pr-4 py-2 bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
           />
         </div>
@@ -350,7 +350,7 @@ export default function LicensesPage() {
         <div className="bg-card border border-border rounded-lg p-12 text-center">
           <Key className="w-10 h-10 text-muted-foreground mx-auto mb-3 opacity-40" />
           <p className="text-muted-foreground">No licenses found.</p>
-          <p className="text-xs text-muted-foreground mt-1">Issue a license above or close a deal linked to a system.</p>
+          <p className="text-xs text-muted-foreground mt-1">Issue a license above or close a deal linked to a product.</p>
         </div>
       ) : (
         <div className="bg-card border border-border rounded-lg overflow-hidden">
@@ -359,7 +359,7 @@ export default function LicensesPage() {
               <thead>
                 <tr className="border-b border-border bg-muted/30">
                   <th className="text-left px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wide">Client</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wide">System</th>
+                  <th className="text-left px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wide">Product</th>
                   <th className="text-left px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wide">Type</th>
                   <th className="text-left px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wide">Issued</th>
                   <th className="text-left px-4 py-3 text-xs font-medium text-muted-foreground uppercase tracking-wide">Status</th>

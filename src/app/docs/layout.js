@@ -49,7 +49,7 @@ export default function DocsLayout({ children }) {
               <DocNavLink href="/docs/security">Security & RBAC</DocNavLink>
               <DocNavLink href="/docs/audit">Audit Logs</DocNavLink>
             </DocNavSection>
-            <DocNavSection title="Systems">
+            <DocNavSection title="Products">
               <DocNavLink href="/docs/workflow">Workflow</DocNavLink>
               <DocNavLink href="/docs/automation">Automation</DocNavLink>
               <DocNavLink href="/docs/api">API Reference</DocNavLink>

@@ -58,7 +58,7 @@ export default function ObligationsPage() {
   useEffect(() => {
     fetchWithAuth('/api/clients').then(r => { if (r.success) setClients(r.data || []); }).catch(() => {});
     fetchWithAuth('/api/deals').then(r => { if (r.success) setDeals(r.data || []); }).catch(() => {});
-    fetchWithAuth('/api/systems').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
+    fetchWithAuth('/api/products').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
     fetchWithAuth('/api/staff').then(r => { if (r.success) setStaff(r.data || []); }).catch(() => {});
   }, []);
 

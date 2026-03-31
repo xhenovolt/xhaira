@@ -86,11 +86,16 @@ export async function POST(request) {
       [account_id, old_value, new_value, reason, perm.userId]
     );
 
-    // Also update the account balance
-    await query(
-      `UPDATE accounts SET balance = $1, updated_at = NOW() WHERE id = $2`,
-      [new_value, account_id]
-    );
+    // DO NOT update accounts.balance directly — balance is derived from ledger.
+    // Create a ledger adjustment entry instead.
+    const adjustmentAmount = parseFloat(new_value) - parseFloat(old_value || 0);
+    if (adjustmentAmount !== 0) {
+      await query(
+        `INSERT INTO ledger (account_id, amount, currency, source_type, source_id, description, entry_date, created_by)
+         VALUES ($1, $2, 'UGX', 'adjustment', $3, $4, CURRENT_DATE, $5)`,
+        [account_id, adjustmentAmount, result.rows[0].id, `Superadmin adjustment: ${reason}`, perm.userId]
+      );
+    }
 
     return NextResponse.json(result.rows[0], { status: 201 });
   } catch (err) {

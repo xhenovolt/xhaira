@@ -77,7 +77,7 @@ export default function CommandCenterPage() {
 
       {/* Second Row */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard icon={Monitor} label="Systems" value={data.systems.total} sublabel={`${data.systems.active_licenses} active licenses`} color="#6366f1" href="/app/systems" />
+        <StatCard icon={Monitor} label="Products" value={data.systems.total} sublabel={`${data.systems.active_licenses} active licenses`} color="#6366f1" href="/app/products" />
         <StatCard icon={Shield} label="Pending Approvals" value={data.approvals.pending} color={data.approvals.pending > 0 ? '#f59e0b' : '#10b981'} href="/app/admin/approvals" />
         <StatCard icon={Bug} label="Open Bugs" value={data.bugs.open} sublabel={data.bugs.critical > 0 ? `${data.bugs.critical} critical!` : 'No critical'} color={data.bugs.critical > 0 ? '#ef4444' : '#3b82f6'} href="/app/tech-intelligence" />
         <StatCard icon={BookMarked} label="Decisions (Month)" value={data.decisions.this_month} color="#8b5cf6" href="/app/decision-log" />

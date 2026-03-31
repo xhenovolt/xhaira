@@ -3,7 +3,7 @@
 /**
  * DRAIS Global Pricing Control
  * 
- * JETON CONTROLS PRICING
+ * XHAIRA CONTROLS PRICING
  * DRAIS CONSUMES PRICING
  * 
  * This is the power move: Xhaira becomes the pricing controller

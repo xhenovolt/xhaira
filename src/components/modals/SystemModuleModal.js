@@ -25,7 +25,7 @@ export function SystemModuleModal({ isOpen, onClose, systemId, onSuccess }) {
     setIsLoading(true);
 
     try {
-      const res = await fetchWithAuth(`/api/systems/${systemId}/modules`, {
+      const res = await fetchWithAuth(`/api/products/${systemId}/modules`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

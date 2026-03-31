@@ -59,7 +59,7 @@ export default function PipelinePage() {
 
   useEffect(() => {
     fetchWithAuth('/api/prospects').then(r => { if (r.success) setProspects(r.data || []); }).catch(() => {});
-    fetchWithAuth('/api/systems').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
+    fetchWithAuth('/api/products').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
     fetchWithAuth('/api/staff').then(r => { if (r.success) setStaff(r.data || []); }).catch(() => {});
   }, []);
 
@@ -163,7 +163,7 @@ export default function PipelinePage() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium mb-1 opacity-70">System</label>
+              <label className="block text-xs font-medium mb-1 opacity-70">Product</label>
               <select value={form.system_id} onChange={e => setForm(f => ({ ...f, system_id: e.target.value }))}
                 className="w-full px-3 py-2 border rounded-lg bg-background text-sm">
                 <option value="">— None —</option>
@@ -230,7 +230,7 @@ export default function PipelinePage() {
                       <div key={entry.id} className="bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm border text-sm">
                         <div className="font-medium truncate">{entry.prospect_name || entry.company_name || 'Unknown'}</div>
                         <div className="text-xs opacity-50 mt-1 space-y-0.5">
-                          {entry.system_name && <div>System: {entry.system_name}</div>}
+                          {entry.system_name && <div>Product: {entry.system_name}</div>}
                           {entry.estimated_value && <div>Value: {formatCurrency(entry.estimated_value, entry.currency)}</div>}
                           {entry.assigned_to_name && <div>Owner: {entry.assigned_to_name}</div>}
                         </div>
@@ -264,7 +264,7 @@ export default function PipelinePage() {
                 <div className="font-medium">{entry.prospect_name || entry.company_name || 'Unknown'}</div>
                 <div className="text-xs opacity-50 mt-0.5 flex gap-3 flex-wrap">
                   <span>Stage: {entry.stage_name}</span>
-                  {entry.system_name && <span>System: {entry.system_name}</span>}
+                  {entry.system_name && <span>Product: {entry.system_name}</span>}
                   {entry.estimated_value && <span>Value: {formatCurrency(entry.estimated_value, entry.currency)}</span>}
                   {entry.assigned_to_name && <span>Owner: {entry.assigned_to_name}</span>}
                   <span>Added: {new Date(entry.created_at).toLocaleDateString()}</span>

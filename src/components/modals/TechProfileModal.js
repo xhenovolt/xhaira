@@ -25,7 +25,7 @@ export function TechProfileModal({ isOpen, onClose, systemId, onSuccess }) {
     setIsLoading(true);
 
     try {
-      const res = await fetchWithAuth(`/api/systems/${systemId}/tech-profiles`, {
+      const res = await fetchWithAuth(`/api/products/${systemId}/tech-profiles`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

@@ -45,6 +45,7 @@ export async function logEvent({ event_type, entity_type, entity_id, description
  */
 export const Events = {
   systemCreated:  (id, name, userId)             => logEvent({ event_type: 'system_created',   entity_type: 'system',  entity_id: id, description: `System created: ${name}`,              created_by: userId }),
+  productCreated: (id, name, userId)             => logEvent({ event_type: 'product_created',  entity_type: 'product', entity_id: id, description: `Product created: ${name}`,             created_by: userId }),
   dealCreated:    (id, title, userId)            => logEvent({ event_type: 'deal_created',     entity_type: 'deal',    entity_id: id, description: `Deal created: ${title}`,                created_by: userId }),
   dealClosed:     (id, title, amount, curr, uid) => logEvent({ event_type: 'deal_closed',      entity_type: 'deal',    entity_id: id, description: `Deal closed: ${title}`,                metadata: { amount, currency: curr }, created_by: uid }),
   paymentReceived:(id, amount, curr, dealTitle, uid) => logEvent({ event_type: 'payment_received', entity_type: 'payment', entity_id: id, description: `Payment received: ${curr} ${Number(amount).toLocaleString()}${dealTitle ? ` for ${dealTitle}` : ''}`, metadata: { amount, currency: curr }, created_by: uid }),

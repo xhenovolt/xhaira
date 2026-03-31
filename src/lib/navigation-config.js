@@ -1,8 +1,8 @@
 /**
- * Navigation Configuration - JETON FOUNDER OS
+ * Navigation Configuration - XHAIRA SACCO & Investment Management
  *
  * Single Source of Truth for all navigation
- * Core model: Systems → Deals → Payments → Licenses
+ * Core model: Products → Deals → Payments → Licenses
  *
  * Every route here exists in /src/app/app/
  */
@@ -49,8 +49,8 @@ import {
 } from 'lucide-react';
 
 /**
- * FOUNDER NAVIGATION
- * Systems → Deals → Payments → Licenses
+ * XHAIRA NAVIGATION
+ * Products → Deals → Payments → Licenses
  */
 export const menuItems = [
   // === PRIMARY ===
@@ -92,17 +92,49 @@ export const menuItems = [
     permission: 'communication.view',
   },
 
-  // === SYSTEMS (core IP) ===
+  // === PRODUCTS (Financial Products Engine) ===
   {
-    label: 'Systems',
-    icon: Monitor,
+    label: 'Products',
+    icon: Package,
     category: 'sections',
-    module: 'systems',
+    module: 'products',
     submenu: [
-      { label: 'All Systems', href: '/app/systems', description: 'Software platforms built by Xhenvolt', permission: 'systems.view' },
+      { label: 'All Products', href: '/app/products', description: 'Financial products & services', permission: 'products.view' },
+      { label: 'Loan Products', href: '/app/products?type=LOAN', description: 'Interest-based lending products', permission: 'products.view' },
+      { label: 'Savings Products', href: '/app/products?type=SAVINGS', description: 'Deposit & savings products', permission: 'products.view' },
+      { label: 'Installment Products', href: '/app/products?type=INSTALLMENT', description: 'Purchase on credit', permission: 'products.view' },
+      { label: 'Services', href: '/app/products?type=SERVICE', description: 'One-time & recurring services', permission: 'products.view' },
+      { label: 'Investments', href: '/app/products?type=INVESTMENT', description: 'Investment plans', permission: 'products.view' },
       { label: 'Licenses', href: '/app/licenses', description: 'Active license registry', permission: 'licenses.view' },
-      { label: 'Operations Log', href: '/app/operations', description: 'Daily founder workflow log', permission: 'operations.view' },
-      { label: 'Dev Costs', href: '/app/system-costs', description: 'System development cost tracking', permission: 'systems.view' },
+      { label: 'Operations Log', href: '/app/operations', description: 'Daily workflow log', permission: 'operations.view' },
+    ],
+  },
+
+  // === MEMBERS (SACCO Core) ===
+  {
+    label: 'Members',
+    icon: Users,
+    category: 'sections',
+    module: 'members',
+    submenu: [
+      { label: 'All Members', href: '/app/members', description: 'SACCO membership directory', permission: 'members.view' },
+      { label: 'Member Accounts', href: '/app/members?tab=accounts', description: 'Savings, loans & investment accounts', permission: 'members.view' },
+    ],
+  },
+
+  // === LOANS (SACCO Lending) ===
+  {
+    label: 'Loans',
+    icon: Banknote,
+    category: 'sections',
+    module: 'loans',
+    submenu: [
+      { label: 'All Loans', href: '/app/loans', description: 'Loan applications & management', permission: 'finance.view' },
+      { label: 'SACCO Products', href: '/app/sacco-products', description: 'Loan & savings products', permission: 'finance.view' },
+      { label: 'SACCO Rules', href: '/app/sacco-rules', description: 'Configurable policy engine', permission: 'finance.manage' },
+      { label: 'Member Transfers', href: '/app/member-transfers', description: 'Peer-to-peer transfers', permission: 'finance.view' },
+      { label: 'Account Types', href: '/app/account-types', description: 'Savings, shares & loan books', permission: 'finance.view' },
+      { label: 'Transactions', href: '/app/transactions', description: 'Double-entry ledger transactions', permission: 'finance.view' },
     ],
   },
 
@@ -144,16 +176,6 @@ export const menuItems = [
       { label: 'Invoices', href: '/app/invoices', description: 'Generated invoices & PDFs', permission: 'invoices.view' },
       { label: 'Allocations', href: '/app/allocations', description: 'Money allocation tracking', permission: 'allocations.view' },
     ],
-  },
-
-  // === PRODUCTS ===
-  {
-    label: 'Products',
-    href: '/app/products',
-    icon: Package,
-    category: 'sections',
-    module: 'products',
-    permission: 'products.view',
   },
 
   // === COMPANY ===
@@ -299,7 +321,7 @@ export const menuItems = [
  */
 export const quickAccessLinks = [
   { id: 'dashboard', label: 'Dashboard', icon: Home, href: '/app/dashboard', permission: 'dashboard.view' },
-  { id: 'systems', label: 'Systems', icon: Monitor, href: '/app/systems', permission: 'systems.view' },
+  { id: 'products', label: 'Products', icon: Package, href: '/app/products', permission: 'products.view' },
   { id: 'deals', label: 'Deals', icon: Briefcase, href: '/app/deals', permission: 'deals.view' },
   { id: 'finance', label: 'Finance', icon: DollarSign, href: '/app/finance', permission: 'finance.view' },
 ];

@@ -88,7 +88,7 @@ export async function GET(request, { params }) {
 
   <div class="header">
     <div class="company-info">
-      <h1>${inv.company_name || 'Xhenvolt Uganda SMC Limited'}</h1>
+      <h1>${inv.company_name || 'Xhaira SACCO & Investment Management'}</h1>
       <p>${inv.company_address || 'Bulubandi, Iganga, Uganda'}</p>
       <p>${inv.company_phone || ''} ${inv.company_email ? '· ' + inv.company_email : ''}</p>
       <p>Software Development & Digital Solutions</p>

@@ -130,7 +130,7 @@ export default function SubscriptionDetailPage({ params }) {
               <span className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize ${STATUS_COLORS[sub.status] || ''}`}>{sub.status}</span>
             </Row>
             <Row label="Plan">{sub.plan_name}</Row>
-            <Row label="System"><span className="capitalize">{sub.system}</span></Row>
+            <Row label="Product"><span className="capitalize">{sub.system}</span></Row>
             <Row label="Cycle"><span className="capitalize">{sub.cycle_name}</span></Row>
             <Row label="Price">{fmtCurrency(sub.price, sub.currency)} / {sub.cycle_name}</Row>
             <Row label="Auto-renew">{sub.auto_renew ? 'Yes' : 'No'}</Row>

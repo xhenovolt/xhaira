@@ -94,12 +94,12 @@ export default function LayoutClient({ children }) {
         <p className="text-xs text-muted-foreground">
           Made with <span className="text-red-500">♥</span> by{' '}
           <a
-            href="https://xhenvolt.com"
+            href="https://xhaira.ai"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
           >
-            Xhenvolt
+            Xhaira
           </a>
         </p>
       </footer>

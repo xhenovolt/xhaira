@@ -26,8 +26,8 @@ export const metadata = {
   title: 'Xhaira — SACCO & Investment Management System',
   description: 'Xhaira is a SACCO and Investment Management System. Manage SACCO members, loans, savings, and investments securely and efficiently.',
   keywords: ['SACCO management', 'investment platform', 'loan management', 'Xhaira', 'cooperative'],
-  authors: [{ name: 'Xhenvolt' }],
-  creator: 'Xhenvolt',
+  authors: [{ name: 'Xhaira' }],
+  creator: 'Xhaira',
   manifest: '/manifest.json',
   icons: {
     icon: [
@@ -45,7 +45,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     title: 'Xhaira — SACCO & Investment Management System',
-    description: 'Comprehensive SACCO management and investment tracking platform by Xhenvolt',
+    description: 'Comprehensive SACCO management and investment tracking platform by Xhaira',
     images: [{ url: '/icons/icon-512x512.png', width: 512, height: 512 }],
   },
 };

@@ -115,7 +115,7 @@ export default function TechStackDetailPage({ params }) {
             {linkedSystems.map((sys) => (
               <Link
                 key={sys.id}
-                href={`/app/systems/${sys.id}`}
+                href={`/app/products/${sys.id}`}
                 className="p-3 bg-blue-50 border border-blue-200 rounded hover:bg-blue-100"
               >
                 {sys.system_name}

@@ -48,14 +48,14 @@ export default function NewDealModal({ isOpen, onClose, onCreated, prefillSystem
       .catch(() => []);
 
     safeFetch('/api/clients').then(setClients);
-    safeFetch('/api/systems').then(setSystems);
+    safeFetch('/api/products').then(setSystems);
     safeFetch('/api/services').then(setServices);
     safeFetch('/api/accounts').then(setAccounts);
   }, [isOpen]);
 
   useEffect(() => {
     if (form.system_id) {
-      fetchWithAuth(`/api/systems/${form.system_id}/plans`)
+      fetchWithAuth(`/api/products/${form.system_id}/plans`)
         .then(r => r.json()).then(j => setPlans(j.data || [])).catch(() => setPlans([]));
     } else { setPlans([]); setForm(f => ({ ...f, plan_id: '' })); }
   }, [form.system_id]);
@@ -71,7 +71,7 @@ export default function NewDealModal({ isOpen, onClose, onCreated, prefillSystem
           ...f,
           total_amount: price ? price.toString() : f.total_amount,
           installation_fee: install ? install.toString() : f.installation_fee,
-          title: f.title || `${systems.find(s => s.id === f.system_id)?.name || 'System'} — ${plan.name}`,
+          title: f.title || `${systems.find(s => s.id === f.system_id)?.name || 'Product'} — ${plan.name}`,
         }));
       }
     }
@@ -135,7 +135,7 @@ export default function NewDealModal({ isOpen, onClose, onCreated, prefillSystem
     if (!form.client_id) { setError('Please select or create a client'); return; }
     if (!form.title) { setError('Deal title is required'); return; }
     if (!dealValue && !negotiated) { setError('Deal value is required'); return; }
-    if (dealType === 'system' && !form.system_id) { setError('Please select a system'); return; }
+    if (dealType === 'system' && !form.system_id) { setError('Please select a product'); return; }
     if (dealType === 'service' && !form.service_id) { setError('Please select a service'); return; }
     if (includePayment && !payment.amount) { setError('Payment amount is required'); return; }
     if (includePayment && !payment.account_id) { setError('Select which account receives the payment'); return; }
@@ -182,7 +182,7 @@ export default function NewDealModal({ isOpen, onClose, onCreated, prefillSystem
       isOpen={isOpen}
       onClose={onClose}
       title="New Deal"
-      subtitle="Record a licensing sale or service engagement"
+      subtitle="Record a product deal or service engagement"
       size="lg"
       footer={
         <div className="flex items-center justify-between">
@@ -209,7 +209,7 @@ export default function NewDealModal({ isOpen, onClose, onCreated, prefillSystem
           <div className="flex gap-2">
             <button type="button" onClick={() => { setDealType('system'); setForm(f => ({ ...f, service_id: '' })); }}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border transition ${dealType === 'system' ? 'bg-blue-600 text-white border-blue-600' : 'border-border text-muted-foreground hover:bg-muted'}`}>
-              <Monitor className="w-4 h-4" /> System License
+              <Monitor className="w-4 h-4" /> Product Deal
             </button>
             <button type="button" onClick={() => { setDealType('service'); setForm(f => ({ ...f, system_id: '', plan_id: '' })); setPlans([]); }}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border transition ${dealType === 'service' ? 'bg-blue-600 text-white border-blue-600' : 'border-border text-muted-foreground hover:bg-muted'}`}>
@@ -222,9 +222,9 @@ export default function NewDealModal({ isOpen, onClose, onCreated, prefillSystem
         {dealType === 'system' && (
           <div className="space-y-3">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">System *</label>
+              <label className="block text-sm font-medium text-foreground mb-1">Product *</label>
               <select value={form.system_id} onChange={e => setForm(f => ({ ...f, system_id: e.target.value, plan_id: '' }))} className={selectClass}>
-                <option value="">Select a system...</option>
+                <option value="">Select a product...</option>
                 {systems.map(s => <option key={s.id} value={s.id}>{s.name}{s.version ? ` v${s.version}` : ''}{s.description ? ` — ${s.description}` : ''}</option>)}
               </select>
             </div>

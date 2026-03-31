@@ -59,7 +59,7 @@ export default function KnowledgePage() {
 
   useEffect(() => { fetchAssets(); }, [fetchAssets]);
   useEffect(() => {
-    fetchWithAuth('/api/systems').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
+    fetchWithAuth('/api/products').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
   }, []);
 
   const submit = async (e) => {

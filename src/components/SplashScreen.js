@@ -35,7 +35,7 @@ export default function SplashScreen({ onFinished }) {
       {/* Bottom branding — WhatsApp style */}
       <div className="flex flex-col items-center gap-1 pb-12 animate-[fadeIn_1s_ease-out_0.3s_both]">
         <span className="text-slate-400 text-xs font-medium tracking-widest uppercase">from</span>
-        <span className="text-white text-sm font-semibold tracking-wider">XHENVOLT</span>
+        <span className="text-white text-sm font-semibold tracking-wider">XHAIRA</span>
       </div>
     </div>
   );

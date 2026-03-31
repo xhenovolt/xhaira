@@ -74,7 +74,7 @@ export default function OperationsPage() {
   useEffect(() => { fetchOps(); }, [fetchOps]);
 
   useEffect(() => {
-    fetchWithAuth('/api/systems').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
+    fetchWithAuth('/api/products').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
     fetchWithAuth('/api/accounts').then(r => { if (r.success) setAccounts(r.data || []); }).catch(() => {});
     fetchWithAuth('/api/deals').then(r => { if (r.success) setDeals(r.data || []); }).catch(() => {});
   }, []);
@@ -284,7 +284,7 @@ export default function OperationsPage() {
                 className="w-full px-3 py-2 border rounded-lg bg-background text-sm" />
             </div>
             <div>
-              <label className="block text-xs font-medium opacity-70 mb-1">Related System</label>
+              <label className="block text-xs font-medium opacity-70 mb-1">Related Product</label>
               <select value={form.related_system_id} onChange={e => setForm(f => ({ ...f, related_system_id: e.target.value }))}
                 className="w-full px-3 py-2 border rounded-lg bg-background text-sm">
                 <option value="">— None —</option>

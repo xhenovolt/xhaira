@@ -48,7 +48,7 @@ export default function SystemCostsPage() {
 
   const fetchSystems = async () => {
     try {
-      const res = await fetchWithAuth('/api/systems');
+      const res = await fetchWithAuth('/api/products');
       if (res.success) setSystems(res.data || []);
       else if (Array.isArray(res)) setSystems(res);
     } catch (e) { console.error('Failed to fetch systems:', e); }
@@ -93,9 +93,9 @@ export default function SystemCostsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">System Development Costs</h1>
+          <h1 className="text-2xl font-bold">Product Development Costs</h1>
           <p className="text-sm opacity-60 mt-1">
-            Track every cost incurred while building and maintaining systems
+            Track every cost incurred while building and maintaining products
           </p>
         </div>
         <button onClick={() => setShowForm(!showForm)}
@@ -110,7 +110,7 @@ export default function SystemCostsPage() {
           <div className="rounded-xl border p-4" style={{ background: 'var(--card-bg, #fff)' }}>
             <div className="text-xs font-medium opacity-60 uppercase">Total Invested</div>
             <div className="text-2xl font-bold mt-1">{formatMoney(totalCost)}</div>
-            <div className="text-xs opacity-50 mt-1">{costs.length} entries across {summary.length} systems</div>
+            <div className="text-xs opacity-50 mt-1">{costs.length} entries across {summary.length} products</div>
           </div>
           {summary.slice(0, 3).map(s => (
             <div key={s.system_id} className="rounded-xl border p-4" style={{ background: 'var(--card-bg, #fff)' }}>
@@ -124,10 +124,10 @@ export default function SystemCostsPage() {
 
       {/* Filter */}
       <div className="flex items-center gap-3">
-        <label className="text-sm font-medium">Filter by system:</label>
+        <label className="text-sm font-medium">Filter by product:</label>
         <select value={filterSystem} onChange={e => setFilterSystem(e.target.value)}
           className="rounded-lg border px-3 py-1.5 text-sm" style={{ background: 'var(--input-bg, #fff)' }}>
-          <option value="">All Systems</option>
+          <option value="">All Products</option>
           {systems.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>
       </div>
@@ -138,10 +138,10 @@ export default function SystemCostsPage() {
           <h3 className="font-semibold">New Cost Entry</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-medium mb-1">System *</label>
+              <label className="block text-xs font-medium mb-1">Product *</label>
               <select value={form.system_id} onChange={e => setForm({...form, system_id: e.target.value})} required
                 className="w-full rounded-lg border px-3 py-2 text-sm" style={{ background: 'var(--input-bg, #fff)' }}>
-                <option value="">Select system…</option>
+                <option value="">Select product…</option>
                 {systems.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
               </select>
             </div>
@@ -194,7 +194,7 @@ export default function SystemCostsPage() {
             <thead>
               <tr className="border-b text-left">
                 <th className="px-4 py-3 font-medium">Date</th>
-                <th className="px-4 py-3 font-medium">System</th>
+                <th className="px-4 py-3 font-medium">Product</th>
                 <th className="px-4 py-3 font-medium">Type</th>
                 <th className="px-4 py-3 font-medium">Description</th>
                 <th className="px-4 py-3 font-medium text-right">Amount</th>

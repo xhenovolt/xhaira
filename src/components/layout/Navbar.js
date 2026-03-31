@@ -92,7 +92,7 @@ export function Navbar() {
       deal: `/app/deals/${n.reference_id}`,
       prospect: `/app/prospects/${n.reference_id}`,
       client: `/app/clients/${n.reference_id}`,
-      system: `/app/systems/${n.reference_id}`,
+      system: `/app/products/${n.reference_id}`,
       payment: `/app/payments`,
       operation: `/app/operations`,
       expense: `/app/finance/expenses`,

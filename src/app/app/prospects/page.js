@@ -64,7 +64,7 @@ export default function ProspectsPage() {
 
   // Fetch systems and services for dropdowns
   useEffect(() => {
-    fetchWithAuth('/api/systems').then(r => r.json()).then(d => setSystems(d.data || d.systems || []));
+    fetchWithAuth('/api/products').then(r => r.json()).then(d => setSystems(d.data || d.systems || []));
     fetchWithAuth('/api/services?active=true').then(r => r.json()).then(d => setServices(d.data || d.services || []));
   }, []);
 

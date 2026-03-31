@@ -92,7 +92,7 @@ export default function ItemsPage() {
   useEffect(() => { fetchItems(); }, [fetchItems]);
 
   useEffect(() => {
-    fetchWithAuth('/api/systems').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
+    fetchWithAuth('/api/products').then(r => { if (r.success) setSystems(r.data || r.systems || []); }).catch(() => {});
     fetchWithAuth('/api/staff').then(r => { if (r.success) setStaff(r.data || []); }).catch(() => {});
     fetchWithAuth('/api/accounts').then(r => { if (r.success) setAccounts(r.data || []); }).catch(() => {});
   }, []);
@@ -312,7 +312,7 @@ export default function ItemsPage() {
                 className="w-full px-3 py-2 border rounded-lg bg-background text-sm" />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-1 opacity-70">Linked System</label>
+              <label className="block text-xs font-medium mb-1 opacity-70">Linked Product</label>
               <select value={form.linked_system} onChange={e => setForm(f => ({ ...f, linked_system: e.target.value }))}
                 className="w-full px-3 py-2 border rounded-lg bg-background text-sm">
                 <option value="">— None —</option>
@@ -454,7 +454,7 @@ export default function ItemsPage() {
                 </div>
 
                 <div className="flex items-center gap-3 mt-1 text-xs opacity-50 flex-wrap">
-                  {item.system_name && <span>System: {item.system_name}</span>}
+                  {item.system_name && <span>Product: {item.system_name}</span>}
                   {item.assigned_to_name && <span>Assigned: {item.assigned_to_name}</span>}
                   {item.acquisition_date && <span>Acquired: {new Date(item.acquisition_date).toLocaleDateString()}</span>}
                   {item.provider && <span>Provider: {item.provider}</span>}

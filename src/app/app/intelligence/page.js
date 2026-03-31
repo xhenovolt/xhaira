@@ -161,7 +161,7 @@ export default function IntelligenceDashboardPage() {
           {role === 'cto' && (
             <>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <MetricCard icon={Code2} label="Systems" value={data.systems?.total || 0} subValue={`Active: ${data.systems?.active || 0}`} color="text-orange-600" />
+                <MetricCard icon={Code2} label="Products" value={data.systems?.total || 0} subValue={`Active: ${data.systems?.active || 0}`} color="text-orange-600" />
                 <MetricCard icon={Bug} label="Open Bugs" value={data.bugs?.open || 0} subValue={`Critical: ${data.bugs?.critical || 0}`} color="text-red-600" />
                 <MetricCard icon={Zap} label="Feature Requests" value={data.features?.total || 0} subValue={`In Progress: ${data.features?.in_progress || 0}`} color="text-blue-600" />
                 <MetricCard icon={Activity} label="Dev Activity (7d)" value={data.dev_activity?.last_7_days || 0} color="text-emerald-600" />

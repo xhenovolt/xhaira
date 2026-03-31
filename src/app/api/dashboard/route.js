@@ -36,8 +36,12 @@ async function widgetDealSummary({ userId, dataScope, departmentId }) {
   const { rows } = await query(
     `WITH dp AS (
        SELECT d.status, d.total_amount, d.due_date,
-         COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.deal_id = d.id AND p.status = 'completed'), 0) AS paid_amount
-       FROM deals d WHERE 1=1${filter.clause}
+         COALESCE(ps.paid, 0) AS paid_amount
+       FROM deals d
+       LEFT JOIN LATERAL (
+         SELECT SUM(p.amount) AS paid FROM payments p WHERE p.deal_id = d.id AND p.status = 'completed'
+       ) ps ON true
+       WHERE 1=1${filter.clause}
      )
      SELECT
        COUNT(*) FILTER (WHERE status IN ('draft','sent','accepted','in_progress')) as active_deals,
@@ -126,15 +130,17 @@ async function widgetPaymentSummary({ userId, dataScope, departmentId }) {
 }
 
 async function widgetSystemsOverview({ userId, dataScope, departmentId }) {
-  const filter = buildDataScopeFilter({ dataScope, userId, departmentId, tableAlias: 's', paramOffset: 0 });
-  const params = [...filter.params];
-  const { rows } = await query(
-    `SELECT s.id, s.name, s.status, s.version, s.created_at
-     FROM systems s WHERE 1=1${filter.clause}
-     ORDER BY s.created_at DESC LIMIT 6`,
-    params
-  );
-  return rows;
+  try {
+    const filter = buildDataScopeFilter({ dataScope, userId, departmentId, tableAlias: 's', paramOffset: 0 });
+    const params = [...filter.params];
+    const { rows } = await query(
+      `SELECT s.id, s.name, s.status, s.product_type, s.version, s.created_at
+       FROM systems s WHERE 1=1${filter.clause}
+       ORDER BY s.created_at DESC LIMIT 6`,
+      params
+    );
+    return rows;
+  } catch { return []; }
 }
 
 async function widgetOperationsStats({ userId, dataScope, departmentId }) {
@@ -254,7 +260,7 @@ function inferWidgetsFromPermissions(permissions) {
   if (has('expenses.view'))         widgets.push({ id: 'recent_expenses',   label: 'Expenses',          size: 'medium' });
   if (has('budgets.view'))          widgets.push({ id: 'budget_status',     label: 'Budgets',           size: 'medium' });
   if (has('payments.view'))         widgets.push({ id: 'payment_summary',   label: 'Payments',          size: 'small' });
-  if (has('systems.view'))          widgets.push({ id: 'systems_overview',  label: 'Systems',           size: 'large' });
+  if (has('systems.view'))          widgets.push({ id: 'systems_overview',  label: 'Products',          size: 'large' });
   if (has('operations.view'))       widgets.push({ id: 'operations',        label: 'Operations',        size: 'small' });
   if (has('finance.view'))          widgets.push({ id: 'monthly_financials',label: 'Monthly P&L',       size: 'large' });
   if (has('activity_logs.view'))    widgets.push({ id: 'recent_activity',   label: 'Activity',          size: 'small' });

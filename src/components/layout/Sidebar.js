@@ -68,7 +68,7 @@ export default function Sidebar() {
     Growth: false,
     Investments: false,
     Finance: true,
-    Systems: false,
+    Products: false,
     Operations: false,
     Admin: false,
     'DRAIS Control': false,
@@ -177,7 +177,7 @@ export default function Sidebar() {
             className="flex items-center gap-2"
           >
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <span className="text-sm font-bold text-white">J</span>
+              <span className="text-sm font-bold text-white">X</span>
             </div>
             <span className="font-bold text-lg" style={{ color: 'var(--sidebar-text)' }}>Xhaira</span>
           </motion.div>
