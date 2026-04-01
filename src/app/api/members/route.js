@@ -66,10 +66,24 @@ export async function POST(request) {
     const { auth } = perm;
 
     const body = await request.json();
-    const { full_name, email, phone, national_id, gender, date_of_birth, address, user_id } = body;
+    const {
+      // Core
+      full_name, first_name, last_name, other_name, email, phone,
+      national_id, id_type, gender, date_of_birth, address, user_id,
+      // Extended profile
+      photo_url, id_photo_url,
+      occupation, employer, monthly_income,
+      emergency_contact_name, emergency_contact_phone,
+      next_of_kin_name, next_of_kin_phone, next_of_kin_relationship,
+      joined_date, notes,
+    } = body;
 
-    if (!full_name || !full_name.trim()) {
-      return NextResponse.json({ success: false, error: 'Full name is required' }, { status: 400 });
+    // Build full_name from parts if not provided
+    const resolvedFullName = full_name?.trim() ||
+      [first_name, other_name, last_name].filter(Boolean).join(' ').trim();
+
+    if (!resolvedFullName) {
+      return NextResponse.json({ success: false, error: 'Full name (or first + last name) is required' }, { status: 400 });
     }
 
     // Generate membership number: MBR-YYYYMMDD-XXXXX
@@ -79,27 +93,82 @@ export async function POST(request) {
     const membership_number = `MBR-${dateStr}-${randomSuffix}`;
 
     const result = await query(
-      `INSERT INTO members (full_name, email, phone, national_id, gender, date_of_birth, address, user_id, membership_number)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-       RETURNING *`,
+      `INSERT INTO members (
+         full_name, first_name, last_name, other_name,
+         email, phone, national_id, id_type, gender, date_of_birth, address,
+         photo_url, id_photo_url,
+         occupation, employer, monthly_income,
+         emergency_contact_name, emergency_contact_phone,
+         next_of_kin_name, next_of_kin_phone, next_of_kin_relationship,
+         joined_date, notes, user_id, membership_number
+       ) VALUES (
+         $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,
+         $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25
+       ) RETURNING *`,
       [
-        full_name.trim(),
+        resolvedFullName,
+        first_name || resolvedFullName.split(' ')[0] || null,
+        last_name || resolvedFullName.split(' ').slice(1).join(' ') || null,
+        other_name || null,
         email || null,
         phone || null,
         national_id || null,
+        id_type || 'national_id',
         gender || null,
         date_of_birth || null,
         address || null,
+        photo_url || null,
+        id_photo_url || null,
+        occupation || null,
+        employer || null,
+        monthly_income ? parseFloat(monthly_income) : null,
+        emergency_contact_name || null,
+        emergency_contact_phone || null,
+        next_of_kin_name || null,
+        next_of_kin_phone || null,
+        next_of_kin_relationship || null,
+        joined_date || new Date().toISOString().split('T')[0],
+        notes || null,
         user_id || null,
         membership_number,
       ]
     );
 
-    return NextResponse.json({ success: true, data: result.rows[0] }, { status: 201 });
+    const member = result.rows[0];
+
+    // Audit log
+    await query(
+      `INSERT INTO member_audit_log (member_id, action, performed_by, new_values)
+       VALUES ($1, 'created', $2, $3)`,
+      [member.id, auth?.userId || null, JSON.stringify({ membership_number, full_name: resolvedFullName })]
+    ).catch(() => {}); // Non-blocking
+
+    // Auto-open savings account if configured
+    const autoOpenSavings = await query(
+      `SELECT config_value FROM sacco_configurations WHERE config_key = 'accounts.auto_open_savings'`
+    ).catch(() => ({ rows: [] }));
+
+    if (autoOpenSavings.rows[0]?.config_value === true || autoOpenSavings.rows[0]?.config_value === 'true') {
+      const volSavType = await query(
+        `SELECT id FROM account_types WHERE code = 'VOL_SAV' LIMIT 1`
+      ).catch(() => ({ rows: [] }));
+
+      if (volSavType.rows.length > 0) {
+        const accNum = `SAV-${membership_number.split('-').slice(-1)[0]}`;
+        await query(
+          `INSERT INTO member_accounts (member_id, account_type, account_type_id, account_number, currency, status, opened_at)
+           VALUES ($1, 'savings', $2, $3, 'UGX', 'active', NOW())
+           ON CONFLICT DO NOTHING`,
+          [member.id, volSavType.rows[0].id, accNum]
+        ).catch(() => {});
+      }
+    }
+
+    return NextResponse.json({ success: true, data: member }, { status: 201 });
   } catch (error) {
     console.error('[Members] POST error:', error.message);
-    if (error.message.includes('idx_members_national_id')) {
-      return NextResponse.json({ success: false, error: 'A member with this National ID already exists' }, { status: 409 });
+    if (error.message.includes('idx_members_national_id') || error.message.includes('idx_members_email_unique')) {
+      return NextResponse.json({ success: false, error: 'A member with this National ID or email already exists' }, { status: 409 });
     }
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }

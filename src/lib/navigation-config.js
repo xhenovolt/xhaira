@@ -312,6 +312,8 @@ export const menuItems = [
       { label: 'Appearance', href: '/app/settings/appearance', icon: Palette, description: 'Colors, gradients, glass' },
       { label: 'Typography', href: '/app/settings/typography', icon: Type, description: 'Font family, size & weight' },
       { label: 'Active Sessions', href: '/app/settings/sessions', icon: Shield, description: 'Manage logged-in devices' },
+      { label: 'SACCO Configuration', href: '/app/settings/configurations', description: 'System-wide SACCO toggles & rules', permission: 'finance.manage' },
+      { label: 'Member Fields', href: '/app/settings/member-fields', description: 'Configure member profile fields', permission: 'members.view' },
     ],
   },
 ];
