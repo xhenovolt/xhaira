@@ -9,7 +9,7 @@
 import { NextResponse } from 'next/server';
 import { requirePermission } from '@/lib/permissions.js';
 import { query } from '@/lib/db.js';
-import { decrypt } from '@/lib/encryption.js';
+import { decryptSecret as decrypt } from '@/lib/encryption.js';
 
 export async function GET(request, { params }) {
   const perm = await requirePermission(request, 'integrations.view');

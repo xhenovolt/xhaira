@@ -208,29 +208,97 @@ async function widgetMonthlyFinancials() {
 
 async function widgetAdminStats() {
   try {
-    const [usersR, staffR, clientsR, rolesR] = await Promise.all([
+    const [usersR, staffR, membersR, rolesR] = await Promise.all([
       query(`SELECT COUNT(*) as count FROM users WHERE is_active = true`),
       query(`SELECT COUNT(*) as count FROM staff WHERE status = 'active'`),
-      query(`SELECT COUNT(*) as count FROM clients WHERE status = 'active'`),
+      query(`SELECT COUNT(*) as count FROM members WHERE status = 'active'`).catch(() => ({ rows: [{ count: 0 }] })),
       query(`SELECT COUNT(*) as count FROM roles`),
     ]);
     return {
       total_users:   parseInt(usersR.rows[0]?.count   || 0),
       total_staff:   parseInt(staffR.rows[0]?.count   || 0),
-      total_clients: parseInt(clientsR.rows[0]?.count || 0),
+      total_members: parseInt(membersR.rows[0]?.count || 0),
       total_roles:   parseInt(rolesR.rows[0]?.count   || 0),
     };
-  } catch { return { total_users: 0, total_staff: 0, total_clients: 0, total_roles: 0 }; }
+  } catch { return { total_users: 0, total_staff: 0, total_members: 0, total_roles: 0 }; }
+}
+
+// ─── SACCO Widget Fetchers ───────────────────────────────────────────────────
+
+async function widgetSACCOOverview() {
+  try {
+    const [membersR, activeR, newR, accountsR] = await Promise.all([
+      query(`SELECT COUNT(*) as count FROM members`).catch(() => ({ rows: [{ count: 0 }] })),
+      query(`SELECT COUNT(*) as count FROM members WHERE status = 'active'`).catch(() => ({ rows: [{ count: 0 }] })),
+      query(`SELECT COUNT(*) as count FROM members WHERE joined_date >= date_trunc('month', NOW())`).catch(() => ({ rows: [{ count: 0 }] })),
+      query(`SELECT COUNT(*) as count FROM member_accounts WHERE status = 'active'`).catch(() => ({ rows: [{ count: 0 }] })),
+    ]);
+    return {
+      total_members:  parseInt(membersR.rows[0]?.count || 0),
+      active_members: parseInt(activeR.rows[0]?.count  || 0),
+      new_this_month: parseInt(newR.rows[0]?.count     || 0),
+      total_accounts: parseInt(accountsR.rows[0]?.count|| 0),
+    };
+  } catch { return { total_members: 0, active_members: 0, new_this_month: 0, total_accounts: 0 }; }
+}
+
+async function widgetLoanPortfolio() {
+  try {
+    const { rows } = await query(`
+      SELECT
+        COUNT(*) FILTER (WHERE status IN ('approved','active','disbursed'))           AS active_loans,
+        COALESCE(SUM(disbursed_amount) FILTER (WHERE disbursed_amount IS NOT NULL), 0) AS total_disbursed,
+        COUNT(*) FILTER (WHERE status = 'pending')                                    AS pending_loans,
+        COUNT(*) FILTER (WHERE status = 'overdue')                                    AS overdue_loans
+      FROM loans
+    `).catch(() => ({ rows: [] }));
+    return rows[0] || { active_loans: 0, total_disbursed: 0, pending_loans: 0, overdue_loans: 0 };
+  } catch { return { active_loans: 0, total_disbursed: 0, pending_loans: 0, overdue_loans: 0 }; }
+}
+
+async function widgetSavingsSummary() {
+  try {
+    const { rows } = await query(`
+      SELECT
+        COALESCE(SUM(vab.balance), 0) as total_savings,
+        COUNT(DISTINCT vab.member_id) as saving_members
+      FROM v_member_account_balances vab
+      WHERE vab.account_type_code IN ('VOL_SAV', 'FIXED_SAV')
+    `).catch(() => ({ rows: [] }));
+    const sharesR = await query(`
+      SELECT COALESCE(SUM(vab.balance), 0) as total_shares
+      FROM v_member_account_balances vab
+      WHERE vab.account_type_code = 'SHARES'
+    `).catch(() => ({ rows: [] }));
+    return {
+      total_savings:   parseFloat(rows[0]?.total_savings   || 0),
+      saving_members:  parseInt(rows[0]?.saving_members    || 0),
+      total_shares:    parseFloat(sharesR.rows[0]?.total_shares || 0),
+    };
+  } catch { return { total_savings: 0, saving_members: 0, total_shares: 0 }; }
+}
+
+async function widgetRecentTransactions() {
+  try {
+    const { rows } = await query(`
+      SELECT t.id, t.type, t.description, t.amount, t.currency, t.created_at
+      FROM transactions t
+      ORDER BY t.created_at DESC LIMIT 8
+    `).catch(() => ({ rows: [] }));
+    return rows;
+  } catch { return []; }
 }
 
 // ─── Widget registry ─────────────────────────────────────────────────────────
 
 const WIDGET_FETCHERS = {
+  // Legacy (kept for backward compat with dashboard_configs)
   pipeline_summary:   widgetPipelineSummary,
   recent_deals:       widgetRecentDeals,
   deal_summary:       widgetDealSummary,
   upcoming_followups: widgetUpcomingFollowups,
   my_prospects:       widgetMyProspects,
+  // Core finance
   financial_summary:  widgetFinancialSummary,
   account_balances:   widgetAccountBalances,
   recent_expenses:    widgetRecentExpenses,
@@ -242,6 +310,11 @@ const WIDGET_FETCHERS = {
   recent_activity:    widgetRecentActivity,
   monthly_financials: widgetMonthlyFinancials,
   admin_overview:     widgetAdminStats,
+  // SACCO widgets
+  sacco_overview:         widgetSACCOOverview,
+  loan_portfolio:         widgetLoanPortfolio,
+  savings_summary:        widgetSavingsSummary,
+  recent_transactions:    widgetRecentTransactions,
 };
 
 // ─── Default widget layout per permission set ────────────────────────────────
@@ -250,25 +323,22 @@ function inferWidgetsFromPermissions(permissions) {
   const has = (p) => permissions.includes(p) || permissions.includes('*');
   const widgets = [];
 
-  if (has('dashboard.view'))        widgets.push({ id: 'attention_items',   label: 'Attention Items',   size: 'medium' });
-  if (has('pipeline.view'))         widgets.push({ id: 'pipeline_summary',  label: 'Pipeline',          size: 'medium' });
-  if (has('deals.view'))            widgets.push({ id: 'deal_summary',      label: 'Deals',             size: 'medium' });
-  if (has('prospects.view'))        widgets.push({ id: 'upcoming_followups',label: 'Follow-ups',        size: 'small' });
-  if (has('prospects.view'))        widgets.push({ id: 'my_prospects',      label: 'My Prospects',      size: 'small' });
+  // ── SACCO Core (always shown first) ─────────────────────────────────────
+  if (has('members.view') || has('dashboard.view'))
+                                    widgets.push({ id: 'sacco_overview',    label: 'Members Overview',  size: 'large' });
+  if (has('finance.view'))          widgets.push({ id: 'loan_portfolio',    label: 'Loan Portfolio',    size: 'medium' });
+  if (has('finance.view'))          widgets.push({ id: 'savings_summary',   label: 'Savings & Shares',  size: 'medium' });
   if (has('finance.view'))          widgets.push({ id: 'financial_summary', label: 'Financial Overview',size: 'large' });
-  if (has('accounts.view'))         widgets.push({ id: 'account_balances',  label: 'Accounts',          size: 'medium' });
-  if (has('expenses.view'))         widgets.push({ id: 'recent_expenses',   label: 'Expenses',          size: 'medium' });
-  if (has('budgets.view'))          widgets.push({ id: 'budget_status',     label: 'Budgets',           size: 'medium' });
-  if (has('payments.view'))         widgets.push({ id: 'payment_summary',   label: 'Payments',          size: 'small' });
-  if (has('systems.view'))          widgets.push({ id: 'systems_overview',  label: 'Products',          size: 'large' });
-  if (has('operations.view'))       widgets.push({ id: 'operations',        label: 'Operations',        size: 'small' });
+  if (has('finance.view'))          widgets.push({ id: 'recent_transactions',label: 'Recent Transactions',size: 'medium' });
   if (has('finance.view'))          widgets.push({ id: 'monthly_financials',label: 'Monthly P&L',       size: 'large' });
+  if (has('accounts.view'))         widgets.push({ id: 'account_balances',  label: 'Company Accounts',  size: 'medium' });
   if (has('activity_logs.view'))    widgets.push({ id: 'recent_activity',   label: 'Activity',          size: 'small' });
   if (has('users.view'))            widgets.push({ id: 'admin_overview',    label: 'Admin Overview',    size: 'medium' });
 
-  // Always show deals if nothing else
+  // Fallback for users with no finance access
   if (widgets.length === 0) {
-    widgets.push({ id: 'recent_deals', label: 'Recent Deals', size: 'medium' });
+    widgets.push({ id: 'sacco_overview', label: 'Members Overview', size: 'large' });
+    widgets.push({ id: 'recent_activity', label: 'Activity', size: 'small' });
   }
   return widgets;
 }

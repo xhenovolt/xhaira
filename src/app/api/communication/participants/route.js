@@ -5,7 +5,7 @@ import {
   removeConversationParticipant,
   logCommunicationAudit,
 } from '@/lib/communication-utils.js';
-import { db } from '@/lib/db.js';
+import db from '@/lib/db.js';
 
 /**
  * POST /api/communication/participants

@@ -9,7 +9,7 @@
 import { NextResponse } from 'next/server';
 import { requirePermission } from '@/lib/permissions.js';
 import { query } from '@/lib/db.js';
-import { encrypt, decrypt } from '@/lib/encryption.js';
+import { encryptSecret as encrypt, decryptSecret as decrypt } from '@/lib/encryption.js';
 import crypto from 'crypto';
 
 export async function POST(request, { params }) {

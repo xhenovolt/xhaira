@@ -1,16 +1,16 @@
 /**
- * Navigation Configuration - XHAIRA SACCO & Investment Management
+ * Navigation Configuration — XHAIRA SACCO & Investment Management
  *
- * Single Source of Truth for all navigation
- * Core model: Products → Deals → Payments → Licenses
+ * Single Source of Truth for all navigation.
+ * Sidebar reflects SACCO financial operations only.
+ * Legacy Xhenvolt routes (Pipeline, Deals, Pricing) are hidden from nav.
  *
+ * Feature flags: import uiConfig from '@/config/ui-config'
  * Every route here exists in /src/app/app/
  */
 
 import {
   Home,
-  Target,
-  Briefcase,
   DollarSign,
   Package,
   BarChart3,
@@ -18,56 +18,33 @@ import {
   Shield,
   Palette,
   Type,
-  Monitor,
   Building2,
   Users,
   Activity,
-  Layers,
-  Workflow,
-  PieChart,
   BookOpen,
-  Wrench,
-  Image,
-  Calculator,
-  ClipboardCheck,
-  GitBranch,
-  Brain,
-  BoxSelect,
-  FileText,
-  Bug,
-  Zap,
-  Crown,
-  Code2,
-  BookMarked,
   Bell,
   MessageCircle,
   CreditCard,
-  Tag,
-  Grid3X3,
   Banknote,
-  TrendingUp,
+  Wallet,
 } from 'lucide-react';
 
 /**
- * XHAIRA NAVIGATION
- * Products → Deals → Payments → Licenses
+ * XHAIRA SACCO NAVIGATION
+ * Reflects SACCO financial operations — not software sales.
+ * Legacy routes (Pipeline, Deals, Pricing, DRAIS) are removed from sidebar.
  */
 export const menuItems = [
-  // === PRIMARY ===
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // PRIMARY — Always visible
+  // ═══════════════════════════════════════════════════════════════════════
   {
     label: 'Dashboard',
     href: '/app/dashboard',
     icon: Home,
     category: 'primary',
     permission: 'dashboard.view',
-  },
-  {
-    label: 'Command Center',
-    href: '/app/command-center',
-    icon: Zap,
-    category: 'primary',
-    permission: 'command_center.view',
-    minHierarchy: 3,
   },
   {
     label: 'Activity',
@@ -82,7 +59,6 @@ export const menuItems = [
     href: '/app/notifications',
     icon: Bell,
     category: 'primary',
-    // Visible to all authenticated users — no permission required
   },
   {
     label: 'Messages',
@@ -92,166 +68,92 @@ export const menuItems = [
     permission: 'communication.view',
   },
 
-  // === PRODUCTS (Financial Products Engine) ===
-  {
-    label: 'Products',
-    icon: Package,
-    category: 'sections',
-    module: 'products',
-    submenu: [
-      { label: 'All Products', href: '/app/products', description: 'Financial products & services', permission: 'products.view' },
-      { label: 'Loan Products', href: '/app/products?type=LOAN', description: 'Interest-based lending products', permission: 'products.view' },
-      { label: 'Savings Products', href: '/app/products?type=SAVINGS', description: 'Deposit & savings products', permission: 'products.view' },
-      { label: 'Installment Products', href: '/app/products?type=INSTALLMENT', description: 'Purchase on credit', permission: 'products.view' },
-      { label: 'Services', href: '/app/products?type=SERVICE', description: 'One-time & recurring services', permission: 'products.view' },
-      { label: 'Investments', href: '/app/products?type=INVESTMENT', description: 'Investment plans', permission: 'products.view' },
-      { label: 'Licenses', href: '/app/licenses', description: 'Active license registry', permission: 'licenses.view' },
-      { label: 'Operations Log', href: '/app/operations', description: 'Daily workflow log', permission: 'operations.view' },
-    ],
-  },
+  // ═══════════════════════════════════════════════════════════════════════
+  // SACCO CORE
+  // ═══════════════════════════════════════════════════════════════════════
 
-  // === MEMBERS (SACCO Core) ===
+  // === MEMBERS ===
   {
     label: 'Members',
     icon: Users,
     category: 'sections',
     module: 'members',
     submenu: [
-      { label: 'All Members', href: '/app/members', description: 'SACCO membership directory', permission: 'members.view' },
-      { label: 'Member Accounts', href: '/app/members?tab=accounts', description: 'Savings, loans & investment accounts', permission: 'members.view' },
+      { label: 'All Members',       href: '/app/members',             description: 'SACCO membership directory',         permission: 'members.view' },
+      { label: 'Member Accounts',   href: '/app/members?tab=accounts', description: 'Savings, loans & investment accounts', permission: 'members.view' },
     ],
   },
 
-  // === LOANS (SACCO Lending) ===
+  // === ACCOUNTS ===
+  {
+    label: 'Accounts',
+    icon: CreditCard,
+    category: 'sections',
+    module: 'accounts',
+    submenu: [
+      { label: 'Overview',          href: '/app/accounts',           description: 'Account types & summary',             permission: 'finance.view' },
+      { label: 'Account Types',     href: '/app/account-types',      description: 'Savings, shares & loan books',        permission: 'finance.view' },
+      { label: 'Transactions',      href: '/app/transactions',        description: 'Double-entry ledger transactions',    permission: 'finance.view' },
+      { label: 'Member Transfers',  href: '/app/member-transfers',    description: 'Peer-to-peer transfers',              permission: 'finance.view' },
+    ],
+  },
+
+  // === LOANS ===
   {
     label: 'Loans',
     icon: Banknote,
     category: 'sections',
     module: 'loans',
     submenu: [
-      { label: 'All Loans', href: '/app/loans', description: 'Loan applications & management', permission: 'finance.view' },
-      { label: 'SACCO Products', href: '/app/sacco-products', description: 'Loan & savings products', permission: 'finance.view' },
-      { label: 'SACCO Rules', href: '/app/sacco-rules', description: 'Configurable policy engine', permission: 'finance.manage' },
-      { label: 'Member Transfers', href: '/app/member-transfers', description: 'Peer-to-peer transfers', permission: 'finance.view' },
-      { label: 'Account Types', href: '/app/account-types', description: 'Savings, shares & loan books', permission: 'finance.view' },
-      { label: 'Transactions', href: '/app/transactions', description: 'Double-entry ledger transactions', permission: 'finance.view' },
+      { label: 'All Loans',         href: '/app/loans',               description: 'Loan applications & management',     permission: 'finance.view' },
+      { label: 'Loan Products',     href: '/app/products?type=LOAN',  description: 'Interest-based lending products',    permission: 'products.view' },
+      { label: 'Loan Rules',        href: '/app/sacco-rules',         description: 'Configurable SACCO policy engine',   permission: 'finance.manage' },
     ],
   },
 
-  // === SERVICES ===
+  // === SAVINGS ===
   {
-    label: 'Services',
-    href: '/app/services',
-    icon: Layers,
+    label: 'Savings',
+    icon: Wallet,
     category: 'sections',
-    module: 'services',
-    permission: 'services.view',
-  },
-
-  // === SALES PIPELINE ===
-  {
-    label: 'Pipeline',
-    icon: Target,
-    category: 'sections',
-    module: 'pipeline',
+    module: 'savings',
     submenu: [
-      { label: 'Pipeline Board', href: '/app/pipeline', description: 'Visual pipeline intelligence', permission: 'pipeline.view' },
-      { label: 'Prospects', href: '/app/prospects', description: 'Track and qualify leads', permission: 'prospects.view' },
-      { label: 'Follow-ups', href: '/app/followups', description: 'Scheduled touchpoints', permission: 'prospects.view' },
-      { label: 'Clients', href: '/app/clients', description: 'Converted prospects', permission: 'clients.view' },
+      { label: 'Savings Products',  href: '/app/products?type=SAVINGS',       description: 'Voluntary & fixed savings products', permission: 'products.view' },
+      { label: 'Fixed Deposits',    href: '/app/products?type=INSTALLMENT',   description: 'Fixed deposit products',             permission: 'products.view' },
     ],
   },
 
-  // === DEALS & PAYMENTS ===
+  // === FINANCIAL PRODUCTS ===
   {
-    label: 'Deals',
-    icon: Briefcase,
+    label: 'Products',
+    icon: Package,
     category: 'sections',
-    module: 'deals',
+    module: 'products',
     submenu: [
-      { label: 'All Deals', href: '/app/deals', description: 'Active and completed deals', permission: 'deals.view' },
-      { label: 'New Deal', href: '/app/deals/new', description: 'Record a licensing deal', permission: 'deals.create' },
-      { label: 'Obligations', href: '/app/obligations', description: 'Client deliverable tracking', permission: 'obligations.view' },
-      { label: 'Payments', href: '/app/payments', description: 'Payment records', permission: 'payments.view' },
-      { label: 'Invoices', href: '/app/invoices', description: 'Generated invoices & PDFs', permission: 'invoices.view' },
-      { label: 'Allocations', href: '/app/allocations', description: 'Money allocation tracking', permission: 'allocations.view' },
+      { label: 'All Products',      href: '/app/products',                    description: 'Financial products catalogue',       permission: 'products.view' },
+      { label: 'Loan Products',     href: '/app/products?type=LOAN',          description: 'Interest-based lending',             permission: 'products.view' },
+      { label: 'Savings Products',  href: '/app/products?type=SAVINGS',       description: 'Deposit & savings products',         permission: 'products.view' },
+      { label: 'Investment Products', href: '/app/products?type=INVESTMENT',  description: 'Investment plans',                   permission: 'products.view' },
     ],
   },
 
-  // === COMPANY ===
-  {
-    label: 'Company',
-    icon: Building2,
-    category: 'sections',
-    submenu: [
-      { label: 'Staff', href: '/app/staff', description: 'Team members & hierarchy', permission: 'staff.view' },
-      { label: 'Org Hierarchy', href: '/app/org-hierarchy', description: 'Department & role tree', permission: 'staff.view' },
-      { label: 'Control Tower', href: '/app/control-tower', description: 'Authority & structural health', permission: 'staff.view' },
-      { label: 'Items', href: '/app/items', description: 'Unified assets, tools & infrastructure', permission: 'assets.view' },
-      { label: 'Knowledge Base', href: '/app/knowledge', description: 'Company IP & documentation', permission: 'knowledge.view' },
-      { label: 'Liabilities', href: '/app/liabilities', description: 'Obligations and debts', permission: 'finance.view' },
-      { label: 'Offerings', href: '/app/offerings', description: 'Service catalog', permission: 'offerings.view' },
-      { label: 'Media', href: '/app/media', description: 'Files, images & documents', permission: 'media.view' },
-    ],
-  },
+  // ═══════════════════════════════════════════════════════════════════════
+  // FINANCE & REPORTING
+  // ═══════════════════════════════════════════════════════════════════════
 
-  // === FINANCE ===
+  // === FINANCE (Internal) ===
   {
     label: 'Finance',
     icon: DollarSign,
     category: 'sections',
     module: 'finance',
     submenu: [
-      { label: 'Overview', href: '/app/finance', description: 'Financial dashboard', permission: 'finance.view' },
-      { label: 'Accounts', href: '/app/finance/accounts', description: 'Bank and cash accounts', permission: 'accounts.view' },
-      { label: 'Ledger', href: '/app/finance/ledger', description: 'Transaction history', permission: 'finance.view' },
-      { label: 'Expenses', href: '/app/finance/expenses', description: 'Track spending', permission: 'expenses.view' },
-      { label: 'Transfers', href: '/app/finance/transfers', description: 'Move between accounts', permission: 'finance.view' },
-      { label: 'Budgets', href: '/app/finance/budgets', description: 'Spending limits', permission: 'budgets.view' },
-      { label: '---', href: '#', description: '', permission: null },
-      { label: 'Banking', href: '/app/finance/banking', description: 'Internal banking system', permission: 'finance.manage' },
-      { label: 'Employee Loans', href: '/app/finance/loans', description: 'Peer-to-peer loans', permission: 'finance.manage' },
-      { label: 'Salary Advances', href: '/app/finance/advances', description: 'Advance disbursements', permission: 'finance.manage' },
-    ],
-  },
-
-  // === DOCS ===
-  {
-    label: 'Docs',
-    href: '/app/docs',
-    icon: BookOpen,
-    category: 'sections',
-    module: 'knowledge',
-    permission: 'knowledge.view',
-  },
-
-  // === INTELLIGENCE ===
-  {
-    label: 'Intelligence',
-    icon: Brain,
-    category: 'sections',
-    module: 'intelligence',
-    submenu: [
-      { label: 'Dashboard', href: '/app/intelligence', description: 'Role-based intelligence overview', permission: 'intelligence.view' },
-      { label: 'Tech Stacks', href: '/app/tech-intelligence', description: 'Reusable technology stacks', permission: 'systems.view' },
-      { label: 'Engineering', href: '/app/engineering', description: 'Bugs, features & tech tracking', permission: 'bug_tracking.view' },
-      { label: 'Issue Intelligence', href: '/app/issue-intelligence', description: 'Root causes & resolutions', permission: 'issue_intelligence.view' },
-      { label: 'Financial', href: '/app/financial-intelligence', description: 'Capital allocation & revenue', permission: 'finance.view' },
-      { label: 'HRM', href: '/app/hrm', description: 'Employees & departments', permission: 'hrm.view' },
-      { label: 'Documents', href: '/app/documents', description: 'Document center', permission: 'documents.view' },
-      { label: 'Decision Log', href: '/app/decision-log', description: 'Key decisions & rationale', permission: 'decision_logs.view' },
-    ],
-  },
-
-  // === PRICING & SUBSCRIPTIONS ===
-  {
-    label: 'Pricing',
-    icon: Tag,
-    category: 'sections',
-    module: 'pricing',
-    submenu: [
-      { label: 'Pricing Plans', href: '/app/pricing', description: 'Centralized pricing for all systems', permission: 'pricing.view' },
-      { label: 'Subscriptions', href: '/app/subscriptions', description: 'Client subscription management', permission: 'subscriptions.view' },
+      { label: 'Overview',          href: '/app/finance',              description: 'Financial dashboard',               permission: 'finance.view' },
+      { label: 'Accounts',          href: '/app/finance/accounts',     description: 'Bank and cash accounts',            permission: 'accounts.view' },
+      { label: 'Ledger',            href: '/app/finance/ledger',       description: 'Transaction history',               permission: 'finance.view' },
+      { label: 'Expenses',          href: '/app/finance/expenses',     description: 'Track spending',                    permission: 'expenses.view' },
+      { label: 'Transfers',         href: '/app/finance/transfers',    description: 'Move between accounts',             permission: 'finance.view' },
+      { label: 'Budgets',           href: '/app/finance/budgets',      description: 'Spending limits & controls',        permission: 'budgets.view' },
     ],
   },
 
@@ -265,19 +167,37 @@ export const menuItems = [
     permission: 'reports.view',
   },
 
-  // === DRAIS CONTROL ===
+  // ═══════════════════════════════════════════════════════════════════════
+  // COMPANY MANAGEMENT
+  // ═══════════════════════════════════════════════════════════════════════
+
+  // === COMPANY ===
   {
-    label: 'DRAIS Control',
-    icon: Workflow,
+    label: 'Company',
+    icon: Building2,
     category: 'sections',
-    module: 'drais',
     submenu: [
-      { label: 'Schools', href: '/app/dashboard/drais/schools', description: 'School management & control', permission: 'drais.view' },
-      { label: 'Pricing', href: '/app/dashboard/drais/pricing', description: 'Global pricing control', permission: 'drais.view' },
-      { label: 'Activity', href: '/app/dashboard/drais/activity', description: 'Real-time activity monitoring', permission: 'drais.view' },
-      { label: 'Integrations', href: '/app/dashboard/integrations', description: 'External system connections', permission: 'integrations.view' },
+      { label: 'Staff',             href: '/app/staff',                description: 'Team members & hierarchy',          permission: 'staff.view' },
+      { label: 'Org Hierarchy',     href: '/app/org-hierarchy',        description: 'Department & role tree',            permission: 'staff.view' },
+      { label: 'Knowledge Base',    href: '/app/knowledge',            description: 'Company IP & documentation',        permission: 'knowledge.view' },
+      { label: 'Documents',         href: '/app/documents',            description: 'Document center',                   permission: 'documents.view' },
+      { label: 'Media',             href: '/app/media',                description: 'Files, images & documents',         permission: 'media.view' },
     ],
   },
+
+  // === DOCS ===
+  {
+    label: 'Docs',
+    href: '/app/docs',
+    icon: BookOpen,
+    category: 'sections',
+    module: 'knowledge',
+    permission: 'knowledge.view',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // ADMINISTRATION
+  // ═══════════════════════════════════════════════════════════════════════
 
   // === ADMIN ===
   {
@@ -287,17 +207,16 @@ export const menuItems = [
     module: 'roles',
     minHierarchy: 3,
     submenu: [
-      { label: 'Users', href: '/app/admin/users', description: 'User accounts & roles', permission: 'users.view' },
-      { label: 'Roles', href: '/app/admin/roles', description: 'Manage roles & permissions', permission: 'roles.manage' },
-      { label: 'Permission Manager', href: '/app/admin/role-permissions', description: 'Toggle role permissions by module', permission: 'roles.manage' },
-      { label: 'Access Simulator', href: '/app/admin/access-simulator', description: 'Preview what a role can access', permission: 'roles.manage' },
-      { label: 'Authority Inspector', href: '/app/admin/authority-inspector', description: 'Verify authority levels and hierarchy enforcement', permission: 'roles.manage' },
-      { label: 'Departments', href: '/app/admin/departments', description: 'Department management', permission: 'departments.view' },
-      { label: 'Approvals', href: '/app/admin/approvals', description: 'Pending approval requests', permission: 'approvals.manage' },
-      { label: 'Approval Pipeline', href: '/app/approval-pipeline', description: 'Visual approval workflow', permission: 'approvals.manage' },
-      { label: 'Backups', href: '/app/admin/backups', description: 'System backups & restore', permission: 'backups.view' },
-      { label: 'Audit Logs', href: '/app/admin/audit-logs', description: 'System audit trail', permission: 'audit.view' },
-      { label: 'Identity Debug', href: '/app/admin/debug', description: 'User–Staff–Role integrity checker', permission: 'users.view', minHierarchy: 1 },
+      { label: 'Users',             href: '/app/admin/users',                description: 'User accounts & roles',                          permission: 'users.view' },
+      { label: 'Roles',             href: '/app/admin/roles',                description: 'Manage roles & permissions',                     permission: 'roles.manage' },
+      { label: 'Permission Manager', href: '/app/admin/role-permissions',    description: 'Toggle role permissions by module',              permission: 'roles.manage' },
+      { label: 'Access Simulator',  href: '/app/admin/access-simulator',     description: 'Preview what a role can access',                 permission: 'roles.manage' },
+      { label: 'Authority Inspector', href: '/app/admin/authority-inspector', description: 'Verify authority levels and hierarchy',         permission: 'roles.manage' },
+      { label: 'Departments',       href: '/app/admin/departments',          description: 'Department management',                          permission: 'departments.view' },
+      { label: 'Approvals',         href: '/app/admin/approvals',            description: 'Pending approval requests',                      permission: 'approvals.manage' },
+      { label: 'Audit Logs',        href: '/app/admin/audit-logs',           description: 'System audit trail',                             permission: 'audit.view' },
+      { label: 'Backups',           href: '/app/admin/backups',              description: 'System backups & restore',                       permission: 'backups.view' },
+      { label: 'Identity Debug',    href: '/app/admin/debug',                description: 'User–Staff–Role integrity checker',              permission: 'users.view', minHierarchy: 1 },
     ],
   },
 
@@ -306,14 +225,13 @@ export const menuItems = [
     label: 'Settings',
     icon: Settings,
     category: 'sections',
-    // Settings visible to all authenticated users
     submenu: [
-      { label: 'General', href: '/app/settings', description: 'Account & preferences' },
-      { label: 'Appearance', href: '/app/settings/appearance', icon: Palette, description: 'Colors, gradients, glass' },
-      { label: 'Typography', href: '/app/settings/typography', icon: Type, description: 'Font family, size & weight' },
-      { label: 'Active Sessions', href: '/app/settings/sessions', icon: Shield, description: 'Manage logged-in devices' },
-      { label: 'SACCO Configuration', href: '/app/settings/configurations', description: 'System-wide SACCO toggles & rules', permission: 'finance.manage' },
-      { label: 'Member Fields', href: '/app/settings/member-fields', description: 'Configure member profile fields', permission: 'members.view' },
+      { label: 'General',             href: '/app/settings',                  description: 'Account & preferences' },
+      { label: 'Appearance',          href: '/app/settings/appearance',       icon: Palette, description: 'Colors, gradients, glass' },
+      { label: 'Typography',          href: '/app/settings/typography',       icon: Type,    description: 'Font family, size & weight' },
+      { label: 'Active Sessions',     href: '/app/settings/sessions',         icon: Shield,  description: 'Manage logged-in devices' },
+      { label: 'SACCO Configuration', href: '/app/settings/configurations',   description: 'System-wide SACCO toggles & rules',  permission: 'finance.manage' },
+      { label: 'Member Fields',       href: '/app/settings/member-fields',    description: 'Configure member profile fields',    permission: 'members.view' },
     ],
   },
 ];
@@ -322,10 +240,10 @@ export const menuItems = [
  * Quick access links for mobile bottom navigation
  */
 export const quickAccessLinks = [
-  { id: 'dashboard', label: 'Dashboard', icon: Home, href: '/app/dashboard', permission: 'dashboard.view' },
-  { id: 'products', label: 'Products', icon: Package, href: '/app/products', permission: 'products.view' },
-  { id: 'deals', label: 'Deals', icon: Briefcase, href: '/app/deals', permission: 'deals.view' },
-  { id: 'finance', label: 'Finance', icon: DollarSign, href: '/app/finance', permission: 'finance.view' },
+  { id: 'dashboard',    label: 'Dashboard',    icon: Home,     href: '/app/dashboard',    permission: 'dashboard.view' },
+  { id: 'members',      label: 'Members',      icon: Users,    href: '/app/members',      permission: 'members.view' },
+  { id: 'loans',        label: 'Loans',        icon: Banknote, href: '/app/loans',        permission: 'finance.view' },
+  { id: 'transactions', label: 'Transactions', icon: DollarSign, href: '/app/transactions', permission: 'finance.view' },
 ];
 
 /**

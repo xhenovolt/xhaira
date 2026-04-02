@@ -8,7 +8,7 @@
 
 import { getCurrentUser } from '@/lib/current-user.js';
 import { query } from '@/lib/db.js';
-import { logAudit } from '@/lib/audit.js';
+import { logAuthEvent as logAudit } from '@/lib/audit.js';
 
 export async function POST(request) {
   try {

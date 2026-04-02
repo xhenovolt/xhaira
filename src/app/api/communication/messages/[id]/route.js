@@ -4,7 +4,7 @@ import {
   deleteMessage,
   logCommunicationAudit,
 } from '@/lib/communication-utils.js';
-import { db } from '@/lib/db.js';
+import db from '@/lib/db.js';
 
 /**
  * PUT /api/communication/messages/[id]

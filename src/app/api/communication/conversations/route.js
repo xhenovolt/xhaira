@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/db.js';
+import db from '@/lib/db.js';
 import { requirePermission } from '@/lib/permissions.js';
 import {
   createConversation,

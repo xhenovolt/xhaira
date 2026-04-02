@@ -5,7 +5,7 @@ import {
   updateMediaPermission,
   getCallPermissionsForRole,
 } from '@/lib/communication-utils.js';
-import { db } from '@/lib/db.js';
+import db from '@/lib/db.js';
 
 /**
  * GET /api/communication/permissions
