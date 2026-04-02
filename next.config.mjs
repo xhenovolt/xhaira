@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  turbopack: {
-    root: '.',
+  experimental: {
+    // Disable static prerendering of the global-error route — it crashes when
+    // the root layout uses React context providers (Turbopack / Next.js 16 known issue).
+    prerenderEarlyExit: false,
   },
 };
 
